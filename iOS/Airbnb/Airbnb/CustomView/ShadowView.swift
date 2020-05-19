@@ -24,11 +24,9 @@ import UIKit
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.layer.masksToBounds = false
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.masksToBounds = false
     }
 }
