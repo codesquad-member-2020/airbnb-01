@@ -1,0 +1,8 @@
+build
+out
+
+.idea
+.gradle
+
+application-db.properties
+logs/
