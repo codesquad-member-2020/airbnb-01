@@ -118,7 +118,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RoomCell" id="Vgu-aS-bYf">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RoomCell" id="Vgu-aS-bYf" customClass="RoomListCell" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="20.5" y="0.0" width="373" height="308"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="19K-Mw-mR3">
@@ -133,6 +133,7 @@
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-dB-UJW">
                                                                     <rect key="frame" x="0.0" y="1.5" width="373" height="213"/>
+                                                                    <color key="backgroundColor" red="0.0" green="1" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="87Z-jv-W9x">
                                                                     <rect key="frame" x="373" y="1.5" width="373" height="213"/>
@@ -160,15 +161,31 @@
                                                     <viewLayoutGuide key="contentLayoutGuide" id="Nyh-Le-p0K"/>
                                                     <viewLayoutGuide key="frameLayoutGuide" id="jYy-xj-3nf"/>
                                                 </scrollView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kd0-7C-XiC" customClass="LikeButton" customModule="Airbnb" customModuleProvider="target">
+                                                    <rect key="frame" x="333" y="10" width="30" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="kd0-7C-XiC" secondAttribute="height" multiplier="1:1" id="fy8-yO-cAi"/>
+                                                        <constraint firstAttribute="width" constant="30" id="lUm-Ed-jO2"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" image="heart" catalog="system"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="EJn-Sr-qCH" firstAttribute="top" secondItem="19K-Mw-mR3" secondAttribute="top" id="20v-yM-yAQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="kd0-7C-XiC" secondAttribute="trailing" constant="10" id="LJ4-8o-r7o"/>
                                                 <constraint firstAttribute="trailing" secondItem="EJn-Sr-qCH" secondAttribute="trailing" id="UqD-d4-SmL"/>
                                                 <constraint firstItem="EJn-Sr-qCH" firstAttribute="height" secondItem="19K-Mw-mR3" secondAttribute="height" multiplier="0.7" id="kTj-zf-24Z"/>
                                                 <constraint firstItem="EJn-Sr-qCH" firstAttribute="leading" secondItem="19K-Mw-mR3" secondAttribute="leading" id="uQf-iN-Dah"/>
+                                                <constraint firstItem="kd0-7C-XiC" firstAttribute="top" secondItem="19K-Mw-mR3" secondAttribute="top" constant="10" id="yPA-JN-tpO"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="373" height="308"/>
+                                        <connections>
+                                            <outlet property="ImageStackView" destination="Q2L-7H-JvB" id="AUB-G2-zPn"/>
+                                            <outlet property="likeButton" destination="kd0-7C-XiC" id="TrM-qm-Ir8"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

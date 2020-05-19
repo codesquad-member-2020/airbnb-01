@@ -1,25 +1,14 @@
 //
-//  FilterLabel.swift
+//  LikeButton.swift
 //  Airbnb
 //
 //  Created by 신한섭 on 2020/05/19.
 //  Copyright © 2020 신한섭. All rights reserved.
 //
+
 import UIKit
 
-@IBDesignable class FilterButton: UIButton {
-    
-    @IBInspectable var borderWidth: CGFloat = 0.0 {
-        didSet {
-            self.layer.borderWidth = borderWidth
-        }
-    }
-    
-    @IBInspectable var borderColor: UIColor = .black {
-        didSet {
-            self.layer.borderColor = borderColor.cgColor
-        }
-    }
+@IBDesignable class LikeButton: UIButton {
     
     private var isClicked: Bool = false {
         didSet {
@@ -37,16 +26,14 @@ import UIKit
     }
     
     func setRadius() {
-        self.layer.cornerRadius = self.frame.height / 2.5
+        self.layer.cornerRadius = self.frame.height / 2
     }
     
     func setColor() {
         if isClicked {
-            self.layer.borderColor = UIColor.link.cgColor
-            self.setTitleColor(.link, for: .normal)
+            self.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
-            self.layer.borderColor = UIColor.lightGray.cgColor
-            self.setTitleColor(.lightGray, for: .normal)
+            self.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
     }
     

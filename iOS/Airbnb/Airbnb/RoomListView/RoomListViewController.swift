@@ -24,6 +24,7 @@ class RoomListViewController: UIViewController {
         filterButtons.forEach {
             $0.setRadius()
         }
+        roomListCollectionView.delaysContentTouches = false
     }
 }
 
@@ -33,7 +34,8 @@ extension RoomListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomListCell else {return UICollectionViewCell()}
+        cell.likeButton.setRadius()
         return cell
     }
 }
