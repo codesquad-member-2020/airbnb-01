@@ -22,9 +22,6 @@ import UIKit
         }
     }
     
-
-    
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.layer.masksToBounds = false

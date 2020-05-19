@@ -10,8 +10,18 @@ import UIKit
 
 class RoomListViewController: UIViewController {
 
+    @IBOutlet var filterButtons: [FilterButton]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setButton()
+        
+    }
+    
+    private func setButton() {
+        filterButtons.forEach {
+            $0.setRadius()
+        }
     }
 }
 

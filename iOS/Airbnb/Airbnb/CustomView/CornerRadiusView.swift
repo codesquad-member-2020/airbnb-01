@@ -11,9 +11,8 @@ import UIKit
 @IBDesignable class CornerRadiusView: UIView {
 
     @IBInspectable var cornerRadius: CGFloat = 0.0 {
-        didSet{
+        didSet {
             self.layer.cornerRadius = cornerRadius
         }
     }
-
 }

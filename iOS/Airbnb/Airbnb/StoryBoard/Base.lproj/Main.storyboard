@@ -48,17 +48,86 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NU2-GJ-o2k" userLabel="Filter Stack View">
+                                <rect key="frame" x="41.5" y="104" width="258.5" height="44.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yv-Rv-eff" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="82.5" height="44.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <state key="normal" title="날짜">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba4-98-28T" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="87.5" y="0.0" width="83" height="44.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <state key="normal" title="인원">
+                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA3-aa-NiH" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="175.5" y="0.0" width="83" height="44.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <state key="normal" title="가격">
+                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Pe3-Og-e4e" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="61i-a7-gzR"/>
                             <constraint firstItem="Pe3-Og-e4e" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" multiplier="0.8" id="Bll-Mf-JLK"/>
+                            <constraint firstItem="3Yv-Rv-eff" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" multiplier="0.2" id="bAP-MA-VLe"/>
                             <constraint firstItem="Pe3-Og-e4e" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="0.05" id="cLk-Fl-xdC"/>
+                            <constraint firstItem="NU2-GJ-o2k" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="0.05" id="dy8-uZ-9Zm"/>
                             <constraint firstItem="Pe3-Og-e4e" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="qop-ZX-b7c"/>
+                            <constraint firstItem="NU2-GJ-o2k" firstAttribute="leading" secondItem="HlN-xQ-VOY" secondAttribute="leading" id="qpq-sq-IAT"/>
+                            <constraint firstItem="NU2-GJ-o2k" firstAttribute="width" relation="lessThanOrEqual" secondItem="HlN-xQ-VOY" secondAttribute="width" id="yiS-Wx-K6j"/>
+                            <constraint firstItem="NU2-GJ-o2k" firstAttribute="top" secondItem="Pe3-Og-e4e" secondAttribute="bottom" constant="15" id="zwK-OZ-Lbp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="숙소" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="acW-dT-cKf"/>
+                    <connections>
+                        <outletCollection property="filterButtons" destination="3Yv-Rv-eff" collectionClass="NSMutableArray" id="NA3-2e-gxq"/>
+                        <outletCollection property="filterButtons" destination="ba4-98-28T" collectionClass="NSMutableArray" id="s43-uN-FL6"/>
+                        <outletCollection property="filterButtons" destination="EA3-aa-NiH" collectionClass="NSMutableArray" id="oSA-z0-mz9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>

@@ -17,6 +17,7 @@
 		A57CF7E62472CD27006FFE98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57CF7E42472CD27006FFE98 /* LaunchScreen.storyboard */; };
 		A57CF7F12472CD28006FFE98 /* AirbnbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7F02472CD28006FFE98 /* AirbnbTests.swift */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
+		A5D4C99C2473F36A00555311 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C99B2473F36A00555311 /* FilterButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		A57CF7F02472CD28006FFE98 /* AirbnbTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirbnbTests.swift; sourceTree = "<group>"; };
 		A57CF7F22472CD28006FFE98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
+		A5D4C99B2473F36A00555311 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */,
 				A520FA332473C6C9009AC6F8 /* ShadowView.swift */,
 				A5D4C9972473EF8100555311 /* CornerRadiusView.swift */,
+				A5D4C99B2473F36A00555311 /* FilterButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D4C99C2473F36A00555311 /* FilterButton.swift in Sources */,
 				A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */,
 				A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */,
 				A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */,
