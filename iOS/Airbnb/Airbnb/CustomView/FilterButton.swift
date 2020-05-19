@@ -22,8 +22,15 @@ import UIKit
         }
     }
     
+    private var isClicked: Bool = false {
+        didSet {
+            setColor()
+        }
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.addTarget(self, action: #selector(clicked(_:)), for: .touchUpInside)
     }
     
     override init(frame: CGRect) {
@@ -32,5 +39,19 @@ import UIKit
     
     func setRadius() {
         self.layer.cornerRadius = self.frame.height / 2.5
+    }
+    
+    func setColor() {
+        if isClicked {
+            self.layer.borderColor = UIColor.link.cgColor
+            self.setTitleColor(.link, for: .normal)
+        } else {
+            self.layer.borderColor = UIColor.lightGray.cgColor
+            self.setTitleColor(.lightGray, for: .normal)
+        }
+    }
+    
+    @objc func clicked(_ sender: UIButton) {
+        isClicked = !isClicked
     }
 }
