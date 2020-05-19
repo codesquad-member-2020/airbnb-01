@@ -16,6 +16,7 @@
 		A57CF7E32472CD27006FFE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A57CF7E22472CD27006FFE98 /* Assets.xcassets */; };
 		A57CF7E62472CD27006FFE98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57CF7E42472CD27006FFE98 /* LaunchScreen.storyboard */; };
 		A57CF7F12472CD28006FFE98 /* AirbnbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7F02472CD28006FFE98 /* AirbnbTests.swift */; };
+		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		A57CF7EC2472CD28006FFE98 /* AirbnbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirbnbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57CF7F02472CD28006FFE98 /* AirbnbTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirbnbTests.swift; sourceTree = "<group>"; };
 		A57CF7F22472CD28006FFE98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */,
 				A520FA332473C6C9009AC6F8 /* ShadowView.swift */,
+				A5D4C9972473EF8100555311 /* CornerRadiusView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */,
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
 				A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */,
+				A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

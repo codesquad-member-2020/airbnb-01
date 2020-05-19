@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class ShadowView: UIView {
+@IBDesignable class ShadowView: CornerRadiusView {
     
     @IBInspectable var shadowOpacity: Float = 0.0 {
         didSet {
@@ -22,11 +22,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var cornerRadius: CGFloat = 0.0 {
-        didSet{
-            self.layer.cornerRadius = cornerRadius
-        }
-    }
+
     
     
     required init?(coder: NSCoder) {
