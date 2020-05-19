@@ -15,16 +15,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="지역을 입력해주세요." translatesAutoresizingMaskIntoConstraints="NO" id="9yu-5c-MjZ">
-                                <rect key="frame" x="20.5" y="44" width="373" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe3-Og-e4e" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="41.5" y="44" width="331" height="45"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="9yu-5c-MjZ" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" multiplier="0.9" id="dGI-DW-1GR"/>
-                            <constraint firstItem="9yu-5c-MjZ" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="kDg-oP-E0K"/>
-                            <constraint firstItem="9yu-5c-MjZ" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="sMR-4s-Wxu"/>
+                            <constraint firstItem="Pe3-Og-e4e" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="61i-a7-gzR"/>
+                            <constraint firstItem="Pe3-Og-e4e" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" multiplier="0.8" id="Bll-Mf-JLK"/>
+                            <constraint firstItem="Pe3-Og-e4e" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="0.05" id="cLk-Fl-xdC"/>
+                            <constraint firstItem="Pe3-Og-e4e" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="qop-ZX-b7c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -32,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="699" y="-1"/>
+            <point key="canvasLocation" x="698.55072463768124" y="-1.3392857142857142"/>
         </scene>
         <!--즐겨찾기-->
         <scene sceneID="wg7-f3-ORb">
