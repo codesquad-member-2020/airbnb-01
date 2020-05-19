@@ -83,15 +83,13 @@
 		A57CF7D62472CD24006FFE98 /* Airbnb */ = {
 			isa = PBXGroup;
 			children = (
-				A57CF7D72472CD24006FFE98 /* AppDelegate.swift */,
-				A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */,
+				A5D4C9962473D25500555311 /* CustomView */,
+				A5D4C9942473D24000555311 /* RoomListView */,
+				A5D4C9932473D23700555311 /* AppDelegate */,
+				A5D4C9922473D22E00555311 /* StoryBoard */,
+				A5D4C9912473D22000555311 /* Resource */,
 				A57CF7DD2472CD24006FFE98 /* SecondViewController.swift */,
-				A57CF7DF2472CD24006FFE98 /* Main.storyboard */,
-				A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */,
-				A57CF7E22472CD27006FFE98 /* Assets.xcassets */,
-				A57CF7E42472CD27006FFE98 /* LaunchScreen.storyboard */,
 				A57CF7E72472CD27006FFE98 /* Info.plist */,
-				A520FA332473C6C9009AC6F8 /* ShadowView.swift */,
 			);
 			path = Airbnb;
 			sourceTree = "<group>";
@@ -103,6 +101,48 @@
 				A57CF7F22472CD28006FFE98 /* Info.plist */,
 			);
 			path = AirbnbTests;
+			sourceTree = "<group>";
+		};
+		A5D4C9912473D22000555311 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A57CF7E22472CD27006FFE98 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A5D4C9922473D22E00555311 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				A57CF7DF2472CD24006FFE98 /* Main.storyboard */,
+				A57CF7E42472CD27006FFE98 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		A5D4C9932473D23700555311 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				A57CF7D72472CD24006FFE98 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		A5D4C9942473D24000555311 /* RoomListView */ = {
+			isa = PBXGroup;
+			children = (
+				A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */,
+			);
+			path = RoomListView;
+			sourceTree = "<group>";
+		};
+		A5D4C9962473D25500555311 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */,
+				A520FA332473C6C9009AC6F8 /* ShadowView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

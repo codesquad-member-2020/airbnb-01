@@ -17,5 +17,4 @@ import UIKit
             self.leftViewMode = .always
         }
     }
-
 }
