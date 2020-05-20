@@ -1,5 +1,6 @@
 package com.codesquad.airbnb.accmmodation.data;
 
+import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,9 @@ public class Image {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @Column(nullable = false)
+  private ImageType type;
 
   @Column(nullable = false)
   private String url;
