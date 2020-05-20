@@ -1,8 +1,7 @@
 package com.codesquad.airbnb.accmmodation.business;
 
-import com.codesquad.airbnb.accmmodation.data.Accommodation;
 import com.codesquad.airbnb.accmmodation.data.AccommodationRepository;
-import java.util.List;
+import com.codesquad.airbnb.accmmodation.web.SimpleAccommodationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,9 @@ public class AccommodationService {
 
   private final AccommodationRepository accommodationRepository;
 
-  public List<Accommodation> accommodation() {
-    return accommodationRepository.findAll();
+  public SimpleAccommodationDto accommodation() {
+    return SimpleAccommodationDto.builder()
+        .accommodations(accommodationRepository.findAll())
+        .build();
   }
 }
