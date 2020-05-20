@@ -4,6 +4,7 @@ import com.codesquad.airbnb.accmmodation.data.Accommodation;
 import com.codesquad.airbnb.accmmodation.data.Coordinate;
 import com.codesquad.airbnb.accmmodation.data.Image;
 import com.codesquad.airbnb.accmmodation.data.Price;
+import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -19,6 +20,7 @@ public class AccommodationDto {
 
   private final Long id;
   private final String name;
+  private final AccommodationType type;
   private final Coordinate coordinate;
   private final List<Image> images;
   private final Price price;
@@ -27,6 +29,7 @@ public class AccommodationDto {
     return accommodations.stream().map(
         accommodation -> AccommodationDto.builder()
             .id(accommodation.getId())
+            .type(accommodation.getType())
             .name(accommodation.getName())
             .images(accommodation.getImages(ImageType.MAIN))
             .price(accommodation.getPrice())
@@ -36,6 +39,7 @@ public class AccommodationDto {
   public static AccommodationDto createAccmmodation(Accommodation accommodation) {
     return AccommodationDto.builder()
         .id(accommodation.getId())
+        .type(accommodation.getType())
         .name(accommodation.getName())
         .images(accommodation.getImages())
         .coordinate(accommodation.getCoordinate())

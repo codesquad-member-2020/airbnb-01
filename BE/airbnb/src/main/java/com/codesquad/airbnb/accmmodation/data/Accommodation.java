@@ -1,5 +1,6 @@
 package com.codesquad.airbnb.accmmodation.data;
 
+import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +30,9 @@ public class Accommodation {
 
   @Column(nullable = false)
   private String name;
+
+  @Column(nullable = false)
+  private AccommodationType type;
 
   @Embedded
   private Coordinate coordinate;

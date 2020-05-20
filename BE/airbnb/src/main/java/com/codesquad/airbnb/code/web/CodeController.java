@@ -1,5 +1,6 @@
 package com.codesquad.airbnb.code.web;
 
+import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +21,10 @@ public class CodeController {
   public Enum[] accommodation(@RequestParam String type) {
     if (type.equals("image")) {
       return ImageType.values();
+    }
+
+    if (type.equals("accommodation")) {
+      return AccommodationType.values();
     }
 
     throw new RuntimeException("올바르지 않은 입력 값 입니다");
