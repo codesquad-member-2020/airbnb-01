@@ -37,7 +37,7 @@ public class Accommodation {
   @Column(nullable = false)
   private Double longitude;
 
-  @OneToMany
-  @JoinColumn
-  private List<Image> image = new ArrayList<>();
+//  @OneToMany
+//  @JoinColumn
+//  private List<Image> images = new ArrayList<>();
 }
