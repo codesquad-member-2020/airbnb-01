@@ -19,6 +19,7 @@
 		A586177D2474249B009CA661 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586177C2474249B009CA661 /* FilterButton.swift */; };
 		A586177F2474252C009CA661 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586177E2474252C009CA661 /* LikeButton.swift */; };
 		A586178124742684009CA661 /* RoomListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586178024742684009CA661 /* RoomListCell.swift */; };
+		A586178524750126009CA661 /* RoomListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A586178424750126009CA661 /* RoomListCell.xib */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		A586177C2474249B009CA661 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		A586177E2474252C009CA661 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		A586178024742684009CA661 /* RoomListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListCell.swift; sourceTree = "<group>"; };
+		A586178424750126009CA661 /* RoomListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomListCell.xib; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 			children = (
 				A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */,
 				A586178024742684009CA661 /* RoomListCell.swift */,
+				A586178424750126009CA661 /* RoomListCell.xib */,
 			);
 			path = RoomListView;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			files = (
 				A57CF7E62472CD27006FFE98 /* LaunchScreen.storyboard in Resources */,
 				A57CF7E32472CD27006FFE98 /* Assets.xcassets in Resources */,
+				A586178524750126009CA661 /* RoomListCell.xib in Resources */,
 				A57CF7E12472CD24006FFE98 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
