@@ -35,10 +35,10 @@ extension RoomListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomListCell else {return UICollectionViewCell()}
-//        cell.likeButton.setRadius()
-//        cell.ImageStackView.subviews.forEach {
-//            $0.layer.cornerRadius = 10
-//        }
+        cell.likeButton.setRadius()
+        cell.imageStackView.subviews.forEach {
+            $0.layer.cornerRadius = 10
+        }
         return cell
     }
 }
