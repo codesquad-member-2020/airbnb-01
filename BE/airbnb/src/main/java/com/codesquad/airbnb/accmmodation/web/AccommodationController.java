@@ -18,19 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccommodationController {
 
   private final AccommodationService accommodationService;
-  private final AccommodationDto accommodationDto;
 
   @ApiOperation(value = "숙소 전체 리스트를 가져옵니다")
   @GetMapping
   public List<AccommodationDto> accommodations() {
     List<Accommodation> accommodations = accommodationService.accommodation();
-    return accommodationDto.createAccmmodations(accommodations);
+    return AccommodationDto.createAccmmodations(accommodations);
   }
 
   @ApiOperation(value = "득정 숙소의 상세 정보를 가져옵니다")
   @GetMapping("/{id}")
   public AccommodationDto detailAccommodation(@PathVariable Long id) {
     Accommodation accommodation = accommodationService.detailAccommodation(id);
-    return accommodationDto.createAccmmodation(accommodation);
+    return AccommodationDto.createAccmmodation(accommodation);
   }
 }

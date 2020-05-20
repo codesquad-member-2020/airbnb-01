@@ -23,19 +23,17 @@ public class AccommodationDto {
   private final List<Image> images;
   private final Price price;
 
-  public List<AccommodationDto> createAccmmodations(List<Accommodation> accommodations) {
+  public static List<AccommodationDto> createAccmmodations(List<Accommodation> accommodations) {
     return accommodations.stream().map(
         accommodation -> AccommodationDto.builder()
             .id(accommodation.getId())
             .name(accommodation.getName())
-            .images(accommodation.getImages().stream()
-                .filter(image -> image.getType().equals(ImageType.MAIN))
-                .collect(Collectors.toList()))
+            .images(accommodation.getImages(ImageType.MAIN))
             .price(accommodation.getPrice())
             .build()).collect(Collectors.toList());
   }
 
-  public AccommodationDto createAccmmodation(Accommodation accommodation) {
+  public static AccommodationDto createAccmmodation(Accommodation accommodation) {
     return AccommodationDto.builder()
         .id(accommodation.getId())
         .name(accommodation.getName())

@@ -1,6 +1,8 @@
 package com.codesquad.airbnb.accmmodation.data;
 
+import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -37,4 +39,10 @@ public class Accommodation {
 
   @Embedded
   private Price price;
+
+  public List<Image> getImages(ImageType type) {
+    return images.stream()
+        .filter(image -> image.getType().equals(type))
+        .collect(Collectors.toList());
+  }
 }
