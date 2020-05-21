@@ -42,12 +42,18 @@ import UIKit
     
     func setColor() {
         if isClicked {
-            self.layer.borderColor = UIColor.link.cgColor
-            self.setTitleColor(.link, for: .normal)
+            if #available(iOS 13, *) {
+                self.layer.borderColor = UIColor.link.cgColor
+                self.setTitleColor(.link, for: .normal)
+            } else {
+                self.layer.borderColor = UIColor(named: "link")?.cgColor
+                self.setTitleColor(UIColor(named: "link"), for: .normal)
+            }
         } else {
-            self.layer.borderColor = UIColor.lightGray.cgColor
-            self.setTitleColor(.lightGray, for: .normal)
+                self.layer.borderColor = UIColor.lightGray.cgColor
+                self.setTitleColor(.lightGray, for: .normal)
         }
+        
     }
     
     @objc func clicked(_ sender: UIButton) {

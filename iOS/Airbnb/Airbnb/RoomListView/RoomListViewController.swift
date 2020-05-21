@@ -9,7 +9,7 @@
 import UIKit
 
 class RoomListViewController: UIViewController {
-
+    
     @IBOutlet var filterButtons: [FilterButton]!
     @IBOutlet weak var roomListCollectionView: UICollectionView!
     
@@ -18,6 +18,17 @@ class RoomListViewController: UIViewController {
         setButton()
         roomListCollectionView.dataSource = self
         roomListCollectionView.delegate = self
+        guard #available(iOS 13, *) else {
+            setTabBarImage()
+            return 
+        }
+    }
+    
+    private func setTabBarImage() {
+        guard let items = self.tabBarController?.tabBar.items else {return}
+        items[0].image = UIImage(named: "magnifyingGlass")
+        items[1].image = UIImage(named: "heart")
+        items[1].selectedImage = UIImage(named: "heartFill")
     }
     
     private func setButton() {

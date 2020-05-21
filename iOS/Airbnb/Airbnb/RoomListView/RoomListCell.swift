@@ -17,12 +17,18 @@ import UIKit
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var imageStackView: UIStackView!
+    @IBOutlet weak var ratingImage: UIImageView!
+    @IBOutlet weak var superHostImage: UIImageView!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setXib()
         imageScrollView.delegate = self
         pageControl.numberOfPages = imageStackView.subviews.count
+        guard #available(iOS 13, *) else {
+            setImage()
+            return
+        }
     }
     
     override init(frame: CGRect) {
@@ -38,6 +44,13 @@ import UIKit
         addSubview(view)
         view.frame = self.bounds
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    private func setImage() {
+        ratingImage.image = UIImage(named: "starFill")?.withRenderingMode(.alwaysTemplate)
+        ratingImage.tintColor = .systemPink
+        superHostImage.image = UIImage(named: "house")?.withRenderingMode(.alwaysTemplate)
+        superHostImage.tintColor = .systemPink
     }
 }
 

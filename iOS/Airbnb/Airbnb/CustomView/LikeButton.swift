@@ -19,6 +19,7 @@ import UIKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.addTarget(self, action: #selector(clicked(_:)), for: .touchUpInside)
+        setColor()
     }
     
     override init(frame: CGRect) {
@@ -31,9 +32,21 @@ import UIKit
     
     func setColor() {
         if isClicked {
-            self.setImage(UIImage(systemName: "heart"), for: .normal)
-        } else {
-            self.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            if #available(iOS 13, *) {
+                self.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            } else {
+                let image = UIImage(named: "heartFill")?.withRenderingMode(.alwaysTemplate)
+                self.setImage(image, for: .normal)
+                self.tintColor = .red
+            }
+        }else {
+            if #available(iOS 13, *) {
+                self.setImage(UIImage(systemName: "heart"), for: .normal)
+            } else {
+                let image = UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate)
+                self.setImage(image, for: .normal)
+                self.tintColor = .red
+            }
         }
     }
     
