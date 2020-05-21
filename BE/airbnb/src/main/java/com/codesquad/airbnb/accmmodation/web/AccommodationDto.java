@@ -36,7 +36,7 @@ public class AccommodationDto {
             .build()).collect(Collectors.toList());
   }
 
-  public static AccommodationDto createAccmmodation(Accommodation accommodation) {
+  public static AccommodationDto createAccommodation(Accommodation accommodation) {
     return AccommodationDto.builder()
         .id(accommodation.getId())
         .type(accommodation.getType())

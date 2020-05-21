@@ -1,7 +1,6 @@
 package com.codesquad.airbnb.accmmodation.web;
 
 import com.codesquad.airbnb.accmmodation.business.AccommodationService;
-import com.codesquad.airbnb.accmmodation.data.Accommodation;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
@@ -22,14 +21,12 @@ public class AccommodationController {
   @ApiOperation(value = "숙소 전체 리스트를 가져옵니다")
   @GetMapping
   public List<AccommodationDto> accommodations() {
-    List<Accommodation> accommodations = accommodationService.accommodation();
-    return AccommodationDto.createAccmmodations(accommodations);
+    return accommodationService.accommodation();
   }
 
   @ApiOperation(value = "득정 숙소의 상세 정보를 가져옵니다")
   @GetMapping("/{id}")
   public AccommodationDto detailAccommodation(@PathVariable Long id) {
-    Accommodation accommodation = accommodationService.detailAccommodation(id);
-    return AccommodationDto.createAccmmodation(accommodation);
+    return accommodationService.detailAccommodation(id);
   }
 }

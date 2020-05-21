@@ -2,6 +2,7 @@ package com.codesquad.airbnb.accmmodation.business;
 
 import com.codesquad.airbnb.accmmodation.data.Accommodation;
 import com.codesquad.airbnb.accmmodation.data.AccommodationRepository;
+import com.codesquad.airbnb.accmmodation.web.AccommodationDto;
 import java.util.List;
 import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
@@ -13,12 +14,14 @@ public class AccommodationService {
 
   private final AccommodationRepository accommodationRepository;
 
-  public List<Accommodation> accommodation() {
-    return accommodationRepository.findAll();
-
+  public List<AccommodationDto> accommodation() {
+    List<Accommodation> accommodations = accommodationRepository.findAll();
+    return AccommodationDto.createAccmmodations(accommodations);
   }
 
-  public Accommodation detailAccommodation(Long id) {
-    return accommodationRepository.findById(id).orElseThrow(NoSuchElementException::new);
+  public AccommodationDto detailAccommodation(Long id) {
+    Accommodation accommodation = accommodationRepository.findById(id)
+        .orElseThrow(NoSuchElementException::new);
+    return AccommodationDto.createAccommodation(accommodation);
   }
 }
