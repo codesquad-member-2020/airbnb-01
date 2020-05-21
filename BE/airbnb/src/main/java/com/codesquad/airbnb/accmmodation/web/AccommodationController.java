@@ -3,8 +3,10 @@ package com.codesquad.airbnb.accmmodation.web;
 import com.codesquad.airbnb.accmmodation.business.AccommodationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,9 +18,15 @@ public class AccommodationController {
 
   private final AccommodationService accommodationService;
 
-  @ApiOperation(value = "", notes = "숙소 전체 리스트를 가져옵니다")
+  @ApiOperation(value = "숙소 전체 리스트를 가져옵니다")
   @GetMapping
-  public SimpleAccommodationDto accommodation() {
+  public List<AccommodationDto> accommodations() {
     return accommodationService.accommodation();
+  }
+
+  @ApiOperation(value = "득정 숙소의 상세 정보를 가져옵니다")
+  @GetMapping("/{id}")
+  public AccommodationDto detailAccommodation(@PathVariable Long id) {
+    return accommodationService.detailAccommodation(id);
   }
 }
