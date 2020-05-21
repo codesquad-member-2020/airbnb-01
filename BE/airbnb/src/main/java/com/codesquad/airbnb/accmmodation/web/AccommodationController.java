@@ -20,13 +20,13 @@ public class AccommodationController {
 
   @ApiOperation(value = "숙소 전체 리스트를 가져옵니다")
   @GetMapping
-  public List<AccommodationDto> accommodations() {
+  public List<SimpleAccommodationDto> accommodations() {
     return accommodationService.accommodation();
   }
 
   @ApiOperation(value = "득정 숙소의 상세 정보를 가져옵니다")
   @GetMapping("/{id}")
-  public AccommodationDto detailAccommodation(@PathVariable Long id) {
+  public DetailAccommodationDto detailAccommodation(@PathVariable Long id) {
     return accommodationService.detailAccommodation(id);
   }
 }
