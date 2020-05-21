@@ -1,14 +1,14 @@
 package com.codesquad.airbnb.accmmodation.data.type;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 public enum ImageType {
 
-  MAIN(0L, "메인"), DETAIL(1L, "디테일"), BATH(2L, "화장실");
+  MAIN("MAIN", "메인"), DETAIL("DETAIL", "디테일"), BATH("BATH", "화장실");
 
-  private final Long seq;
-  private final String name;
+  private final String key;
+  private final String title;
 }

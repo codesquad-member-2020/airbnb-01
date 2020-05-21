@@ -1,14 +1,14 @@
 package com.codesquad.airbnb.accmmodation.data.type;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 public enum AccommodationType {
 
-  HOTEL(0L, "호텔"), HOSTEL(1L, "호스텔"), INN(2L, "여관");
+  HOTEL("HOTEL", "호텔"), HOSTEL("HOSTEL", "호스텔"), INN("INN", "여관");
 
-  private final Long seq;
-  private final String name;
+  private final String key;
+  private final String title;
 }
