@@ -20,7 +20,7 @@ class RoomListViewController: UIViewController {
         roomListCollectionView.delegate = self
         guard #available(iOS 13, *) else {
             setTabBarImage()
-            return 
+            return
         }
     }
     
@@ -56,7 +56,7 @@ extension RoomListViewController: UICollectionViewDataSource {
 
 extension RoomListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width * 0.9, height: self.view.frame.height * 0.4)
+        return CGSize(width: self.view.frame.width * 0.9, height: 350)
     }
 }
 

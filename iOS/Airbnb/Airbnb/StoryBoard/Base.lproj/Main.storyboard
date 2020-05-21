@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -17,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe3-Og-e4e" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
-                                <rect key="frame" x="20.5" y="44" width="373" height="45"/>
+                                <rect key="frame" x="20.5" y="64" width="373" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HlN-xQ-VOY" customClass="PaddingTextField" customModule="Airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
                                         <userDefinedRuntimeAttributes>
@@ -33,6 +34,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="HlN-xQ-VOY" firstAttribute="top" secondItem="Pe3-Og-e4e" secondAttribute="top" id="0k6-gq-4hw"/>
+                                    <constraint firstAttribute="height" constant="40" id="K5U-UA-iTn"/>
                                     <constraint firstAttribute="bottom" secondItem="HlN-xQ-VOY" secondAttribute="bottom" id="Qym-YS-4hf"/>
                                     <constraint firstAttribute="trailing" secondItem="HlN-xQ-VOY" secondAttribute="trailing" id="fsf-WD-g5a"/>
                                     <constraint firstItem="HlN-xQ-VOY" firstAttribute="leading" secondItem="Pe3-Og-e4e" secondAttribute="leading" id="rWd-xH-Ia6"/>
@@ -50,10 +52,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NU2-GJ-o2k" userLabel="Filter Stack View">
-                                <rect key="frame" x="20.5" y="104" width="258.5" height="44.5"/>
+                                <rect key="frame" x="20.5" y="119" width="258.5" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yv-Rv-eff" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="83" height="44.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="83" height="40"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="날짜">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,7 +73,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba4-98-28T" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="88" y="0.0" width="83" height="44.5"/>
+                                        <rect key="frame" x="88" y="0.0" width="83" height="40"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="인원">
                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,7 +91,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA3-aa-NiH" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="176" y="0.0" width="82.5" height="44.5"/>
+                                        <rect key="frame" x="176" y="0.0" width="82.5" height="40"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="가격">
                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,9 +109,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3bM-wG-kle"/>
+                                </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nk3-iJ-S5b">
-                                <rect key="frame" x="0.0" y="178.5" width="414" height="634.5"/>
+                                <rect key="frame" x="0.0" y="189" width="414" height="624"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N6z-27-uiy">
                                     <size key="itemSize" width="373" height="308"/>
@@ -133,12 +138,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="Nk3-iJ-S5b" secondAttribute="bottom" id="5f1-0A-mp1"/>
-                            <constraint firstItem="Pe3-Og-e4e" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="61i-a7-gzR"/>
+                            <constraint firstItem="Pe3-Og-e4e" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="20" id="61i-a7-gzR"/>
                             <constraint firstItem="Pe3-Og-e4e" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" multiplier="0.9" id="Bll-Mf-JLK"/>
                             <constraint firstItem="Nk3-iJ-S5b" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="a0C-te-11z"/>
                             <constraint firstItem="3Yv-Rv-eff" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" multiplier="0.2" id="bAP-MA-VLe"/>
-                            <constraint firstItem="Pe3-Og-e4e" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="0.05" id="cLk-Fl-xdC"/>
-                            <constraint firstItem="NU2-GJ-o2k" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="0.05" id="dy8-uZ-9Zm"/>
                             <constraint firstItem="Nk3-iJ-S5b" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="fSi-9f-kwm"/>
                             <constraint firstItem="Nk3-iJ-S5b" firstAttribute="top" secondItem="NU2-GJ-o2k" secondAttribute="bottom" constant="30" id="obD-Ru-Uxk"/>
                             <constraint firstItem="Pe3-Og-e4e" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="qop-ZX-b7c"/>
