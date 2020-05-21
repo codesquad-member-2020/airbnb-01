@@ -1,9 +1,14 @@
 package com.codesquad.airbnb.accmmodation.data;
 
-import java.util.ArrayList;
+import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
+import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,16 +33,23 @@ public class Accommodation {
   @Column(nullable = false)
   private String name;
 
+  @Enumerated(EnumType.STRING)
   @Column(nullable = false)
-  private String location;
+  private AccommodationType type;
 
-  @Column(nullable = false)
-  private Double latitude;
-
-  @Column(nullable = false)
-  private Double longitude;
+  @Embedded
+  private Coordinate coordinate;
 
   @OneToMany
-  @JoinColumn
-  private List<Image> image = new ArrayList<>();
+  @JoinColumn(name = "accommodation_id")
+  private List<Image> images;
+
+  @Embedded
+  private Price price;
+
+  public List<Image> getImages(ImageType type) {
+    return images.stream()
+        .filter(image -> image.getType().equals(type))
+        .collect(Collectors.toList());
+  }
 }
