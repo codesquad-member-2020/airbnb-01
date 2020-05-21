@@ -12,6 +12,7 @@ class RoomListViewController: UIViewController {
     
     @IBOutlet var filterButtons: [FilterButton]!
     @IBOutlet weak var roomListCollectionView: UICollectionView!
+    @IBOutlet weak var mapButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

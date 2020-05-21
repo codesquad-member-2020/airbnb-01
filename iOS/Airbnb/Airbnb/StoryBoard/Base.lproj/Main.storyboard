@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -134,11 +133,41 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjx-WY-jQC" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="354" y="753" width="40" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYO-br-9Bq">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <state key="normal" image="location"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZYO-br-9Bq" secondAttribute="trailing" id="1D1-L2-4eW"/>
+                                    <constraint firstItem="ZYO-br-9Bq" firstAttribute="top" secondItem="kjx-WY-jQC" secondAttribute="top" id="49v-Fk-Kpl"/>
+                                    <constraint firstAttribute="width" secondItem="kjx-WY-jQC" secondAttribute="height" multiplier="1:1" id="97U-8t-5dY"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZYO-br-9Bq" secondAttribute="bottom" id="e3w-6j-N9J"/>
+                                    <constraint firstItem="ZYO-br-9Bq" firstAttribute="leading" secondItem="kjx-WY-jQC" secondAttribute="leading" id="iPr-zW-FhA"/>
+                                    <constraint firstAttribute="width" constant="40" id="pSv-3T-1oI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="Nk3-iJ-S5b" secondAttribute="bottom" id="5f1-0A-mp1"/>
                             <constraint firstItem="Pe3-Og-e4e" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="20" id="61i-a7-gzR"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="kjx-WY-jQC" secondAttribute="bottom" constant="20" id="BG2-IN-GYc"/>
                             <constraint firstItem="Pe3-Og-e4e" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" multiplier="0.9" id="Bll-Mf-JLK"/>
                             <constraint firstItem="Nk3-iJ-S5b" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="a0C-te-11z"/>
                             <constraint firstItem="3Yv-Rv-eff" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" multiplier="0.2" id="bAP-MA-VLe"/>
@@ -146,6 +175,7 @@
                             <constraint firstItem="Nk3-iJ-S5b" firstAttribute="top" secondItem="NU2-GJ-o2k" secondAttribute="bottom" constant="30" id="obD-Ru-Uxk"/>
                             <constraint firstItem="Pe3-Og-e4e" firstAttribute="centerX" secondItem="PQr-Ze-W5v" secondAttribute="centerX" id="qop-ZX-b7c"/>
                             <constraint firstItem="NU2-GJ-o2k" firstAttribute="leading" secondItem="HlN-xQ-VOY" secondAttribute="leading" id="qpq-sq-IAT"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="kjx-WY-jQC" secondAttribute="trailing" constant="20" id="sD1-hQ-YoA"/>
                             <constraint firstItem="NU2-GJ-o2k" firstAttribute="width" relation="lessThanOrEqual" secondItem="HlN-xQ-VOY" secondAttribute="width" id="yiS-Wx-K6j"/>
                             <constraint firstItem="NU2-GJ-o2k" firstAttribute="top" secondItem="Pe3-Og-e4e" secondAttribute="bottom" constant="15" id="zwK-OZ-Lbp"/>
                         </constraints>
@@ -201,6 +231,7 @@
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="location" width="21.333333969116211" height="21.333333969116211"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
     </resources>
 </document>
