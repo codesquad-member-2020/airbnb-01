@@ -1,5 +1,5 @@
 //
-//  RoomList.swift
+//  Room.swift
 //  Airbnb
 //
 //  Created by 신한섭 on 2020/05/21.

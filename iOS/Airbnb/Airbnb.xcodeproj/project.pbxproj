@@ -10,7 +10,7 @@
 		A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FA332473C6C9009AC6F8 /* ShadowView.swift */; };
 		A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */; };
 		A529F72C24769E8100844E8E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A529F72B24769E8100844E8E /* Alamofire */; };
-		A529F72F2476B00800844E8E /* RoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529F72E2476B00800844E8E /* RoomList.swift */; };
+		A529F72F2476B00800844E8E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529F72E2476B00800844E8E /* Room.swift */; };
 		A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7D72472CD24006FFE98 /* AppDelegate.swift */; };
 		A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */; };
 		A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7DD2472CD24006FFE98 /* SecondViewController.swift */; };
@@ -22,6 +22,7 @@
 		A586177F2474252C009CA661 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586177E2474252C009CA661 /* LikeButton.swift */; };
 		A586178124742684009CA661 /* RoomListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586178024742684009CA661 /* RoomListCell.swift */; };
 		A586178524750126009CA661 /* RoomListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A586178424750126009CA661 /* RoomListCell.xib */; };
+		A58907182476B235008FCD18 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58907172476B235008FCD18 /* EndPoint.swift */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +39,7 @@
 /* Begin PBXFileReference section */
 		A520FA332473C6C9009AC6F8 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
-		A529F72E2476B00800844E8E /* RoomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomList.swift; sourceTree = "<group>"; };
+		A529F72E2476B00800844E8E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		A57CF7D42472CD24006FFE98 /* Airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57CF7D72472CD24006FFE98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		A586177E2474252C009CA661 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		A586178024742684009CA661 /* RoomListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListCell.swift; sourceTree = "<group>"; };
 		A586178424750126009CA661 /* RoomListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomListCell.xib; sourceTree = "<group>"; };
+		A58907172476B235008FCD18 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +81,8 @@
 		A529F72D2476AFFB00844E8E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A529F72E2476B00800844E8E /* RoomList.swift */,
+				A529F72E2476B00800844E8E /* Room.swift */,
+				A58907172476B235008FCD18 /* EndPoint.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,10 +284,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A529F72F2476B00800844E8E /* RoomList.swift in Sources */,
+				A529F72F2476B00800844E8E /* Room.swift in Sources */,
 				A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */,
 				A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */,
 				A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */,
+				A58907182476B235008FCD18 /* EndPoint.swift in Sources */,
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
 				A586177F2474252C009CA661 /* LikeButton.swift in Sources */,
 				A586178124742684009CA661 /* RoomListCell.swift in Sources */,
