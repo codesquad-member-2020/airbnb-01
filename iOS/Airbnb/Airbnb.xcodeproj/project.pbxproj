@@ -23,6 +23,7 @@
 		A586178124742684009CA661 /* RoomListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A586178024742684009CA661 /* RoomListCell.swift */; };
 		A586178524750126009CA661 /* RoomListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A586178424750126009CA661 /* RoomListCell.xib */; };
 		A58907182476B235008FCD18 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58907172476B235008FCD18 /* EndPoint.swift */; };
+		A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589071F2476BDA7008FCD18 /* RoomListUseCase.swift */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		A586178024742684009CA661 /* RoomListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListCell.swift; sourceTree = "<group>"; };
 		A586178424750126009CA661 /* RoomListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomListCell.xib; sourceTree = "<group>"; };
 		A58907172476B235008FCD18 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		A589071F2476BDA7008FCD18 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 		A57CF7D62472CD24006FFE98 /* Airbnb */ = {
 			isa = PBXGroup;
 			children = (
+				A589071E2476BD9D008FCD18 /* UseCase */,
 				A529F72D2476AFFB00844E8E /* Model */,
 				A5D4C9962473D25500555311 /* CustomView */,
 				A5D4C9942473D24000555311 /* RoomListView */,
@@ -127,6 +130,14 @@
 				A57CF7F22472CD28006FFE98 /* Info.plist */,
 			);
 			path = AirbnbTests;
+			sourceTree = "<group>";
+		};
+		A589071E2476BD9D008FCD18 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				A589071F2476BDA7008FCD18 /* RoomListUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		A5D4C9912473D22000555311 /* Resource */ = {
@@ -290,6 +301,7 @@
 				A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */,
 				A58907182476B235008FCD18 /* EndPoint.swift in Sources */,
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
+				A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */,
 				A586177F2474252C009CA661 /* LikeButton.swift in Sources */,
 				A586178124742684009CA661 /* RoomListCell.swift in Sources */,
 				A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */,
