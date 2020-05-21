@@ -24,6 +24,7 @@
 		A586178524750126009CA661 /* RoomListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A586178424750126009CA661 /* RoomListCell.xib */; };
 		A58907182476B235008FCD18 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58907172476B235008FCD18 /* EndPoint.swift */; };
 		A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589071F2476BDA7008FCD18 /* RoomListUseCase.swift */; };
+		A58907222476C483008FCD18 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58907212476C483008FCD18 /* AlertView.swift */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		A586178424750126009CA661 /* RoomListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomListCell.xib; sourceTree = "<group>"; };
 		A58907172476B235008FCD18 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A589071F2476BDA7008FCD18 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
+		A58907212476C483008FCD18 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +185,7 @@
 				A5D4C9972473EF8100555311 /* CornerRadiusView.swift */,
 				A586177C2474249B009CA661 /* FilterButton.swift */,
 				A586177E2474252C009CA661 /* LikeButton.swift */,
+				A58907212476C483008FCD18 /* AlertView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
 				A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */,
 				A586177F2474252C009CA661 /* LikeButton.swift in Sources */,
+				A58907222476C483008FCD18 /* AlertView.swift in Sources */,
 				A586178124742684009CA661 /* RoomListCell.swift in Sources */,
 				A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */,
 				A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */,
