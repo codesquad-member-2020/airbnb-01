@@ -10,6 +10,7 @@
 		A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FA332473C6C9009AC6F8 /* ShadowView.swift */; };
 		A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */; };
 		A529F72C24769E8100844E8E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A529F72B24769E8100844E8E /* Alamofire */; };
+		A529F72F2476B00800844E8E /* RoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529F72E2476B00800844E8E /* RoomList.swift */; };
 		A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7D72472CD24006FFE98 /* AppDelegate.swift */; };
 		A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */; };
 		A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7DD2472CD24006FFE98 /* SecondViewController.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		A520FA332473C6C9009AC6F8 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		A529F72E2476B00800844E8E /* RoomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomList.swift; sourceTree = "<group>"; };
 		A57CF7D42472CD24006FFE98 /* Airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57CF7D72472CD24006FFE98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A529F72D2476AFFB00844E8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A529F72E2476B00800844E8E /* RoomList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A57CF7CB2472CD24006FFE98 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 		A57CF7D62472CD24006FFE98 /* Airbnb */ = {
 			isa = PBXGroup;
 			children = (
+				A529F72D2476AFFB00844E8E /* Model */,
 				A5D4C9962473D25500555311 /* CustomView */,
 				A5D4C9942473D24000555311 /* RoomListView */,
 				A5D4C9932473D23700555311 /* AppDelegate */,
@@ -270,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A529F72F2476B00800844E8E /* RoomList.swift in Sources */,
 				A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */,
 				A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */,
 				A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */,
