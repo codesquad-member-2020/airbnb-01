@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 struct RoomListUseCase {
     
@@ -17,7 +16,7 @@ struct RoomListUseCase {
         self.networkManager = networkManager
     }
     
-    func requestRoomList(failureHandler: @escaping (String) -> (), handler: @escaping ([Room]) -> ()) {
+    func requestRoomList(failureHandler: @escaping (String) -> (), successHandler: @escaping ([Room]) -> ()) {
         networkManager.loadResource {
             switch $0 {
             case .success(let data):
@@ -28,7 +27,7 @@ struct RoomListUseCase {
                 
                 do {
                     let model = try JSONDecoder().decode([Room].self, from: data)
-                    handler(model)
+                    successHandler(model)
                 } catch {
                     failureHandler("Json decode error")
                 }

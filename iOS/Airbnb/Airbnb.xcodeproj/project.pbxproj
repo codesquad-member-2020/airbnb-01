@@ -11,6 +11,9 @@
 		A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */; };
 		A529F72C24769E8100844E8E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A529F72B24769E8100844E8E /* Alamofire */; };
 		A529F72F2476B00800844E8E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529F72E2476B00800844E8E /* Room.swift */; };
+		A536AB0D2478F9E900C3F000 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB0C2478F9E900C3F000 /* RoomListViewModel.swift */; };
+		A536AB1724794AB000C3F000 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1624794AB000C3F000 /* Manager.swift */; };
+		A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB18247954F200C3F000 /* RoomListDataSource.swift */; };
 		A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7D72472CD24006FFE98 /* AppDelegate.swift */; };
 		A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */; };
 		A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7DD2472CD24006FFE98 /* SecondViewController.swift */; };
@@ -43,6 +46,9 @@
 		A520FA332473C6C9009AC6F8 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A529F72E2476B00800844E8E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		A536AB0C2478F9E900C3F000 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
+		A536AB1624794AB000C3F000 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		A536AB18247954F200C3F000 /* RoomListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListDataSource.swift; sourceTree = "<group>"; };
 		A57CF7D42472CD24006FFE98 /* Airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57CF7D72472CD24006FFE98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +96,8 @@
 				A529F72E2476B00800844E8E /* Room.swift */,
 				A58907172476B235008FCD18 /* EndPoint.swift */,
 				A58907292477A9C4008FCD18 /* NetworkManager.swift */,
+				A536AB0C2478F9E900C3F000 /* RoomListViewModel.swift */,
+				A536AB1624794AB000C3F000 /* Manager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +184,7 @@
 				A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */,
 				A586178024742684009CA661 /* RoomListCell.swift */,
 				A586178424750126009CA661 /* RoomListCell.xib */,
+				A536AB18247954F200C3F000 /* RoomListDataSource.swift */,
 			);
 			path = RoomListView;
 			sourceTree = "<group>";
@@ -305,9 +314,12 @@
 				A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */,
 				A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */,
 				A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */,
+				A536AB1724794AB000C3F000 /* Manager.swift in Sources */,
 				A589072A2477A9C4008FCD18 /* NetworkManager.swift in Sources */,
+				A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */,
 				A58907182476B235008FCD18 /* EndPoint.swift in Sources */,
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
+				A536AB0D2478F9E900C3F000 /* RoomListViewModel.swift in Sources */,
 				A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */,
 				A586177F2474252C009CA661 /* LikeButton.swift in Sources */,
 				A58907222476C483008FCD18 /* AlertView.swift in Sources */,

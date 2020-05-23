@@ -14,15 +14,46 @@ class RoomListViewController: UIViewController {
     @IBOutlet weak var roomListCollectionView: UICollectionView!
     @IBOutlet weak var mapButton: UIButton!
     
+    private var useCase = RoomListUseCase(networkManager: NetworkManager())
+    
+    private var viewModel: RoomListViewModel?
+    private var dataSource = RoomListDataSource() {
+        didSet {
+            roomListCollectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setButton()
-        roomListCollectionView.dataSource = self
+        roomListCollectionView.dataSource = dataSource
         roomListCollectionView.delegate = self
         guard #available(iOS 13, *) else {
             setTabBarImage()
             return
         }
+        setUseCase()
+    }
+    
+    private func setUseCase() {
+        useCase.requestRoomList(
+            failureHandler: { [unowned self] in
+                AlertView.alertError(viewController: self, message: $0)
+            },
+            successHandler: { [unowned self] in
+                self.viewModel = RoomListViewModel(roomListManager: Manager<Room>(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
+                    switch manager.editingStyle {
+                    case .none:
+                        self.roomListCollectionView.reloadData()
+                    case let .insert(_, indexPath):
+                        self.roomListCollectionView.performBatchUpdates({
+                            self.roomListCollectionView.insertItems(at: [indexPath])
+                        }, completion: nil)
+                    }
+                })
+
+                self.dataSource.viewModel = self.viewModel
+        })
     }
     
     private func setTabBarImage() {
@@ -37,21 +68,6 @@ class RoomListViewController: UIViewController {
             $0.setRadius()
         }
         roomListCollectionView.delaysContentTouches = false
-    }
-}
-
-extension RoomListViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomListCell else {return UICollectionViewCell()}
-        cell.likeButton.setRadius()
-        cell.imageStackView.subviews.forEach {
-            $0.layer.cornerRadius = 10
-        }
-        return cell
     }
 }
 
