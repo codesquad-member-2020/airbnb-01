@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RoomListViewController: UIViewController {
     
@@ -14,15 +15,46 @@ class RoomListViewController: UIViewController {
     @IBOutlet weak var roomListCollectionView: UICollectionView!
     @IBOutlet weak var mapButton: UIButton!
     
+    private var useCase = RoomListUseCase(networkManager: NetworkManager())
+    
+    private var viewModel: RoomListViewModel?
+    private var dataSource = RoomListDataSource() {
+        didSet {
+            roomListCollectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setButton()
-        roomListCollectionView.dataSource = self
+        roomListCollectionView.dataSource = dataSource
         roomListCollectionView.delegate = self
+        setUseCase()
         guard #available(iOS 13, *) else {
             setTabBarImage()
             return
         }
+    }
+    
+    private func setUseCase() {
+        useCase.requestRoomList(
+            failureHandler: { [unowned self] in
+                AlertView.alertError(viewController: self, message: $0)
+            },
+            successHandler: { [unowned self] in
+                self.viewModel = RoomListViewModel(roomListManager: Manager<Room>(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
+                    switch manager.editingStyle {
+                    case .none:
+                        self.roomListCollectionView.reloadData()
+                    case let .insert(_, indexPath):
+                        self.roomListCollectionView.performBatchUpdates({
+                            self.roomListCollectionView.insertItems(at: [indexPath])
+                        }, completion: nil)
+                    }
+                })
+
+                self.dataSource.viewModel = self.viewModel
+        })
     }
     
     private func setTabBarImage() {
@@ -40,24 +72,20 @@ class RoomListViewController: UIViewController {
     }
 }
 
-extension RoomListViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomListCell else {return UICollectionViewCell()}
-        cell.likeButton.setRadius()
-        cell.imageStackView.subviews.forEach {
-            $0.layer.cornerRadius = 10
-        }
-        return cell
-    }
-}
-
 extension RoomListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width * 0.9, height: 350)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -10, 0)
+        cell.layer.transform = rotationTransform
+        cell.alpha = 0
+        
+        UIView.animate(withDuration: 0.75) {
+            cell.layer.transform = CATransform3DIdentity
+            cell.alpha = 1
+        }
     }
 }
 

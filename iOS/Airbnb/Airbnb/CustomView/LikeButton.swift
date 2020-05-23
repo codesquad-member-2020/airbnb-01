@@ -19,6 +19,8 @@ import UIKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.addTarget(self, action: #selector(clicked(_:)), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+        self.addTarget(self, action: #selector(scaleUp(_:)), for: .touchUpOutside)
         setColor()
     }
     
@@ -50,7 +52,34 @@ import UIKit
         }
     }
     
+    private func scaleDown(_ sender: UIButton) {
+        sender.scaleDown(sender)
+    }
+    
+    @objc func scaleUp(_ sender: UIButton) {
+        UIView.animateKeyframes(withDuration: 0.15, delay: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
+                sender.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
+        })
+    }
+    
+    @objc func touchDown(_ sender: UIButton) {
+        scaleDown(sender)
+    }
+    
     @objc func clicked(_ sender: UIButton) {
         isClicked = !isClicked
+        scaleUp(sender)
+    }
+}
+
+extension UIView {
+    @objc func scaleDown(_ sender: UIView) {
+        UIView.animateKeyframes(withDuration: 0.15, delay: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
+                sender.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+            })
+        })
     }
 }
