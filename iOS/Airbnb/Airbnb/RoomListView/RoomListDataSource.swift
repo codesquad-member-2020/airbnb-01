@@ -22,6 +22,8 @@ class RoomListDataSource: NSObject, UICollectionViewDataSource {
         cell.imageStackView.subviews.forEach {
             $0.layer.cornerRadius = 10
         }
+        guard let room = viewModel?.roomListManager.room(of: indexPath.item) else {return cell}
+        cell.configure(about: room)
         
         return cell
     }

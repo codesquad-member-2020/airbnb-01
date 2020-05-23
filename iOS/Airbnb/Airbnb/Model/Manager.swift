@@ -39,4 +39,8 @@ struct Manager<T>: ModelManageble {
     }
     
     private(set) var roomList: [T]
+    
+    func room(of index: Int) -> T {
+        return roomList[index]
+    }
 }

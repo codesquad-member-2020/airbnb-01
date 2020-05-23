@@ -19,6 +19,8 @@ import UIKit
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var ratingImage: UIImageView!
     @IBOutlet weak var superHostImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -26,7 +28,7 @@ import UIKit
         imageScrollView.delegate = self
         pageControl.numberOfPages = imageStackView.subviews.count
         guard #available(iOS 13, *) else {
-            setImage()
+            setSymbolImages()
             return
         }
     }
@@ -38,6 +40,20 @@ import UIKit
         pageControl.numberOfPages = imageStackView.subviews.count
     }
     
+    func configure(about room: Room) {
+        self.nameLabel.text = room.name
+        self.priceLabel.text = String(room.price.price)
+        let imageView = UIImageView()
+        let data = try? Data(contentsOf: URL(string: room.images.first!.url)!)
+        
+        self.imageStackView.addArrangedSubview(imageView)
+        
+        imageView.image = UIImage(data: data!)
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
+    }
+    
     private func setXib() {
         let bundle = Bundle(for: RoomListCell.self)
         bundle.loadNibNamed(xibName, owner: self, options: nil)
@@ -46,11 +62,17 @@ import UIKit
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    private func setImage() {
+    private func setSymbolImages() {
         ratingImage.image = UIImage(named: "starFill")?.withRenderingMode(.alwaysTemplate)
         ratingImage.tintColor = .systemPink
         superHostImage.image = UIImage(named: "house")?.withRenderingMode(.alwaysTemplate)
         superHostImage.tintColor = .systemPink
+    }
+    
+    override func prepareForReuse() {
+        imageStackView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
     }
 }
 
