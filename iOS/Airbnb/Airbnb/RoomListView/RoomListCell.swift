@@ -43,15 +43,17 @@ import UIKit
     func configure(about room: Room) {
         self.nameLabel.text = room.name
         self.priceLabel.text = String(room.price.price)
+    }
+    
+    func setImage(url: URL) {
         let imageView = UIImageView()
-        let data = try? Data(contentsOf: URL(string: room.images.first!.url)!)
-        
         self.imageStackView.addArrangedSubview(imageView)
-        
-        imageView.image = UIImage(data: data!)
+        imageView.image = UIImage(contentsOfFile: url.path)
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 10
     }
     
     private func setXib() {

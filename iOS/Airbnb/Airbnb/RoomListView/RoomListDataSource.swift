@@ -11,6 +11,7 @@ import UIKit
 class RoomListDataSource: NSObject, UICollectionViewDataSource {
     
     var viewModel: RoomListViewModel?
+    private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.roomListManager.count ?? 0
@@ -19,11 +20,13 @@ class RoomListDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoomCell", for: indexPath) as? RoomListCell else {return UICollectionViewCell()}
         cell.likeButton.setRadius()
-        cell.imageStackView.subviews.forEach {
-            $0.layer.cornerRadius = 10
-        }
         guard let room = viewModel?.roomListManager.room(of: indexPath.item) else {return cell}
         cell.configure(about: room)
+        room.images.forEach {
+            imageUseCase.requestImage(imageURLPath: $0.url, failureHandler: {_ in}, completed: {
+                cell.setImage(url: $0)
+            })
+        }
         
         return cell
     }

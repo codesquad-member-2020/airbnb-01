@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RoomListViewController: UIViewController {
     
@@ -28,11 +29,11 @@ class RoomListViewController: UIViewController {
         setButton()
         roomListCollectionView.dataSource = dataSource
         roomListCollectionView.delegate = self
+        setUseCase()
         guard #available(iOS 13, *) else {
             setTabBarImage()
             return
         }
-        setUseCase()
     }
     
     private func setUseCase() {
