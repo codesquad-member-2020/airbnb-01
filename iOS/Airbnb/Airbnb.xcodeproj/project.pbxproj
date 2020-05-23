@@ -25,6 +25,7 @@
 		A58907182476B235008FCD18 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58907172476B235008FCD18 /* EndPoint.swift */; };
 		A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A589071F2476BDA7008FCD18 /* RoomListUseCase.swift */; };
 		A58907222476C483008FCD18 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58907212476C483008FCD18 /* AlertView.swift */; };
+		A589072A2477A9C4008FCD18 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58907292477A9C4008FCD18 /* NetworkManager.swift */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		A58907172476B235008FCD18 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		A589071F2476BDA7008FCD18 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
 		A58907212476C483008FCD18 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		A58907292477A9C4008FCD18 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 			children = (
 				A529F72E2476B00800844E8E /* Room.swift */,
 				A58907172476B235008FCD18 /* EndPoint.swift */,
+				A58907292477A9C4008FCD18 /* NetworkManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */,
 				A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */,
 				A57CF7DE2472CD24006FFE98 /* SecondViewController.swift in Sources */,
+				A589072A2477A9C4008FCD18 /* NetworkManager.swift in Sources */,
 				A58907182476B235008FCD18 /* EndPoint.swift in Sources */,
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
 				A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */,

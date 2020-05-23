@@ -11,9 +11,15 @@ import Alamofire
 
 struct RoomListUseCase {
     
+    private var networkManager: NetworkManageable
+    
+    init(networkManager: NetworkManageable) {
+        self.networkManager = networkManager
+    }
+    
     func requestRoomList(failureHandler: @escaping (String) -> (), handler: @escaping ([Room]) -> ()) {
-        AF.request(EndPoint.defaultURL + EndPoint.RoomList , method: .get).validate(statusCode: 200..<300).response {
-            switch $0.result {
+        networkManager.loadResource {
+            switch $0 {
             case .success(let data):
                 guard let data = data else {
                     failureHandler("no data")
