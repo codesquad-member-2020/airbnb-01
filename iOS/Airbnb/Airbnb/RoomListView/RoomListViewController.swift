@@ -27,13 +27,19 @@ class RoomListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setButton()
-        roomListCollectionView.dataSource = dataSource
-        roomListCollectionView.delegate = self
+        setCollectionView()
         setUseCase()
+        
         guard #available(iOS 13, *) else {
             setTabBarImage()
             return
         }
+    }
+    
+    private func setCollectionView() {
+        roomListCollectionView.dataSource = dataSource
+        roomListCollectionView.delegate = self
+        roomListCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewTouched(gesture:))))
     }
     
     private func setUseCase() {
@@ -52,7 +58,7 @@ class RoomListViewController: UIViewController {
                         }, completion: nil)
                     }
                 })
-
+                
                 self.dataSource.viewModel = self.viewModel
         })
     }
@@ -69,6 +75,14 @@ class RoomListViewController: UIViewController {
             $0.setRadius()
         }
         roomListCollectionView.delaysContentTouches = false
+    }
+    
+    @objc func collectionViewTouched(gesture: UITapGestureRecognizer) {
+        let touchLocation:CGPoint = gesture.location(ofTouch: 0, in: roomListCollectionView)
+        guard let indexPath = roomListCollectionView.indexPathForItem(at: touchLocation) else {return}
+        guard let detailViewController = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? DetailViewController else {return}
+        detailViewController.modalPresentationStyle = .overFullScreen
+        present(detailViewController, animated: true)
     }
 }
 
