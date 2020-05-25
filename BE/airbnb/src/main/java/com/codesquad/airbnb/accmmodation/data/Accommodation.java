@@ -37,6 +37,9 @@ public class Accommodation {
   @Column(nullable = false)
   private AccommodationType type;
 
+  @Column(nullable = false)
+  private String location;
+
   @Embedded
   private Coordinate coordinate;
 

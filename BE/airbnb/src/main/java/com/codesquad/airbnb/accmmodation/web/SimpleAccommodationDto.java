@@ -15,14 +15,15 @@ public class SimpleAccommodationDto {
   private final Long id;
   private final String name;
   private final AccommodationType type;
-  private final Price price;
+  private final String location;
   private final List<Image> images;
 
+  @Builder
   public SimpleAccommodationDto(Accommodation accommodation) {
     this.id = accommodation.getId();
     this.name = accommodation.getName();
     this.type = accommodation.getType();
+    this.location = accommodation.getLocation();
     this.images = accommodation.getImages(ImageType.MAIN);
-    this.price = accommodation.getPrice();
   }
 }
