@@ -519,7 +519,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 735P3R8MUU;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = Airbnb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -527,7 +527,7 @@
 					"@executable_path/Frameworks",
 				);
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = hanseop.Airbnb;
+				PRODUCT_BUNDLE_IDENTIFIER = hanseop1.Airbnb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -539,7 +539,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 735P3R8MUU;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = Airbnb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -547,7 +547,7 @@
 					"@executable_path/Frameworks",
 				);
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = hanseop.Airbnb;
+				PRODUCT_BUNDLE_IDENTIFIER = hanseop1.Airbnb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

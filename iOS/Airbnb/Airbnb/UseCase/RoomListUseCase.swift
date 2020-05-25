@@ -38,4 +38,9 @@ struct RoomListUseCase {
             }
         }
     }
+    
+    func requestMockRoomList(successHandler: @escaping ([Room]) -> ()) {
+        let model = [Room](repeating: Room(id: 1, images: [Image(type: "hotel", url: "https://a0.muscache.com/im/pictures/cd6aa55e-1af7-450d-8975-bec51aa6b93e.jpg?im_w=1200"), Image(type: "hotel", url: "https://a0.muscache.com/im/pictures/cd6aa55e-1af7-450d-8975-bec51aa6b93e.jpg?im_w=1200"), Image(type: "hotel", url: "https://a0.muscache.com/im/pictures/cd6aa55e-1af7-450d-8975-bec51aa6b93e.jpg?im_w=1200")], name: "호텔호텔호텔", price: Price(price: 50000), type: "ㅁㄴㅇ"), count: 10)
+        successHandler(model)
+    }
 }

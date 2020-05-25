@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class RoomListViewController: UIViewController {
     
@@ -15,6 +14,7 @@ class RoomListViewController: UIViewController {
     @IBOutlet weak var roomListCollectionView: UICollectionView!
     @IBOutlet weak var mapButton: UIButton!
     
+    private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var useCase = RoomListUseCase(networkManager: NetworkManager())
     
     private var viewModel: RoomListViewModel?
@@ -28,7 +28,7 @@ class RoomListViewController: UIViewController {
         super.viewDidLoad()
         setButton()
         setCollectionView()
-        setUseCase()
+        setMockUseCase()
         
         guard #available(iOS 13, *) else {
             setTabBarImage()
@@ -40,6 +40,24 @@ class RoomListViewController: UIViewController {
         roomListCollectionView.dataSource = dataSource
         roomListCollectionView.delegate = self
         roomListCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewTouched(gesture:))))
+    }
+    
+    private func setMockUseCase() {
+        useCase.requestMockRoomList(successHandler: { [unowned self] in
+            self.viewModel = RoomListViewModel(roomListManager: Manager<Room>(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
+                switch manager.editingStyle {
+                case .none:
+                    self.roomListCollectionView.reloadData()
+                case let .insert(_, indexPath):
+                    self.roomListCollectionView.performBatchUpdates({
+                        self.roomListCollectionView.insertItems(at: [indexPath])
+                    }, completion: nil)
+                }
+            })
+            
+            self.dataSource.viewModel = self.viewModel
+            self.setImageUseCase(roomList: $0)
+        })
     }
     
     private func setUseCase() {
@@ -60,7 +78,19 @@ class RoomListViewController: UIViewController {
                 })
                 
                 self.dataSource.viewModel = self.viewModel
+                self.setImageUseCase(roomList: $0)
         })
+    }
+    
+    private func setImageUseCase(roomList: [Room]) {
+        roomList.forEach {
+            let room = $0
+            $0.images.forEach {
+                imageUseCase.requestImage(imageURLPath: $0.url, failureHandler: {AlertView.alertError(viewController: self, message: $0)}, completed: { _ in
+                    
+                })
+            }
+        }
     }
     
     private func setTabBarImage() {
@@ -80,9 +110,9 @@ class RoomListViewController: UIViewController {
     @objc func collectionViewTouched(gesture: UITapGestureRecognizer) {
         let touchLocation:CGPoint = gesture.location(ofTouch: 0, in: roomListCollectionView)
         guard let indexPath = roomListCollectionView.indexPathForItem(at: touchLocation) else {return}
-        guard let detailViewController = storyboard?.instantiateViewController(withIdentifier: "detailViewController") as? DetailViewController else {return}
-        detailViewController.modalPresentationStyle = .overFullScreen
-        present(detailViewController, animated: true)
+        guard let navigationViewController = storyboard?.instantiateViewController(withIdentifier: "detailNavigationController") as? UINavigationController else {return}
+        navigationViewController.modalPresentationStyle = .overFullScreen
+        present(navigationViewController, animated: true)
     }
 }
 
@@ -93,13 +123,15 @@ extension RoomListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, -10, 0)
+        guard let cell = cell as? RoomListCell else {return}
+        
         cell.layer.transform = rotationTransform
         cell.alpha = 0
         
-        UIView.animate(withDuration: 0.75) {
+        UIView.animate(withDuration: 0.75, delay: 0, options: .allowUserInteraction, animations: {
             cell.layer.transform = CATransform3DIdentity
             cell.alpha = 1
-        }
+        })
     }
 }
 
