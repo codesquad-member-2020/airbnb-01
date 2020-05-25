@@ -5,23 +5,20 @@ import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Accommodation {
@@ -43,8 +40,7 @@ public class Accommodation {
   @Embedded
   private Coordinate coordinate;
 
-  @OneToMany
-  @JoinColumn(name = "accommodation_id")
+  @ElementCollection(fetch = FetchType.EAGER)
   private List<Image> images;
 
   @Embedded
@@ -54,5 +50,17 @@ public class Accommodation {
     return images.stream()
         .filter(image -> image.getType().equals(type))
         .collect(Collectors.toList());
+  }
+
+  @Builder
+  public Accommodation(Long id, String name, AccommodationType type, String location,
+      Coordinate coordinate, List<Image> images, Price price) {
+    this.id = id;
+    this.name = name;
+    this.type = type;
+    this.location = location;
+    this.coordinate = coordinate;
+    this.images = images;
+    this.price = price;
   }
 }
