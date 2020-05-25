@@ -23,7 +23,7 @@ class RoomListDataSource: NSObject, UICollectionViewDataSource {
         guard let room = viewModel?.roomListManager.room(of: indexPath.item) else {return cell}
         cell.configure(about: room)
         room.images.forEach {
-            imageUseCase.requestImage(imageURLPath: $0.url, failureHandler: {_ in}, completed: {
+            imageUseCase.requestImage(imageURLPath: $0.url.trimmingCharacters(in: .whitespaces), failureHandler: {_ in}, completed: {
                 cell.setImage(url: $0)
             })
         }

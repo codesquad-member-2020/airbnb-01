@@ -12,7 +12,7 @@ struct Room: Decodable {
     var id: Int
     var images: [Image]
     var name: String
-    var price: Price
+    var price: Price?
     var type: String
 }
 

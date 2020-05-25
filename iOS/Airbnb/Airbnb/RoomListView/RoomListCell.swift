@@ -42,7 +42,8 @@ import UIKit
     
     func configure(about room: Room) {
         self.nameLabel.text = room.name
-        self.priceLabel.text = String(room.price.price)
+        guard let price = room.price?.price else {return}
+        self.priceLabel.text = String(price)
     }
     
     func setImage(url: URL) {

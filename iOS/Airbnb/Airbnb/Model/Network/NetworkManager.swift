@@ -19,7 +19,12 @@ protocol NetworkManageable {
 class NetworkManager: NetworkManageable {
     
     func loadResource(handler: @escaping (DataResult) -> ()) {
-        AF.request(EndPoint.defaultURL + EndPoint.RoomList).validate(statusCode: 200..<300).response {
+        guard let url = (EndPoint.defaultURL + EndPoint.RoomList).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {
+            handler(.failure(.invalidURL(url: EndPoint.defaultURL + EndPoint.RoomList)))
+            return
+        }
+        
+        AF.request(url).validate(statusCode: 200..<300).response {
             handler($0.result)
         }
     }
