@@ -14,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OrderColumn;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,6 +42,7 @@ public class Accommodation {
   private Coordinate coordinate;
 
   @ElementCollection(fetch = FetchType.EAGER)
+  @OrderColumn
   private List<Image> images;
 
   @Embedded
