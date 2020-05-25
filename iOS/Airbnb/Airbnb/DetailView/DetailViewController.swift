@@ -11,27 +11,53 @@ import UIKit
 class DetailViewController: UIViewController {
     
     private var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
-    
-    @IBAction func panGestureRecognizerHandler(_ sender: UIPanGestureRecognizer) {
-        let touchPoint = sender.location(in: self.view?.window)
-        if sender.state == UIGestureRecognizer.State.began {
-            initialTouchPoint = touchPoint
-        } else if sender.state == UIGestureRecognizer.State.changed {
-            if touchPoint.y - initialTouchPoint.y > 0 {
-                self.view.frame = CGRect(x: 0, y: touchPoint.y - initialTouchPoint.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
-            }
-        } else if sender.state == UIGestureRecognizer.State.ended || sender.state == UIGestureRecognizer.State.cancelled {
-            if touchPoint.y - initialTouchPoint.y > 100 {
-                self.dismiss(animated: true, completion: nil)
-            } else {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-                })
-            }
-        }
-    }
+    @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationItem.r
+    }
+}
+
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath)
+        return cell
+    }
+    
+    
+}
+
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height / 3)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var offset: CGFloat = scrollView.contentOffset.y / 150
+        
+        if offset > 1 {
+            offset = 1
+            let color = UIColor(red: 1, green: 1, blue: 1, alpha: offset)
+            self.navigationController?.navigationBar.tintColor = UIColor(hue: 1, saturation: offset, brightness: 1, alpha: 1)
+            self.navigationController?.navigationBar.backgroundColor = color
+            UIApplication.shared.statusView?.backgroundColor = color
+        } else {
+            if offset < 0 {
+                offset = 0
+            }
+            let color = UIColor(red: 1, green: 1, blue: 1, alpha: offset)
+            self.navigationController?.navigationBar.tintColor = UIColor(hue: 1, saturation: offset, brightness: 1, alpha: 1)
+            self.navigationController?.navigationBar.backgroundColor = color
+            UIApplication.shared.statusView?.backgroundColor = color
+        }
     }
 }

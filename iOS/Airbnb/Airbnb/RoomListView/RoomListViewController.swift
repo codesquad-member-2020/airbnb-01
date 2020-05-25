@@ -56,7 +56,6 @@ class RoomListViewController: UIViewController {
             })
             
             self.dataSource.viewModel = self.viewModel
-            self.setImageUseCase(roomList: $0)
         })
     }
     
@@ -78,19 +77,7 @@ class RoomListViewController: UIViewController {
                 })
                 
                 self.dataSource.viewModel = self.viewModel
-                self.setImageUseCase(roomList: $0)
         })
-    }
-    
-    private func setImageUseCase(roomList: [Room]) {
-        roomList.forEach {
-            let room = $0
-            $0.images.forEach {
-                imageUseCase.requestImage(imageURLPath: $0.url, failureHandler: {AlertView.alertError(viewController: self, message: $0)}, completed: { _ in
-                    
-                })
-            }
-        }
     }
     
     private func setTabBarImage() {
