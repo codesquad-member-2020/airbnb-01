@@ -41,7 +41,7 @@ class AccommodationControllerTest {
             .type(AccommodationType.CAMPING)
             .location("새덕굴길")
             .coordinate(Coordinate.builder().longitude(35.31).latitude(23.14).build())
-            .price(Price.builder().price(34500D).build())
+            .price(Price.builder().price(34500L).build())
             .build())
         .build();
 
