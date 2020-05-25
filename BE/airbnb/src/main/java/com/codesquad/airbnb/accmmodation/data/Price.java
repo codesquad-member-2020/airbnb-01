@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 public class Price {
 
   @Column(nullable = false)
-  private Double price;
+  private Long price;
 
   @Builder
-  public Price(Double price) {
+  public Price(Long price) {
     this.price = price;
   }
 }

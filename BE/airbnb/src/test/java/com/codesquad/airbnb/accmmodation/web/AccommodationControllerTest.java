@@ -34,7 +34,7 @@ class AccommodationControllerTest {
   public void 디테일_숙소_조회_응답_포맷_테스트() throws Exception {
     // given
     Long id = 1l;
-    DetailAccommodationDto dto = DetailAccommodationDto.builder()
+    DetailAccommodationView dto = DetailAccommodationView.builder()
         .accommodation(Accommodation.builder()
             .id(id)
             .name("오토 캠핑장")
