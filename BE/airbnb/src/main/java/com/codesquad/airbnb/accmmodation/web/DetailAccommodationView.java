@@ -9,7 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class DetailAccommodationDto {
+public class DetailAccommodationView {
 
   private final Long id;
   private final String name;
@@ -19,7 +19,7 @@ public class DetailAccommodationDto {
   private final List<Image> images;
 
   @Builder
-  public DetailAccommodationDto(Accommodation accommodation) {
+  public DetailAccommodationView(Accommodation accommodation) {
     this.id = accommodation.getId();
     this.name = accommodation.getName();
     this.type = accommodation.getType();
