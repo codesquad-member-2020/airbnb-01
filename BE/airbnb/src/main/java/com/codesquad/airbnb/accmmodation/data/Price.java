@@ -2,16 +2,20 @@ package com.codesquad.airbnb.accmmodation.data;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
+@NoArgsConstructor
 @Embeddable
 public class Price {
 
   @Column(nullable = false)
-  private Double price;
+  private Long price;
+
+  @Builder
+  public Price(Long price) {
+    this.price = price;
+  }
 }

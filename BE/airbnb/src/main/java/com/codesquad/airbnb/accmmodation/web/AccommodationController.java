@@ -20,15 +20,15 @@ public class AccommodationController {
   private final AccommodationService accommodationService;
 
   @ApiOperation(value = "숙소 전체 리스트를 가져옵니다")
-  @GetMapping
-  public List<SimpleAccommodationDto> accommodations() {
-    return accommodationService.accommodation();
+  @GetMapping("/s/{location}")
+  public List<AccommodationView> accommodations(AccommodationQuery query) {
+    return accommodationService.accommodation(query);
   }
 
   @ApiImplicitParam(name = "id", value = "전체 리스트에서 가져오는 숙소 ID", required = true)
   @ApiOperation(value = "특정 숙소의 상세 정보를 가져옵니다")
   @GetMapping("/{id}")
-  public DetailAccommodationDto detailAccommodation(@PathVariable Long id) {
+  public DetailAccommodationView detailAccommodation(@PathVariable Long id) {
     return accommodationService.detailAccommodation(id);
   }
 }

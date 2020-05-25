@@ -1,9 +1,9 @@
 INSERT INTO accommodation (name, type, location, latitude, longitude, price)
 VALUES ('베네키아 강남', 'HOTEL', '강남구 121-1', 36.12, 128.13, 80000),
        ('베네키아 왕십리', 'HOSTEL', '왕십리 521-4', 46.12, 228.13, 60000),
-       ('베네키아 분당', 'INN', '분당구 721-1', 56.12, 228.13, 120000);
+       ('베네키아 분당', 'BNB', '분당구 721-1', 56.12, 228.13, 120000);
 
-INSERT INTO image (type, url, accommodation_id)
+INSERT INTO accommodation_images (type, url, accommodation_id)
 VALUES ('MAIN', 'https://a0.muscache.com/im/pictures/35069d4e-17be-4d51-934f-d5c98a79fc87.jpg?im_w=1200', 1),
        ('DETAIL', 'https://a0.muscache.com/im/pictures/35dd9a55-f4aa-41ac-9881-8c813134b098.jpg?im_w=720', 1),
        ('BATH', 'https://a0.muscache.com/im/pictures/667a87f7-7919-40bb-a28d-79687daed1ac.jpg?im_w=720', 1),
