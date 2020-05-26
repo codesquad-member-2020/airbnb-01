@@ -14,6 +14,7 @@ public class AccommodationQuery {
   private String location;
   private Long priceMin;
   private Long priceMax;
+  private Integer pageCount;
 
   public void makeFormed() {
     if (ObjectUtils.isEmpty(location.trim())) {
@@ -22,8 +23,18 @@ public class AccommodationQuery {
 
     final long DEFAULT_MIN_PRICE = 0L;
     final long DEFAULT_MAX_PRICE = 1000000L;
+    final int DEFAULT_PAGE_COUNT = 0;
 
-    priceMin = (Objects.isNull(priceMin)) ? DEFAULT_MIN_PRICE : priceMin;
-    priceMax = (Objects.isNull(priceMax)) ? DEFAULT_MAX_PRICE : priceMax;
+    if (Objects.isNull(priceMin)) {
+      priceMin = DEFAULT_MIN_PRICE;
+    }
+
+    if (Objects.isNull(priceMax)) {
+      priceMax = DEFAULT_MAX_PRICE;
+    }
+
+    if (Objects.isNull(pageCount)) {
+      pageCount = DEFAULT_PAGE_COUNT;
+    }
   }
 }

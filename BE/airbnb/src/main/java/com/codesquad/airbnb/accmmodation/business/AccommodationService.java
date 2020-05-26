@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -21,11 +23,14 @@ public class AccommodationService {
   public List<AccommodationView> accommodation(AccommodationQuery query) {
     query.makeFormed();
 
-    List<Accommodation> accommodations = accommodationRepository
-        .findByLocationContainingAndPriceBetween(
-            query.getLocation(),
-            Price.builder().price(query.getPriceMin()).build(),
-            Price.builder().price(query.getPriceMax()).build());
+    Price minPrice = Price.builder().price(query.getPriceMin()).build();
+    Price maxPrice = Price.builder().price(query.getPriceMax()).build();
+    final int PAGE_ROW_COUNT = 10;
+    PageRequest requestPage = PageRequest.of(query.getPageCount(), PAGE_ROW_COUNT);
+
+    Page<Accommodation> accommodations =
+        accommodationRepository.findByLocationContainingAndPriceBetween(
+            query.getLocation(), minPrice, maxPrice, requestPage);
     return accommodations.stream().map(AccommodationView::new).collect(Collectors.toList());
   }
 
