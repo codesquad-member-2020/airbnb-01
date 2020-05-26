@@ -207,45 +207,11 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-Dk-ZtU">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ej7-xn-cYr" userLabel="Images View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-gZ-kvi" customClass="ScrollViewWithPageControlView" customModule="Airbnb" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
-                                                <subviews>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwu-tv-qoP" userLabel="Image Scroll View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LZn-wC-JAj" userLabel="Image Stack View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HtQ-fi-465">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                            </stackView>
-                                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wH2-w3-B40">
-                                                                <rect key="frame" x="187.5" y="263" width="39" height="37"/>
-                                                            </pageControl>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="LZn-wC-JAj" firstAttribute="bottom" secondItem="oOp-HY-3cc" secondAttribute="bottom" id="2pm-jh-vh0"/>
-                                                            <constraint firstItem="HtQ-fi-465" firstAttribute="width" secondItem="nBU-AM-mV7" secondAttribute="width" id="5wA-u0-92P"/>
-                                                            <constraint firstItem="oOp-HY-3cc" firstAttribute="bottom" secondItem="wH2-w3-B40" secondAttribute="bottom" id="9qy-fD-B1V"/>
-                                                            <constraint firstItem="LZn-wC-JAj" firstAttribute="top" secondItem="oOp-HY-3cc" secondAttribute="top" id="H2M-RO-aI3"/>
-                                                            <constraint firstItem="LZn-wC-JAj" firstAttribute="leading" secondItem="oOp-HY-3cc" secondAttribute="leading" id="RZy-GU-AFA"/>
-                                                            <constraint firstItem="wH2-w3-B40" firstAttribute="centerX" secondItem="nBU-AM-mV7" secondAttribute="centerX" id="dFs-Ed-c3Z"/>
-                                                            <constraint firstItem="LZn-wC-JAj" firstAttribute="trailing" secondItem="oOp-HY-3cc" secondAttribute="trailing" id="gbG-nT-ejt"/>
-                                                            <constraint firstItem="LZn-wC-JAj" firstAttribute="height" secondItem="nBU-AM-mV7" secondAttribute="height" id="prg-r2-idF"/>
-                                                        </constraints>
-                                                        <viewLayoutGuide key="contentLayoutGuide" id="oOp-HY-3cc"/>
-                                                        <viewLayoutGuide key="frameLayoutGuide" id="nBU-AM-mV7"/>
-                                                    </scrollView>
-                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="hwu-tv-qoP" firstAttribute="top" secondItem="ej7-xn-cYr" secondAttribute="top" id="6fU-Lu-paJ"/>
-                                                    <constraint firstAttribute="trailing" secondItem="hwu-tv-qoP" secondAttribute="trailing" id="R7O-cI-khL"/>
-                                                    <constraint firstItem="hwu-tv-qoP" firstAttribute="leading" secondItem="ej7-xn-cYr" secondAttribute="leading" id="R8I-4f-qxL"/>
-                                                    <constraint firstAttribute="bottom" secondItem="hwu-tv-qoP" secondAttribute="bottom" id="T1Y-J4-G9x"/>
-                                                    <constraint firstAttribute="height" constant="300" id="v0K-h3-Xnj"/>
+                                                    <constraint firstAttribute="height" constant="300" id="U81-7M-8pD"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

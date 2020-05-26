@@ -26,8 +26,8 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1YV-EO-PeZ">
                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="354"/>
                             <subviews>
-                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aMi-UM-Lzo">
-                                    <rect key="frame" x="0.0" y="0.0" width="452" height="354"/>
+                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aMi-UM-Lzo">
+                                    <rect key="frame" x="0.0" y="1.5" width="452" height="17.5"/>
                                 </imageView>
                             </subviews>
                         </stackView>
@@ -61,4 +61,7 @@
             <point key="canvasLocation" x="114.49275362318842" y="-24.776785714285712"/>
         </view>
     </objects>
+    <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+    </resources>
 </document>
