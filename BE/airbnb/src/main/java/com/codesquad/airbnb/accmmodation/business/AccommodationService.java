@@ -4,8 +4,8 @@ import com.codesquad.airbnb.accmmodation.data.Accommodation;
 import com.codesquad.airbnb.accmmodation.data.AccommodationRepository;
 import com.codesquad.airbnb.accmmodation.data.Price;
 import com.codesquad.airbnb.accmmodation.web.AccommodationQuery;
-import com.codesquad.airbnb.accmmodation.web.DetailAccommodationView;
 import com.codesquad.airbnb.accmmodation.web.AccommodationView;
+import com.codesquad.airbnb.accmmodation.web.DetailAccommodationView;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -19,6 +19,8 @@ public class AccommodationService {
   private final AccommodationRepository accommodationRepository;
 
   public List<AccommodationView> accommodation(AccommodationQuery query) {
+    query.makeFormed();
+
     List<Accommodation> accommodations = accommodationRepository
         .findByLocationContainingAndPriceBetween(
             query.getLocation(),
