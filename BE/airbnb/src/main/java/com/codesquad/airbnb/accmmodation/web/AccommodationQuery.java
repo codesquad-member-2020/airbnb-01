@@ -4,6 +4,7 @@ import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.util.ObjectUtils;
 
 @ToString
 @Getter
@@ -15,7 +16,7 @@ public class AccommodationQuery {
   private Long priceMax;
 
   public void makeFormed() {
-    if (Objects.isNull(location)) {
+    if (ObjectUtils.isEmpty(location.trim())) {
       throw new RuntimeException("지명은 검색 필수 조건 입니다");
     }
 
