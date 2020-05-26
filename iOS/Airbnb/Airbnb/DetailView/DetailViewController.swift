@@ -12,52 +12,34 @@ class DetailViewController: UIViewController {
     
     private var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
     @IBOutlet weak var collectionView: UICollectionView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationItem.r
-    }
-}
-
-extension DetailViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        setNavigationController()
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath)
-        return cell
-    }
-    
-    
-}
-
-extension DetailViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height / 3)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        var offset: CGFloat = scrollView.contentOffset.y / 150
+    private func setNavigationController() {
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(close))
+        let heartButton = LikeButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        heartButton.addTarget(self, action: #selector(likeButtonPushed), for: .touchUpInside)
+        let likeButton = UIBarButtonItem(customView: heartButton)
         
-        if offset > 1 {
-            offset = 1
-            let color = UIColor(red: 1, green: 1, blue: 1, alpha: offset)
-            self.navigationController?.navigationBar.tintColor = UIColor(hue: 1, saturation: offset, brightness: 1, alpha: 1)
-            self.navigationController?.navigationBar.backgroundColor = color
-            UIApplication.shared.statusView?.backgroundColor = color
-        } else {
-            if offset < 0 {
-                offset = 0
-            }
-            let color = UIColor(red: 1, green: 1, blue: 1, alpha: offset)
-            self.navigationController?.navigationBar.tintColor = UIColor(hue: 1, saturation: offset, brightness: 1, alpha: 1)
-            self.navigationController?.navigationBar.backgroundColor = color
-            UIApplication.shared.statusView?.backgroundColor = color
-        }
+        let actionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(actionButtonPushed))
+        
+        self.navigationItem.setRightBarButtonItems([likeButton, actionButton], animated: true)
+        self.navigationItem.setLeftBarButtonItems([closeButton], animated: true)
+        
+        self.navigationController?.hidesBarsOnTap = true
+    }
+    
+    @objc func actionButtonPushed() {
+    }
+    
+    @objc func likeButtonPushed() {
+        
+    }
+    
+    @objc func close() {
+        dismiss(animated: true)
     }
 }

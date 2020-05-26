@@ -17,23 +17,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-
-extension UIApplication {
-    var statusView: UIView? {
-        if #available(iOS 13.0, *) {
-            let tag = 38482458385
-            let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-            if let statusBar = keyWindow?.viewWithTag(tag) {
-                return statusBar
-            } else {
-                let statusBar = UIView(frame: keyWindow?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect(x: 0, y: 0, width: 0, height: 0))
-                statusBar.tag = tag
-                keyWindow?.addSubview(statusBar)
-                return statusBar
-            }
-        } else {
-            return UIApplication.shared.value(forKey: "statusBar") as? UIView
-        }
-    }
-}
-

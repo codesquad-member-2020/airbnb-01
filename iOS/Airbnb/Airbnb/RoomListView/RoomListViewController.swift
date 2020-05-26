@@ -18,11 +18,7 @@ class RoomListViewController: UIViewController {
     private var useCase = RoomListUseCase(networkManager: NetworkManager())
     
     private var viewModel: RoomListViewModel?
-    private var dataSource = RoomListDataSource() {
-        didSet {
-            roomListCollectionView.reloadData()
-        }
-    }
+    private var dataSource = RoomListDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +93,7 @@ class RoomListViewController: UIViewController {
         let touchLocation:CGPoint = gesture.location(ofTouch: 0, in: roomListCollectionView)
         guard let indexPath = roomListCollectionView.indexPathForItem(at: touchLocation) else {return}
         guard let navigationViewController = storyboard?.instantiateViewController(withIdentifier: "detailNavigationController") as? UINavigationController else {return}
-        navigationViewController.modalPresentationStyle = .overFullScreen
+        navigationViewController.modalPresentationStyle = .fullScreen
         present(navigationViewController, animated: true)
     }
 }

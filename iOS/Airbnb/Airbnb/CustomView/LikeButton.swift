@@ -26,6 +26,10 @@ import UIKit
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addTarget(self, action: #selector(clicked(_:)), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchDown(_:)), for: .touchDown)
+        self.addTarget(self, action: #selector(scaleUp(_:)), for: .touchUpOutside)
+        setColor()
     }
     
     func setRadius() {
