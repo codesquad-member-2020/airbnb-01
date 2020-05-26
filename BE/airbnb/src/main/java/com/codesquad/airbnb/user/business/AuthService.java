@@ -1,7 +1,7 @@
 package com.codesquad.airbnb.user.business;
 
 import com.codesquad.airbnb.config.AuthProperties;
-import com.codesquad.airbnb.util.TokenUtil;
+import com.codesquad.airbnb.util.JwtToken;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -45,25 +45,18 @@ public class AuthService {
   }
 
   public MultiValueMap<String, String> callbackHeader(String authorizationCode) {
-    String accessToken = getAccessToken(authorizationCode);
-    List<LinkedHashMap<String, String>> emails = getEmails(accessToken);
+    String accessToken = requestAccessToken(authorizationCode);
+    List<LinkedHashMap<String, String>> emails = requestEmails(accessToken);
 
     MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
     Map<String, String> header = new HashMap<>();
-    header.put("Authorization", TokenUtil.create(emails.get(0)));
+    header.put("Authorization", JwtToken.create(emails.get(0)));
     headers.setAll(header);
 
     return headers;
   }
 
-  public String callback(String authorizationCode) {
-    String accessToken = getAccessToken(authorizationCode);
-    List<LinkedHashMap<String, String>> emails = getEmails(accessToken);
-
-    return TokenUtil.create(emails.get(0));
-  }
-
-  private String getAccessToken(String authorizationCode) {
+  private String requestAccessToken(String authorizationCode) {
     MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
     Map<String, String> header = new HashMap<>();
     header.put("Accept", "application/json");
@@ -80,13 +73,13 @@ public class AuthService {
     ResponseEntity<HashMap> response = new RestTemplate()
         .postForEntity(AuthProperties.ACCESS_TOKEN_URL, request, HashMap.class);
 
-    Map<String, String> map = (Map<String, String>) response.getBody();
+    Map<String, String> map = response.getBody();
 
     return Optional.of(map.get("access_token"))
         .orElseThrow(() -> new RuntimeException("JWT TOKEN 생성에 실패하였습니다"));
   }
 
-  private List getEmails(String accessToken) {
+  private List requestEmails(String accessToken) {
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(
         new MediaType("application", "json", StandardCharsets.UTF_8));

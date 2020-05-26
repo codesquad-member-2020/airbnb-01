@@ -10,23 +10,20 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+@RequiredArgsConstructor
 @Component
-public class TokenUtil {
+public class JwtToken {
 
   private static JwtProperties staticJwtProperties;
   private final JwtProperties jwtProperties;
-
-  public TokenUtil(JwtProperties jwtProperties) {
-    this.jwtProperties = jwtProperties;
-  }
 
   public static String create(Map<String, String> claims) {
     try {
       JwtBuilder jwt = Jwts.builder()
           .setHeaderParam("typ", "JWT")
-          .setIssuer("Dan")
           .setIssuedAt(new Date(System.currentTimeMillis()))
           .setExpiration(new Date(System.currentTimeMillis() + JwtProperties.EXPIRED_TIME));
       for (String key : claims.keySet()) {
@@ -43,7 +40,7 @@ public class TokenUtil {
     return staticJwtProperties.getSalt().getBytes(StandardCharsets.UTF_8);
   }
 
-  public static String getUserEmail(String jwt) throws RuntimeException {
+  public static String parseEmail(String jwt) throws RuntimeException {
     try {
       Claims claims = Jwts.parser().setSigningKey(generateKey()).parseClaimsJws(jwt)
           .getBody();
