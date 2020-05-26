@@ -9,13 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RoomListCell" customModule="Airbnb" customModuleProvider="target">
             <connections>
-                <outlet property="imageScrollView" destination="s1e-Uk-KbY" id="qnm-EN-cAO"/>
-                <outlet property="imageStackView" destination="on8-oz-yaq" id="qcT-Z0-xG3"/>
                 <outlet property="likeButton" destination="XEb-on-UBY" id="8zQ-Yf-11O"/>
                 <outlet property="nameLabel" destination="b8P-zU-AaR" id="6pn-gf-W6B"/>
-                <outlet property="pageControl" destination="L2k-De-duL" id="iog-kj-TbF"/>
                 <outlet property="priceLabel" destination="L8d-ef-pz4" id="wAj-ck-VVr"/>
                 <outlet property="ratingImage" destination="VF0-r4-Sgc" id="BNh-hl-k5C"/>
+                <outlet property="scrollViewWithPageControlView" destination="Wii-7q-5cV" id="y72-3A-bLZ"/>
                 <outlet property="superHostImage" destination="ZTg-Er-KzP" id="sYk-IW-BCr"/>
                 <outlet property="view" destination="iN0-l3-epB" id="5N9-0D-9GY"/>
             </connections>
@@ -25,63 +23,10 @@
             <rect key="frame" x="0.0" y="0.0" width="454" height="350"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1e-Uk-KbY">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wii-7q-5cV" customClass="ScrollViewWithPageControlView" customModule="Airbnb" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="454" height="227.5"/>
-                    <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="on8-oz-yaq">
-                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="227.5"/>
-                            <subviews>
-                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RFC-wm-Kb2">
-                                    <rect key="frame" x="0.0" y="1.5" width="454" height="17.5"/>
-                                    <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </imageView>
-                            </subviews>
-                        </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEk-kP-Sbc" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
-                            <rect key="frame" x="414" y="10" width="30" height="30"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEb-on-UBY" userLabel="Like Button" customClass="LikeButton" customModule="Airbnb" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" image="heart" catalog="system"/>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="XEb-on-UBY" firstAttribute="top" secondItem="eEk-kP-Sbc" secondAttribute="top" id="FFE-Jl-Vbx"/>
-                                <constraint firstAttribute="trailing" secondItem="XEb-on-UBY" secondAttribute="trailing" id="W9e-Qj-CzG"/>
-                                <constraint firstAttribute="width" secondItem="eEk-kP-Sbc" secondAttribute="height" multiplier="1:1" id="Yi1-pI-SJs"/>
-                                <constraint firstAttribute="height" constant="30" id="cjO-wz-doh"/>
-                                <constraint firstAttribute="bottom" secondItem="XEb-on-UBY" secondAttribute="bottom" id="ge5-kV-bxj"/>
-                                <constraint firstItem="XEb-on-UBY" firstAttribute="leading" secondItem="eEk-kP-Sbc" secondAttribute="leading" id="qxF-hg-yCl"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="0.5"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="0.0" height="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="on8-oz-yaq" firstAttribute="top" secondItem="ZFX-pW-ZXX" secondAttribute="top" id="2pV-U8-Qpf"/>
-                        <constraint firstItem="on8-oz-yaq" firstAttribute="trailing" secondItem="ZFX-pW-ZXX" secondAttribute="trailing" id="35q-xG-IRy"/>
-                        <constraint firstItem="eEk-kP-Sbc" firstAttribute="top" secondItem="VfW-5O-hLW" secondAttribute="top" constant="10" id="Dd4-7H-VjW"/>
-                        <constraint firstItem="VfW-5O-hLW" firstAttribute="trailing" secondItem="eEk-kP-Sbc" secondAttribute="trailing" constant="10" id="GEE-hq-NA4"/>
-                        <constraint firstItem="on8-oz-yaq" firstAttribute="leading" secondItem="ZFX-pW-ZXX" secondAttribute="leading" id="QVh-Xf-jTh"/>
-                        <constraint firstItem="on8-oz-yaq" firstAttribute="bottom" secondItem="ZFX-pW-ZXX" secondAttribute="bottom" id="bX2-ui-gEy"/>
-                        <constraint firstItem="on8-oz-yaq" firstAttribute="height" secondItem="VfW-5O-hLW" secondAttribute="height" id="dio-4m-iB2"/>
-                        <constraint firstItem="RFC-wm-Kb2" firstAttribute="width" secondItem="VfW-5O-hLW" secondAttribute="width" id="yNk-t5-D5U"/>
-                    </constraints>
-                    <viewLayoutGuide key="contentLayoutGuide" id="ZFX-pW-ZXX"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="VfW-5O-hLW"/>
-                </scrollView>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" defersCurrentPageDisplay="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="L2k-De-duL">
-                    <rect key="frame" x="207.5" y="190.5" width="39" height="37"/>
-                </pageControl>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YLF-xf-kF1" userLabel="Information Stack View">
                     <rect key="frame" x="0.0" y="237.5" width="454" height="112.5"/>
                     <subviews>
@@ -164,18 +109,46 @@
                         </label>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEk-kP-Sbc" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
+                    <rect key="frame" x="414" y="10" width="30" height="30"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEb-on-UBY" userLabel="Like Button" customClass="LikeButton" customModule="Airbnb" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" image="heart" catalog="system"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="XEb-on-UBY" firstAttribute="top" secondItem="eEk-kP-Sbc" secondAttribute="top" id="FFE-Jl-Vbx"/>
+                        <constraint firstAttribute="trailing" secondItem="XEb-on-UBY" secondAttribute="trailing" id="W9e-Qj-CzG"/>
+                        <constraint firstAttribute="width" secondItem="eEk-kP-Sbc" secondAttribute="height" multiplier="1:1" id="Yi1-pI-SJs"/>
+                        <constraint firstAttribute="height" constant="30" id="cjO-wz-doh"/>
+                        <constraint firstAttribute="bottom" secondItem="XEb-on-UBY" secondAttribute="bottom" id="ge5-kV-bxj"/>
+                        <constraint firstItem="XEb-on-UBY" firstAttribute="leading" secondItem="eEk-kP-Sbc" secondAttribute="leading" id="qxF-hg-yCl"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                            <size key="value" width="0.0" height="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="YLF-xf-kF1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9Aq-RB-pCN"/>
-                <constraint firstItem="s1e-Uk-KbY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BDT-rp-LBT"/>
-                <constraint firstItem="L2k-De-duL" firstAttribute="bottom" secondItem="s1e-Uk-KbY" secondAttribute="bottom" id="IaB-Hd-AHc"/>
-                <constraint firstItem="s1e-Uk-KbY" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.65" id="XTu-YV-Ka1"/>
-                <constraint firstItem="L2k-De-duL" firstAttribute="centerX" secondItem="s1e-Uk-KbY" secondAttribute="centerX" id="ePw-gm-4x4"/>
-                <constraint firstItem="s1e-Uk-KbY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fSg-ky-X24"/>
+                <constraint firstItem="Wii-7q-5cV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9eA-2r-wd1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Wii-7q-5cV" secondAttribute="trailing" id="EgY-e9-2Cd"/>
+                <constraint firstItem="Wii-7q-5cV" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.65" id="Guf-VC-zb7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eEk-kP-Sbc" secondAttribute="trailing" constant="10" id="UVB-SD-0wz"/>
+                <constraint firstItem="eEk-kP-Sbc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="bSd-wi-wB4"/>
                 <constraint firstAttribute="bottom" secondItem="YLF-xf-kF1" secondAttribute="bottom" id="iY2-ZP-8du"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YLF-xf-kF1" secondAttribute="trailing" id="lfM-M9-l3a"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="s1e-Uk-KbY" secondAttribute="trailing" id="lka-Qx-4Kz"/>
-                <constraint firstItem="YLF-xf-kF1" firstAttribute="top" secondItem="s1e-Uk-KbY" secondAttribute="bottom" constant="10" id="pAK-az-jFV"/>
+                <constraint firstItem="Wii-7q-5cV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ujm-KS-b4N"/>
+                <constraint firstItem="YLF-xf-kF1" firstAttribute="top" secondItem="Wii-7q-5cV" secondAttribute="bottom" constant="10" id="zMY-jc-u5a"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -184,7 +157,6 @@
     </objects>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
     </resources>
