@@ -20,8 +20,7 @@ public class BookingService {
   private final BookingRepository bookingRepository;
   private final AccommodationRepository accommodationRepository;
 
-  public BookingView booking(BookingCommand command) {
-    User user = User.builder().email("anonymous@gmail.com").build();
+  public BookingView booking(BookingCommand command, User user) {
     Accommodation accommodation = accommodationRepository.findById(command.getAccommodationId())
         .orElseThrow(NoSuchElementException::new);
     Booking booking = Booking.builder()
@@ -37,9 +36,7 @@ public class BookingService {
         .build();
   }
 
-  public List<BookingView> showBookings() {
-    User user = User.builder().email("anonymous@gmail.com").build();
-
+  public List<BookingView> showBookings(User user) {
     return bookingRepository.findBookingsByUser(user.getEmail()).stream()
         .map(booking -> BookingView.builder()
             .booking(booking)

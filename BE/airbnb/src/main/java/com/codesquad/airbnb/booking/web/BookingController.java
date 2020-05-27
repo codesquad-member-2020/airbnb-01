@@ -3,11 +3,16 @@ package com.codesquad.airbnb.booking.web;
 import com.codesquad.airbnb.booking.business.BookingService;
 import com.codesquad.airbnb.booking.web.model.BookingCommand;
 import com.codesquad.airbnb.booking.web.model.BookingView;
+import com.codesquad.airbnb.user.data.User;
+import com.codesquad.airbnb.util.JwtUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
+import java.util.Objects;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,15 +27,28 @@ public class BookingController {
 
   private final BookingService bookingService;
 
-  @ApiOperation(value = "숙소를 예약합니다", notes = "Authrization 이 없으면 anonymous@gmail.com 으로 강제됩니다")
+  @ApiOperation(value = "숙소를 예약합니다", notes = "Authorization 이 없으면 anonymous@gmail.com 으로 강제됩니다")
   @PostMapping
-  public BookingView booking(@RequestBody @Valid BookingCommand command) {
-    return bookingService.booking(command);
+  public BookingView booking(@RequestBody @Valid BookingCommand command,
+      HttpServletRequest htpHttpServletRequest) {
+    User user = findUser(htpHttpServletRequest.getHeader("Authorization"));
+    return bookingService.booking(command, user);
   }
 
-  @ApiOperation(value = "예약된 숙소 정보를 가져옵니다", notes = "Authrization 이 없으면 anonymous@gmail.com 으로 강제됩니다")
+  @ApiOperation(value = "예약된 숙소 정보를 가져옵니다", notes = "Authorization 이 없으면 anonymous@gmail.com 으로 강제됩니다")
   @GetMapping
-  public List<BookingView> showBookings() {
-    return bookingService.showBookings();
+  public List<BookingView> showBookings(HttpServletRequest htpHttpServletRequest) {
+    User user = findUser(htpHttpServletRequest.getHeader("Authorization"));
+    return bookingService.showBookings(user);
+  }
+
+  private User findUser(String jwt) {
+    return (Objects.isNull(jwt))
+        ? User.builder()
+        .email("anonymous@gmail.com")
+        .build()
+        : User.builder()
+            .email(JwtUtil.parseEmail(jwt))
+            .build();
   }
 }
