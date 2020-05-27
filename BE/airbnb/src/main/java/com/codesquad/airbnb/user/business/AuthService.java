@@ -1,7 +1,7 @@
 package com.codesquad.airbnb.user.business;
 
 import com.codesquad.airbnb.config.AuthProperties;
-import com.codesquad.airbnb.util.JwtToken;
+import com.codesquad.airbnb.util.JwtUtil;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -50,7 +50,7 @@ public class AuthService {
 
     MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
     Map<String, String> header = new HashMap<>();
-    header.put("Authorization", JwtToken.create(emails.get(0)));
+    header.put("Authorization", JwtUtil.create(emails.get(0)));
     headers.setAll(header);
 
     return headers;

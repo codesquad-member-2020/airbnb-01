@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class JwtToken {
+public class JwtUtil {
 
   private static JwtProperties staticJwtProperties;
   private final JwtProperties jwtProperties;
