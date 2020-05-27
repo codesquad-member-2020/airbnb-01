@@ -20,20 +20,14 @@
             <rect key="frame" x="0.0" y="0.0" width="452" height="354"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cw6-V4-a0X">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cw6-V4-a0X">
                     <rect key="frame" x="0.0" y="0.0" width="452" height="354"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1YV-EO-PeZ">
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1YV-EO-PeZ">
                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="354"/>
-                            <subviews>
-                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aMi-UM-Lzo">
-                                    <rect key="frame" x="0.0" y="1.5" width="452" height="17.5"/>
-                                </imageView>
-                            </subviews>
                         </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="aMi-UM-Lzo" firstAttribute="width" secondItem="lTO-QD-eBI" secondAttribute="width" id="Jsh-aR-yMU"/>
                         <constraint firstItem="1YV-EO-PeZ" firstAttribute="bottom" secondItem="Ej3-1r-Ifa" secondAttribute="bottom" id="PFy-sg-ghZ"/>
                         <constraint firstItem="1YV-EO-PeZ" firstAttribute="leading" secondItem="Ej3-1r-Ifa" secondAttribute="leading" id="Pyf-Bi-13O"/>
                         <constraint firstItem="1YV-EO-PeZ" firstAttribute="trailing" secondItem="Ej3-1r-Ifa" secondAttribute="trailing" id="g1v-2w-Bkh"/>
@@ -43,7 +37,7 @@
                     <viewLayoutGuide key="contentLayoutGuide" id="Ej3-1r-Ifa"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="lTO-QD-eBI"/>
                 </scrollView>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="sBl-Y6-rwH">
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" defersCurrentPageDisplay="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="sBl-Y6-rwH">
                     <rect key="frame" x="206.5" y="317" width="39" height="37"/>
                 </pageControl>
             </subviews>
@@ -61,7 +55,4 @@
             <point key="canvasLocation" x="114.49275362318842" y="-24.776785714285712"/>
         </view>
     </objects>
-    <resources>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
-    </resources>
 </document>

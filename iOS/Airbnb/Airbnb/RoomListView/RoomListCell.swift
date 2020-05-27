@@ -23,7 +23,6 @@ import UIKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setXib()
-        scrollViewWithPageControlView.imageScrollView.delegate = self
         guard #available(iOS 13, *) else {
             setSymbolImages()
             return
@@ -33,25 +32,16 @@ import UIKit
     override init(frame: CGRect) {
         super.init(frame: frame)
         setXib()
-        scrollViewWithPageControlView.imageScrollView.delegate = self
     }
     
     func configure(about room: Room) {
         self.nameLabel.text = room.name
         guard let price = room.price?.price else {return}
         self.priceLabel.text = String(price)
-        scrollViewWithPageControlView.pageControl.numberOfPages = room.images.count
     }
     
     func setImage(url: URL) {
-        let imageView = UIImageView()
-        scrollViewWithPageControlView.imageStackView.addArrangedSubview(imageView)
-        imageView.image = UIImage(contentsOfFile: url.path)
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
-        imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 10
+        scrollViewWithPageControlView.appendImageView(url: url)
     }
     
     private func setXib() {
@@ -72,15 +62,6 @@ import UIKit
     override func prepareForReuse() {
         scrollViewWithPageControlView.imageStackView.subviews.forEach {
             $0.removeFromSuperview()
-        }
-    }
-}
-
-extension RoomListCell: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentOffset: Int = Int(scrollView.contentOffset.x)
-        if currentOffset % Int(scrollView.frame.width) == 0 {
-            scrollViewWithPageControlView.pageControl.currentPage = currentOffset / Int(scrollView.frame.width)
         }
     }
 }

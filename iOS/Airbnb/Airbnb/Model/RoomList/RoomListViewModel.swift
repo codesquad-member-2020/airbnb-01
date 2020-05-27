@@ -9,7 +9,6 @@
 import Foundation
 
 protocol ViewModelBinding {
-    associatedtype ModelManager
     associatedtype Model
 }
 

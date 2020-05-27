@@ -10,12 +10,36 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    private var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
+    @IBOutlet weak var scrollViewWithPageControlView: ScrollViewWithPageControlView!
     @IBOutlet weak var collectionView: UICollectionView!
+    private let detailViewUseCase = DetailViewUseCase(networkManager: NetworkManager())
+    private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationController()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(setModelUseCase(_:)),
+                                               name: .PostRoomId, object: nil)
+    }
+    
+    @objc func setModelUseCase(_ notification: Notification) {
+        guard let roomId = notification.userInfo?["roomId"] as? Int else {return}
+        detailViewUseCase.requestDetailView(roomId: roomId, failureHandler: { [unowned self] in
+            AlertView.alertError(viewController: self, message: $0)
+            }, successHandler: { [unowned self] in
+                self.setImageUseCase(images: $0.images)
+        })
+    }
+    
+    private func setImageUseCase(images: [Image]) {
+        images.forEach { [unowned self] in
+            self.imageUseCase.requestImage(imageURLPath: $0.url, failureHandler: {
+                AlertView.alertError(viewController: self, message: $0)
+            }, completed: {
+                self.scrollViewWithPageControlView.appendImageView(url: $0)
+            })
+        }
     }
     
     private func setNavigationController() {

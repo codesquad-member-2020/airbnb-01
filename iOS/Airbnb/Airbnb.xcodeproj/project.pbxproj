@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A519D3DB247D4760003ECC91 /* DetailImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519D3DA247D4760003ECC91 /* DetailImageViewModel.swift */; };
+		A519D3DD247D4C09003ECC91 /* DetailViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519D3DC247D4C09003ECC91 /* DetailViewUseCase.swift */; };
+		A519D3DF247D4C2E003ECC91 /* RoomDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519D3DE247D4C2E003ECC91 /* RoomDetail.swift */; };
 		A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FA332473C6C9009AC6F8 /* ShadowView.swift */; };
 		A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */; };
 		A5294A2D247ADEB3005B8A5E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5294A2C247ADEB3005B8A5E /* DetailViewController.swift */; };
@@ -47,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A519D3DA247D4760003ECC91 /* DetailImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewModel.swift; sourceTree = "<group>"; };
+		A519D3DC247D4C09003ECC91 /* DetailViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewUseCase.swift; sourceTree = "<group>"; };
+		A519D3DE247D4C2E003ECC91 /* RoomDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetail.swift; sourceTree = "<group>"; };
 		A520FA332473C6C9009AC6F8 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5294A2C247ADEB3005B8A5E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A519D3D9247D4731003ECC91 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				A519D3DA247D4760003ECC91 /* DetailImageViewModel.swift */,
+				A519D3DE247D4C2E003ECC91 /* RoomDetail.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
 		A5294A27247AD9E7005B8A5E /* RoomList */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +143,7 @@
 		A529F72D2476AFFB00844E8E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A519D3D9247D4731003ECC91 /* DetailView */,
 				A5294A29247ADA00005B8A5E /* Network */,
 				A5294A27247AD9E7005B8A5E /* RoomList */,
 			);
@@ -183,6 +199,7 @@
 			children = (
 				A589071F2476BDA7008FCD18 /* RoomListUseCase.swift */,
 				A536AB1A2479811C00C3F000 /* ImageUseCase.swift */,
+				A519D3DC247D4C09003ECC91 /* DetailViewUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -347,6 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A519D3DB247D4760003ECC91 /* DetailImageViewModel.swift in Sources */,
+				A519D3DD247D4C09003ECC91 /* DetailViewUseCase.swift in Sources */,
 				A529F72F2476B00800844E8E /* Room.swift in Sources */,
 				A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */,
 				A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */,
@@ -357,6 +376,7 @@
 				A58907182476B235008FCD18 /* EndPoint.swift in Sources */,
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
 				A536AB0D2478F9E900C3F000 /* RoomListViewModel.swift in Sources */,
+				A519D3DF247D4C2E003ECC91 /* RoomDetail.swift in Sources */,
 				A5294A2D247ADEB3005B8A5E /* DetailViewController.swift in Sources */,
 				A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */,
 				A586177F2474252C009CA661 /* LikeButton.swift in Sources */,

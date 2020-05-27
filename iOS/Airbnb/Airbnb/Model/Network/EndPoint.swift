@@ -11,4 +11,5 @@ import Foundation
 enum EndPoint {
     static let defaultURL = "http://13.125.127.249:8080/api/"
     static let RoomList = "accommodations/s/고흥?priceMax=100000&priceMin=10"
+    static let RoomDetail = "accommodations/"
 }

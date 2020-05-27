@@ -239,6 +239,9 @@
                         <viewLayoutGuide key="safeArea" id="Ub4-V7-i2f"/>
                     </view>
                     <navigationItem key="navigationItem" id="HK7-w0-MA9"/>
+                    <connections>
+                        <outlet property="scrollViewWithPageControlView" destination="Tva-gZ-kvi" id="9Nh-lX-vpw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYH-sN-V99" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
