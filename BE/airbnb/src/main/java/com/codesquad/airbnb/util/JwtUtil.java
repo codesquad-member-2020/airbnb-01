@@ -7,6 +7,8 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Map;
 import javax.annotation.PostConstruct;
@@ -22,10 +24,13 @@ public class JwtUtil {
 
   public static String create(Map<String, String> claims) {
     try {
+      Instant issuedAt = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+      Instant expiration = issuedAt
+          .plus(staticJwtProperties.getExpiredMinute(), ChronoUnit.MINUTES);
       JwtBuilder jwt = Jwts.builder()
           .setHeaderParam("typ", "JWT")
-          .setIssuedAt(new Date(System.currentTimeMillis()))
-          .setExpiration(new Date(System.currentTimeMillis() + JwtProperties.EXPIRED_TIME));
+          .setIssuedAt(Date.from(issuedAt))
+          .setExpiration(Date.from(expiration));
       for (String key : claims.keySet()) {
         jwt.claim(key, claims.get(key));
       }
@@ -37,7 +42,7 @@ public class JwtUtil {
   }
 
   private static byte[] generateKey() {
-    return staticJwtProperties.getSalt().getBytes(StandardCharsets.UTF_8);
+    return staticJwtProperties.getSecret().getBytes(StandardCharsets.UTF_8);
   }
 
   public static String parseEmail(String jwt) throws RuntimeException {
