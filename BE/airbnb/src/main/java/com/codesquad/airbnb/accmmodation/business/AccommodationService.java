@@ -21,8 +21,6 @@ public class AccommodationService {
   private final AccommodationRepository accommodationRepository;
 
   public List<AccommodationView> accommodation(AccommodationQuery query) {
-    query.makeFormed();
-
     Price minPrice = Price.builder().price(query.getPriceMin()).build();
     Price maxPrice = Price.builder().price(query.getPriceMax()).build();
     final int PAGE_ROW_COUNT = 10;
