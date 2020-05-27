@@ -7,7 +7,9 @@ import com.codesquad.airbnb.booking.data.BookingRepository;
 import com.codesquad.airbnb.booking.web.model.BookingCommand;
 import com.codesquad.airbnb.booking.web.model.BookingView;
 import com.codesquad.airbnb.user.data.User;
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +35,15 @@ public class BookingService {
     return BookingView.builder()
         .booking(savedBooking)
         .build();
+  }
+
+  public List<BookingView> showBookings() {
+    User user = User.builder().email("anonymous@gmail.com").build();
+
+    return bookingRepository.findBookingsByUser(user.getEmail()).stream()
+        .map(booking -> BookingView.builder()
+            .booking(booking)
+            .build())
+        .collect(Collectors.toList());
   }
 }
