@@ -16,6 +16,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private let detailViewUseCase = DetailViewUseCase(networkManager: NetworkManager())
     private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
+    private var detailRoomInformation: RoomDetail? {
+        didSet {
+            setMapView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +28,26 @@ class DetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setModelUseCase(_:)),
                                                name: .PostRoomId, object: nil)
-        let latitude =  35.3677151
-        let longitude = 127.0344808
-        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 12.0)
-        mapView.camera = camera
+        mapView.delegate = self
     }
     
-    @objc func setModelUseCase(_ notification: Notification) {
-        guard let roomId = notification.userInfo?["roomId"] as? Int else {return}
-        detailViewUseCase.requestDetailView(roomId: roomId, failureHandler: { [unowned self] in
-            AlertView.alertError(viewController: self, message: $0)
-            }, successHandler: { [unowned self] in
-                self.setImageUseCase(images: $0.images)
-        })
+    private func setMapView() {
+        guard let roomInfo = detailRoomInformation else {return}
+        let coordinate = roomInfo.coordinate
+        let camera = GMSCameraPosition.camera(withLatitude: coordinate.latitude, longitude: coordinate.longitude, zoom: 15.0)
+        mapView.camera = camera
+        mapView.settings.scrollGestures = false
+        mapView.settings.zoomGestures = false
+        setMarker(roomInfo: roomInfo)
+    }
+    
+    private func setMarker(roomInfo: RoomDetail) {
+        let coordinate = roomInfo.coordinate
+        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude))
+        
+        marker.title = roomInfo.name
+        marker.snippet = roomInfo.location
+        marker.map = mapView
     }
     
     private func setImageUseCase(images: [Image]) {
@@ -60,6 +72,17 @@ class DetailViewController: UIViewController {
         self.navigationController?.hidesBarsOnTap = true
     }
     
+    @objc func setModelUseCase(_ notification: Notification) {
+        guard let roomId = notification.userInfo?["roomId"] as? Int else {return}
+        detailViewUseCase.requestDetailView(roomId: roomId, failureHandler: { [unowned self] in
+            AlertView.alertError(viewController: self, message: $0)
+            }, successHandler: { [unowned self] in
+                self.setImageUseCase(images: $0.images)
+                self.detailRoomInformation = $0
+        })
+    }
+    
+    
     @objc func actionButtonPushed() {
     }
     
@@ -69,5 +92,15 @@ class DetailViewController: UIViewController {
     
     @objc func close() {
         dismiss(animated: true)
+    }
+}
+
+extension DetailViewController: GMSMapViewDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        mapView.alpha = 0.5
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        mapView.alpha = 1
     }
 }
