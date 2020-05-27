@@ -36,6 +36,8 @@
 		A58907222476C483008FCD18 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58907212476C483008FCD18 /* AlertView.swift */; };
 		A589072A2477A9C4008FCD18 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58907292477A9C4008FCD18 /* NetworkManager.swift */; };
 		A59D835D247E8B3A007944B3 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D835C247E8B3A007944B3 /* Secret.swift */; };
+		A59D835F247EA118007944B3 /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D835E247EA118007944B3 /* DetailMapViewController.swift */; };
+		A59D8361247EB1FD007944B3 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D8360247EB1FC007944B3 /* BorderButton.swift */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 		A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */; };
 		A5F2F11B247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */; };
@@ -85,6 +87,8 @@
 		A58907212476C483008FCD18 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		A58907292477A9C4008FCD18 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A59D835C247E8B3A007944B3 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		A59D835E247EA118007944B3 /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
+		A59D8360247EB1FC007944B3 /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 		A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWithPageControlView.swift; sourceTree = "<group>"; };
 		A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewWithPageControlView.xib; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				A5294A2C247ADEB3005B8A5E /* DetailViewController.swift */,
+				A59D835E247EA118007944B3 /* DetailMapViewController.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				A58907212476C483008FCD18 /* AlertView.swift */,
 				A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */,
 				A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */,
+				A59D8360247EB1FC007944B3 /* BorderButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -446,7 +452,9 @@
 				A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */,
 				A58907182476B235008FCD18 /* EndPoint.swift in Sources */,
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
+				A59D835F247EA118007944B3 /* DetailMapViewController.swift in Sources */,
 				A536AB0D2478F9E900C3F000 /* RoomListViewModel.swift in Sources */,
+				A59D8361247EB1FD007944B3 /* BorderButton.swift in Sources */,
 				A519D3DF247D4C2E003ECC91 /* RoomDetail.swift in Sources */,
 				A59D835D247E8B3A007944B3 /* Secret.swift in Sources */,
 				A5294A2D247ADEB3005B8A5E /* DetailViewController.swift in Sources */,

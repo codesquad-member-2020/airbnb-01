@@ -13,7 +13,14 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var scrollViewWithPageControlView: ScrollViewWithPageControlView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBAction func detailMap(_ sender: Any) {
+        guard let detailMapViewController = storyboard?.instantiateViewController(withIdentifier: "DetailMapViewController") as? DetailMapViewController else {return}
+        guard let roomInfo = detailRoomInformation else {return}
+        detailMapViewController.modalPresentationStyle = .fullScreen
+        detailMapViewController.roomInfo = roomInfo
+        self.navigationController?.pushViewController(detailMapViewController, animated: true)
+    }
+    
     private let detailViewUseCase = DetailViewUseCase(networkManager: NetworkManager())
     private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var detailRoomInformation: RoomDetail? {
@@ -28,7 +35,10 @@ class DetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setModelUseCase(_:)),
                                                name: .PostRoomId, object: nil)
-        mapView.delegate = self
+    }
+    
+    @objc func test(_ recognizer: UITapGestureRecognizer) {
+        print(recognizer.state)
     }
     
     private func setMapView() {
@@ -38,6 +48,9 @@ class DetailViewController: UIViewController {
         mapView.camera = camera
         mapView.settings.scrollGestures = false
         mapView.settings.zoomGestures = false
+        mapView.settings.rotateGestures = false
+        mapView.settings.tiltGestures = false
+        mapView.layer.cornerRadius = 20
         setMarker(roomInfo: roomInfo)
     }
     
@@ -69,7 +82,6 @@ class DetailViewController: UIViewController {
         
         self.navigationItem.setRightBarButtonItems([likeButton, actionButton], animated: true)
         self.navigationItem.setLeftBarButtonItems([closeButton], animated: true)
-        self.navigationController?.hidesBarsOnTap = true
     }
     
     @objc func setModelUseCase(_ notification: Notification) {
@@ -95,12 +107,6 @@ class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController: GMSMapViewDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        mapView.alpha = 0.5
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        mapView.alpha = 1
-    }
+extension Notification.Name {
+    static let OpenDetailMap = Notification.Name("OpenDetailMap")
 }
