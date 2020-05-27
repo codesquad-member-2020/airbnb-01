@@ -10,6 +10,7 @@ import lombok.Getter;
 public class BookingView {
 
   private final Long id;
+  private final Boolean isCanceled;
   private final LocalDate checkIn;
   private final LocalDate checkOut;
   private final Integer personCount;
@@ -19,6 +20,7 @@ public class BookingView {
   @Builder
   public BookingView(Booking booking) {
     this.id = booking.getId();
+    this.isCanceled = booking.getIsCanceled();
     this.checkIn = booking.getCheckIn();
     this.checkOut = booking.getCheckOut();
     this.personCount = booking.getPersonCount();

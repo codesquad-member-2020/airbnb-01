@@ -26,6 +26,9 @@ public class Booking {
   private Long id;
 
   @Column
+  private Boolean isCanceled;
+
+  @Column
   private String user;
 
   @Column
@@ -46,6 +49,7 @@ public class Booking {
 
   @Builder
   public Booking(User user, Accommodation accommodation, BookingCommand command) {
+    this.isCanceled = false;
     this.user = user.getEmail();
     this.checkIn = command.getCheckIn();
     this.checkOut = command.getCheckOut();
@@ -57,5 +61,13 @@ public class Booking {
   private long calculateTotalPrice(Accommodation accommodation, BookingCommand command) {
     long days = ChronoUnit.DAYS.between(checkIn, checkOut);
     return command.getPersonCount() * days * accommodation.getPrice().getPrice();
+  }
+
+  public void cancel(User loginUser) {
+    if (!user.equals(loginUser.getEmail())) {
+      throw new RuntimeException("예약자 정보가 틀립니다");
+    }
+
+    isCanceled = true;
   }
 }

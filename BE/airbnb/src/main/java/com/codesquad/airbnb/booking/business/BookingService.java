@@ -36,11 +36,22 @@ public class BookingService {
         .build();
   }
 
-  public List<BookingView> showBookings(User user) {
+  public List<BookingView> show(User user) {
     return bookingRepository.findBookingsByUser(user.getEmail()).stream()
         .map(booking -> BookingView.builder()
             .booking(booking)
             .build())
         .collect(Collectors.toList());
+  }
+
+  public BookingView cancel(Long bookingId, User loginUser) {
+    Booking foundBooking = bookingRepository.findById(bookingId)
+        .orElseThrow(NoSuchElementException::new);
+
+    foundBooking.cancel(loginUser);
+
+    return BookingView.builder()
+        .booking(bookingRepository.save(foundBooking))
+        .build();
   }
 }

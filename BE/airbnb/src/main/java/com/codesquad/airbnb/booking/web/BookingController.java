@@ -12,9 +12,10 @@ import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,9 +38,17 @@ public class BookingController {
 
   @ApiOperation(value = "예약된 숙소 정보를 가져옵니다", notes = "Authorization 이 없으면 anonymous@gmail.com 으로 강제됩니다")
   @GetMapping
-  public List<BookingView> showBookings(HttpServletRequest htpHttpServletRequest) {
+  public List<BookingView> show(HttpServletRequest htpHttpServletRequest) {
     User user = findUser(htpHttpServletRequest.getHeader("Authorization"));
-    return bookingService.showBookings(user);
+    return bookingService.show(user);
+  }
+
+  @ApiOperation(value = "특정 예약을 취소합니다", notes = "Authorization 이 없으면 anonymous@gmail.com 으로 강제됩니다")
+  @PutMapping("/{bookingId}")
+  public BookingView cancel(@PathVariable Long bookingId,
+      HttpServletRequest htpHttpServletRequest) {
+    User user = findUser(htpHttpServletRequest.getHeader("Authorization"));
+    return bookingService.cancel(bookingId, user);
   }
 
   private User findUser(String jwt) {
