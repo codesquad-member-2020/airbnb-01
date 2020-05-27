@@ -1,4 +1,4 @@
-package com.codesquad.airbnb.accmmodation.web;
+package com.codesquad.airbnb.accmmodation.web.model;
 
 import java.util.Objects;
 import lombok.Getter;
