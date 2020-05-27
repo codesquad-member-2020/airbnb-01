@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var scrollViewWithPageControlView: ScrollViewWithPageControlView!
     @IBOutlet weak var collectionView: UICollectionView!
     private let detailViewUseCase = DetailViewUseCase(networkManager: NetworkManager())
@@ -21,6 +23,10 @@ class DetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setModelUseCase(_:)),
                                                name: .PostRoomId, object: nil)
+        let latitude =  35.3677151
+        let longitude = 127.0344808
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 12.0)
+        mapView.camera = camera
     }
     
     @objc func setModelUseCase(_ notification: Notification) {
@@ -47,12 +53,10 @@ class DetailViewController: UIViewController {
         let heartButton = LikeButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         heartButton.addTarget(self, action: #selector(likeButtonPushed), for: .touchUpInside)
         let likeButton = UIBarButtonItem(customView: heartButton)
-        
         let actionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(actionButtonPushed))
         
         self.navigationItem.setRightBarButtonItems([likeButton, actionButton], animated: true)
         self.navigationItem.setLeftBarButtonItems([closeButton], animated: true)
-        
         self.navigationController?.hidesBarsOnTap = true
     }
     

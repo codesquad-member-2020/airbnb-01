@@ -204,14 +204,21 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ce5-l1-cMv">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-Dk-ZtU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-Dk-ZtU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-gZ-kvi" customClass="ScrollViewWithPageControlView" customModule="Airbnb" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="U81-7M-8pD"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8x7-bu-lPH" customClass="GMSMapView">
+                                                <rect key="frame" x="0.0" y="310" width="414" height="414"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="8x7-bu-lPH" secondAttribute="height" multiplier="1:1" id="x7F-gh-g3m"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -240,6 +247,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="HK7-w0-MA9"/>
                     <connections>
+                        <outlet property="mapView" destination="8x7-bu-lPH" id="LPz-s1-CEY"/>
                         <outlet property="scrollViewWithPageControlView" destination="Tva-gZ-kvi" id="9Nh-lX-vpw"/>
                     </connections>
                 </viewController>
