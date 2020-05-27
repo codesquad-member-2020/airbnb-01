@@ -6,11 +6,9 @@ import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.validation.annotation.Validated;
 
-@Slf4j
 @Validated
 @RequiredArgsConstructor
 @Getter
