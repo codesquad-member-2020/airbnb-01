@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookingButtonView" customModule="Airbnb" customModuleProvider="target">
             <connections>
+                <outlet property="bookingButton" destination="N86-z0-Rel" id="l6O-33-ui4"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="cx1-ed-2d4"/>
             </connections>
         </placeholder>

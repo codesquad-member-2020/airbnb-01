@@ -12,6 +12,7 @@ import GoogleMaps
 class DetailViewController: UIViewController {
     
     
+    @IBOutlet weak var bookingButtonView: BookingButtonView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapView: GMSMapView!
@@ -31,6 +32,9 @@ class DetailViewController: UIViewController {
         didSet {
             setAccommodationInfoView()
             setMapView()
+            bookingButtonView.bookingButton.isEnabled = true
+            bookingButtonView.bookingButton.setTitle("예약 가능 여부 확인", for: .normal)
+            bookingButtonView.bookingButton.alpha = 1
         }
     }
     

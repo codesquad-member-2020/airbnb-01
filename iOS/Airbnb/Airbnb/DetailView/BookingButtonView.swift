@@ -10,6 +10,7 @@ import UIKit
 
 class BookingButtonView: UIView {
     
+    @IBOutlet weak var bookingButton: BorderButton!
     @IBOutlet var contentView: UIView!
     private let xibName = String(describing: BookingButtonView.self)
     

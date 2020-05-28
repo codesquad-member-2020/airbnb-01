@@ -307,6 +307,7 @@
                     <connections>
                         <outlet property="accommodationInfoView" destination="bGc-Co-VfC" id="A1p-rl-HaN"/>
                         <outlet property="activityIndicator" destination="Qmo-a4-nae" id="wHh-eI-MQD"/>
+                        <outlet property="bookingButtonView" destination="bJl-qL-ELi" id="0NO-Nx-EgK"/>
                         <outlet property="mapView" destination="8x7-bu-lPH" id="LPz-s1-CEY"/>
                         <outlet property="scrollView" destination="ce5-l1-cMv" id="ukb-Pf-ENT"/>
                         <outlet property="scrollViewWithPageControlView" destination="Tva-gZ-kvi" id="9Nh-lX-vpw"/>
