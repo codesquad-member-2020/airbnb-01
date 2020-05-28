@@ -91,13 +91,11 @@ class RoomListViewController: UIViewController {
     
     @objc func collectionViewTouched(gesture: UITapGestureRecognizer) {
         let touchLocation:CGPoint = gesture.location(ofTouch: 0, in: roomListCollectionView)
+        guard let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {return}
         guard let indexPath = roomListCollectionView.indexPathForItem(at: touchLocation) else {return}
-        guard let navigationViewController = storyboard?.instantiateViewController(withIdentifier: "detailNavigationController") as? UINavigationController else {return}
         guard let roomId = viewModel?.roomListManager.room(of: indexPath.item).id else {return}
-        navigationViewController.modalPresentationStyle = .fullScreen
-        present(navigationViewController, animated: true, completion: {
-            NotificationCenter.default.post(name: .PostRoomId, object: self, userInfo: ["roomId" : roomId])
-        })
+        detailViewController.roomId = roomId
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
@@ -118,8 +116,4 @@ extension RoomListViewController: UICollectionViewDelegateFlowLayout {
             cell.alpha = 1
         })
     }
-}
-
-extension Notification.Name {
-    static let PostRoomId = Notification.Name("PostRoomId")
 }

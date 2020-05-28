@@ -26,6 +26,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wii-7q-5cV" customClass="ScrollViewWithPageControlView" customModule="Airbnb" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="454" height="227.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="imageViewCornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YLF-xf-kF1" userLabel="Information Stack View">
                     <rect key="frame" x="0.0" y="237.5" width="454" height="112.5"/>

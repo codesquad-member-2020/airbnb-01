@@ -14,6 +14,7 @@ import UIKit
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBInspectable var imageViewCornerRadius: CGFloat = 0
     
     private var xibName = String(describing: ScrollViewWithPageControlView.self)
     
@@ -45,7 +46,7 @@ import UIKit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalTo: self.imageScrollView.frameLayoutGuide.widthAnchor, multiplier: 1).isActive = true
         imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = imageViewCornerRadius
         pageControl.numberOfPages = imageStackView.subviews.count
     }
 }
