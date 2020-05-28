@@ -39,6 +39,8 @@
 		A59D8361247EB1FD007944B3 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59D8360247EB1FC007944B3 /* BorderButton.swift */; };
 		A5A8E068247FC38C006E4A71 /* AccommodationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A8E067247FC38C006E4A71 /* AccommodationInfoView.swift */; };
 		A5A8E06A247FC796006E4A71 /* AccommodationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5A8E069247FC796006E4A71 /* AccommodationInfoView.xib */; };
+		A5A8E06C247FDCEA006E4A71 /* BookingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A8E06B247FDCEA006E4A71 /* BookingButtonView.swift */; };
+		A5A8E06E247FDCF0006E4A71 /* BookingButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5A8E06D247FDCF0006E4A71 /* BookingButtonView.xib */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 		A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */; };
 		A5F2F11B247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */; };
@@ -91,6 +93,8 @@
 		A59D8360247EB1FC007944B3 /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		A5A8E067247FC38C006E4A71 /* AccommodationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationInfoView.swift; sourceTree = "<group>"; };
 		A5A8E069247FC796006E4A71 /* AccommodationInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccommodationInfoView.xib; sourceTree = "<group>"; };
+		A5A8E06B247FDCEA006E4A71 /* BookingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingButtonView.swift; sourceTree = "<group>"; };
+		A5A8E06D247FDCF0006E4A71 /* BookingButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingButtonView.xib; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 		A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWithPageControlView.swift; sourceTree = "<group>"; };
 		A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewWithPageControlView.xib; sourceTree = "<group>"; };
@@ -134,6 +138,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A5150548247FE256005E76FA /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				A5150549247FE265005E76FA /* ScrollViewWithPageControlView */,
+				A520FA332473C6C9009AC6F8 /* ShadowView.swift */,
+				A5D4C9972473EF8100555311 /* CornerRadiusView.swift */,
+				A58907212476C483008FCD18 /* AlertView.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		A5150549247FE265005E76FA /* ScrollViewWithPageControlView */ = {
+			isa = PBXGroup;
+			children = (
+				A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */,
+				A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */,
+			);
+			path = ScrollViewWithPageControlView;
+			sourceTree = "<group>";
+		};
+		A515054A247FE273005E76FA /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				A586177C2474249B009CA661 /* FilterButton.swift */,
+				A586177E2474252C009CA661 /* LikeButton.swift */,
+				A59D8360247EB1FC007944B3 /* BorderButton.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
 		A519D3D9247D4731003ECC91 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +203,8 @@
 				A59D835E247EA118007944B3 /* DetailMapViewController.swift */,
 				A5A8E067247FC38C006E4A71 /* AccommodationInfoView.swift */,
 				A5A8E069247FC796006E4A71 /* AccommodationInfoView.xib */,
+				A5A8E06B247FDCEA006E4A71 /* BookingButtonView.swift */,
+				A5A8E06D247FDCF0006E4A71 /* BookingButtonView.xib */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -278,15 +314,9 @@
 		A5D4C9962473D25500555311 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				A515054A247FE273005E76FA /* UIButton */,
+				A5150548247FE256005E76FA /* UIView */,
 				A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */,
-				A520FA332473C6C9009AC6F8 /* ShadowView.swift */,
-				A5D4C9972473EF8100555311 /* CornerRadiusView.swift */,
-				A586177C2474249B009CA661 /* FilterButton.swift */,
-				A586177E2474252C009CA661 /* LikeButton.swift */,
-				A58907212476C483008FCD18 /* AlertView.swift */,
-				A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */,
-				A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */,
-				A59D8360247EB1FC007944B3 /* BorderButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -385,6 +415,7 @@
 				A5F2F11B247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib in Resources */,
 				A586178524750126009CA661 /* RoomListCell.xib in Resources */,
 				A57CF7E12472CD24006FFE98 /* Main.storyboard in Resources */,
+				A5A8E06E247FDCF0006E4A71 /* BookingButtonView.xib in Resources */,
 				A5A8E06A247FC796006E4A71 /* AccommodationInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +497,7 @@
 				A58907222476C483008FCD18 /* AlertView.swift in Sources */,
 				A586178124742684009CA661 /* RoomListCell.swift in Sources */,
 				A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */,
+				A5A8E06C247FDCEA006E4A71 /* BookingButtonView.swift in Sources */,
 				A536AB1B2479811C00C3F000 /* ImageUseCase.swift in Sources */,
 				A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */,
 				A5A8E068247FC38C006E4A71 /* AccommodationInfoView.swift in Sources */,

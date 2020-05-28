@@ -196,16 +196,16 @@
         <!--Detail View Controller-->
         <scene sceneID="fVF-F3-g4V">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D4C-M7-bEB" customClass="DetailViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D4C-M7-bEB" customClass="DetailViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lj5-0O-qpB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ce5-l1-cMv">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="736"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-Dk-ZtU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="745.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="734.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-gZ-kvi" customClass="ScrollViewWithPageControlView" customModule="Airbnb" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -221,7 +221,7 @@
                                                     <constraint firstAttribute="height" constant="100" id="Sfh-6U-tEb"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KEj-QO-5fZ" userLabel="DivisionView">
+                                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KEj-QO-5fZ" userLabel="DivisionView">
                                                 <rect key="frame" x="20.5" y="420" width="373" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -235,15 +235,8 @@
                                                     <constraint firstAttribute="width" secondItem="8x7-bu-lPH" secondAttribute="height" multiplier="1.5:1" id="x7F-gh-g3m"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvW-jb-vmt" userLabel="DivisionView">
-                                                <rect key="frame" x="20.5" y="689.5" width="373" height="1"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="XSm-tj-ytS"/>
-                                                </constraints>
-                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMx-Xl-1m0" customClass="BorderButton" customModule="Airbnb" customModuleProvider="target">
-                                                <rect key="frame" x="20.5" y="700.5" width="373" height="45"/>
+                                                <rect key="frame" x="20.5" y="689.5" width="373" height="45"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="9MU-U2-PV3"/>
@@ -289,16 +282,24 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Qmo-a4-nae">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJl-qL-ELi" customClass="BookingButtonView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="780" width="414" height="82"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="ce5-l1-cMv" firstAttribute="height" secondItem="Ub4-V7-i2f" secondAttribute="height" multiplier="0.9" id="0O3-mH-CUd"/>
                             <constraint firstItem="Qmo-a4-nae" firstAttribute="centerX" secondItem="Lj5-0O-qpB" secondAttribute="centerX" id="GM3-St-mmq"/>
+                            <constraint firstItem="Ub4-V7-i2f" firstAttribute="trailing" secondItem="bJl-qL-ELi" secondAttribute="trailing" id="O0X-zB-yg1"/>
+                            <constraint firstItem="bJl-qL-ELi" firstAttribute="top" secondItem="ce5-l1-cMv" secondAttribute="bottom" id="PUI-T4-LrX"/>
                             <constraint firstItem="Ub4-V7-i2f" firstAttribute="trailing" secondItem="ce5-l1-cMv" secondAttribute="trailing" id="WGe-Of-Nsa"/>
-                            <constraint firstItem="Ub4-V7-i2f" firstAttribute="bottom" secondItem="ce5-l1-cMv" secondAttribute="bottom" id="b6N-ft-znK"/>
                             <constraint firstItem="ce5-l1-cMv" firstAttribute="leading" secondItem="Ub4-V7-i2f" secondAttribute="leading" id="eSp-jS-8jZ"/>
                             <constraint firstItem="ce5-l1-cMv" firstAttribute="top" secondItem="Ub4-V7-i2f" secondAttribute="top" id="hOL-fg-8hq"/>
+                            <constraint firstItem="bJl-qL-ELi" firstAttribute="leading" secondItem="Ub4-V7-i2f" secondAttribute="leading" id="ocx-D6-VGQ"/>
                             <constraint firstItem="Qmo-a4-nae" firstAttribute="centerY" secondItem="Lj5-0O-qpB" secondAttribute="centerY" id="sVz-4L-LCb"/>
+                            <constraint firstItem="Ub4-V7-i2f" firstAttribute="bottom" secondItem="bJl-qL-ELi" secondAttribute="bottom" id="y1W-Ws-mQT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ub4-V7-i2f"/>
                     </view>
