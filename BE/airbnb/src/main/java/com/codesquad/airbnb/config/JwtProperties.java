@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtProperties {
 
-  public static final Long EXPIRED_TIME = 1000L * 60L * 60L;
+  @Value("${jwt.secret}")
+  private String secret;
 
-  @Value("${jwt.salt}")
-  private String salt;
+  @Value("${jwt.expiredMinute}")
+  private Long expiredMinute;
 }

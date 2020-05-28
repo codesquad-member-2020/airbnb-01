@@ -8,12 +8,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class AuthProperties {
 
-  public static final String AUTHORIZE_URL = "https://github.com/login/oauth/authorize";
-  public static final String ACCESS_TOKEN_URL = "https://github.com/login/oauth/access_token";
-  public static final String USER_EMAIL_URL = "https://api.github.com/user/emails";
-
-  @Value("${auth.client-id}")
+  @Value("${auth.clientId}")
   private String clientId;
-  @Value("${auth.client-secret}")
+
+  @Value("${auth.clientSecret}")
   private String clientSecret;
+
+  @Value("${url.authorize}")
+  private String authorizeUrl;
+
+  @Value("${url.accessToken}")
+  private String accessTokenUrl;
+
+  @Value("${url.userEmail}")
+  private String userEmailUrl;
 }

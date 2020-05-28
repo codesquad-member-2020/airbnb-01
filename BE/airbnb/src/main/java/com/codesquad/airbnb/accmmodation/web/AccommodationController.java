@@ -1,6 +1,9 @@
 package com.codesquad.airbnb.accmmodation.web;
 
 import com.codesquad.airbnb.accmmodation.business.AccommodationService;
+import com.codesquad.airbnb.accmmodation.web.model.AccommodationQuery;
+import com.codesquad.airbnb.accmmodation.web.model.AccommodationView;
+import com.codesquad.airbnb.accmmodation.web.model.DetailAccommodationView;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;

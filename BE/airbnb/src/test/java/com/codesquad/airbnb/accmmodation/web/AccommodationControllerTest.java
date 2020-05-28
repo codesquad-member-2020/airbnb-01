@@ -12,6 +12,7 @@ import com.codesquad.airbnb.accmmodation.data.Accommodation;
 import com.codesquad.airbnb.accmmodation.data.Coordinate;
 import com.codesquad.airbnb.accmmodation.data.Price;
 import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
+import com.codesquad.airbnb.accmmodation.web.model.DetailAccommodationView;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

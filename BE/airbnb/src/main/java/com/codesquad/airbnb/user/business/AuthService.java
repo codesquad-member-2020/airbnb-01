@@ -1,7 +1,7 @@
 package com.codesquad.airbnb.user.business;
 
 import com.codesquad.airbnb.config.AuthProperties;
-import com.codesquad.airbnb.util.JwtToken;
+import com.codesquad.airbnb.util.JwtUtil;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -34,7 +34,7 @@ public class AuthService {
     headers.setContentType(new MediaType("application", "json", StandardCharsets.UTF_8));
 
     UriComponents builder = UriComponentsBuilder
-        .fromHttpUrl(AuthProperties.AUTHORIZE_URL)
+        .fromHttpUrl(authProperties.getAuthorizeUrl())
         .queryParam("client_id", authProperties.getClientId())
         .queryParam("scope", "user")
         .build(false);
@@ -50,7 +50,7 @@ public class AuthService {
 
     MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
     Map<String, String> header = new HashMap<>();
-    header.put("Authorization", JwtToken.create(emails.get(0)));
+    header.put("Authorization", JwtUtil.create(emails.get(0)));
     headers.setAll(header);
 
     return headers;
@@ -71,7 +71,7 @@ public class AuthService {
 
     HttpEntity<MultiValueMap> request = new HttpEntity<>(requestPayloads, headers);
     ResponseEntity<HashMap> response = new RestTemplate()
-        .postForEntity(AuthProperties.ACCESS_TOKEN_URL, request, HashMap.class);
+        .postForEntity(authProperties.getAccessTokenUrl(), request, HashMap.class);
 
     Map<String, String> map = response.getBody();
 
@@ -86,7 +86,8 @@ public class AuthService {
     headers.add("Authorization", "bearer " + accessToken);
 
     ResponseEntity<List> response = new RestTemplate().exchange(
-        AuthProperties.USER_EMAIL_URL, HttpMethod.GET, new HttpEntity<String>(headers), List.class);
+        authProperties.getUserEmailUrl(), HttpMethod.GET, new HttpEntity<String>(headers),
+        List.class);
 
     return response.getBody();
   }
