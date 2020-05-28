@@ -8,9 +8,9 @@ import org.springframework.util.ObjectUtils;
 public class AccommodationQuery {
 
   private String location;
-  private Long priceMin;
-  private Long priceMax;
-  private Integer pageCount;
+  private Long priceMin = 0L;
+  private Long priceMax = 1000000L;
+  private Integer pageCount = 0;
 
   public AccommodationQuery(String location, Long priceMin, Long priceMax, Integer pageCount) {
     if (ObjectUtils.isEmpty(location.trim())) {
@@ -18,13 +18,8 @@ public class AccommodationQuery {
     }
 
     this.location = location;
-
-    final long DEFAULT_MIN_PRICE = 0L;
-    final long DEFAULT_MAX_PRICE = 1000000L;
-    final int DEFAULT_PAGE_COUNT = 0;
-
-    this.priceMin = (Objects.isNull(priceMin)) ? DEFAULT_MIN_PRICE : priceMin;
-    this.priceMax = (Objects.isNull(priceMax)) ? DEFAULT_MAX_PRICE : priceMax;
-    this.pageCount = (Objects.isNull(pageCount)) ? DEFAULT_PAGE_COUNT : pageCount;
+    this.priceMin = (Objects.isNull(priceMin)) ? this.priceMin : priceMin;
+    this.priceMax = (Objects.isNull(priceMax)) ? this.priceMax : priceMax;
+    this.pageCount = (Objects.isNull(pageCount)) ? this.pageCount : pageCount;
   }
 }
