@@ -23,37 +23,31 @@ public class JwtUtil {
   private final JwtProperties jwtProperties;
 
   public static String create(Map<String, String> claims) {
-    try {
-      Instant issuedAt = Instant.now().truncatedTo(ChronoUnit.SECONDS);
-      Instant expiration = issuedAt
-          .plus(staticJwtProperties.getExpiredMinute(), ChronoUnit.MINUTES);
-      JwtBuilder jwt = Jwts.builder()
-          .setHeaderParam("typ", "JWT")
-          .setIssuedAt(Date.from(issuedAt))
-          .setExpiration(Date.from(expiration));
-      for (String key : claims.keySet()) {
-        jwt.claim(key, claims.get(key));
-      }
-
-      return jwt.signWith(SignatureAlgorithm.HS256, generateKey()).compact();
-    } catch (Exception e) {
-      throw new RuntimeException("JWT TOKEN 생성에 실패하였습니다");
+    Instant issuedAt = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+    Instant expiration = issuedAt
+        .plus(staticJwtProperties.getExpiredMinute(), ChronoUnit.MINUTES);
+    JwtBuilder jwt = Jwts.builder()
+        .setHeaderParam("typ", "JWT")
+        .setIssuedAt(Date.from(issuedAt))
+        .setExpiration(Date.from(expiration));
+    for (String key : claims.keySet()) {
+      jwt.claim(key, claims.get(key));
     }
+
+    return jwt.signWith(SignatureAlgorithm.HS256, generateKey()).compact();
   }
 
   private static byte[] generateKey() {
     return staticJwtProperties.getSecret().getBytes(StandardCharsets.UTF_8);
   }
 
-  public static String parseEmail(String jwt) throws RuntimeException {
-    try {
-      Claims claims = Jwts.parser().setSigningKey(generateKey()).parseClaimsJws(jwt)
-          .getBody();
+  public static String parseEmail(String jwt) {
+    Claims claims = Jwts.parser()
+        .setSigningKey(generateKey())
+        .parseClaimsJws(jwt)
+        .getBody();
 
-      return claims.get("email").toString();
-    } catch (Exception e) {
-      return null;
-    }
+    return claims.get("email").toString();
   }
 
   @PostConstruct
