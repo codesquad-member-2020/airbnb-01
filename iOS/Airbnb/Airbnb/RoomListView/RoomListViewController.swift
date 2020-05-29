@@ -24,7 +24,7 @@ class RoomListViewController: UIViewController {
         super.viewDidLoad()
         setButton()
         setCollectionView()
-        setUseCase()
+        setMockUseCase()
         guard #available(iOS 13, *) else {
             setTabBarImage()
             return

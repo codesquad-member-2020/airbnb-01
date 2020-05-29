@@ -32,9 +32,7 @@ class DetailViewController: UIViewController {
         didSet {
             setAccommodationInfoView()
             setMapView()
-            bookingButtonView.bookingButton.isEnabled = true
-            bookingButtonView.bookingButton.setTitle("예약 가능 여부 확인", for: .normal)
-            bookingButtonView.bookingButton.alpha = 1
+            setBookingButton()
         }
     }
     
@@ -49,6 +47,12 @@ class DetailViewController: UIViewController {
     
     deinit {
         self.navigationController?.delegate = nil
+    }
+    
+    private func setBookingButton() {
+        bookingButtonView.bookingButton.isEnabled = true
+        bookingButtonView.bookingButton.setTitle("예약 가능 여부 확인", for: .normal)
+        bookingButtonView.bookingButton.alpha = 1
     }
     
     private func setAccommodationInfoView() {

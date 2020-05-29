@@ -53,9 +53,7 @@ import UIKit
 
 extension ScrollViewWithPageControlView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentOffset: Int = Int(scrollView.contentOffset.x)
-        if currentOffset % Int(scrollView.frame.width) == 0 {
-            pageControl.currentPage = currentOffset / Int(scrollView.frame.width)
-        }
+        let page = round(scrollView.contentOffset.x / scrollView.frame.width)
+        pageControl.currentPage = Int(page)
     }
 }
