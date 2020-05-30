@@ -20,6 +20,7 @@
 		A536AB1724794AB000C3F000 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1624794AB000C3F000 /* Manager.swift */; };
 		A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB18247954F200C3F000 /* RoomListDataSource.swift */; };
 		A536AB1B2479811C00C3F000 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1A2479811C00C3F000 /* ImageUseCase.swift */; };
+		A55304482482762100ADE42A /* URLBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55304472482762100ADE42A /* URLBinder.swift */; };
 		A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7D72472CD24006FFE98 /* AppDelegate.swift */; };
 		A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */; };
 		A57CF7E12472CD24006FFE98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57CF7DF2472CD24006FFE98 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		A536AB1624794AB000C3F000 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		A536AB18247954F200C3F000 /* RoomListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListDataSource.swift; sourceTree = "<group>"; };
 		A536AB1A2479811C00C3F000 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
+		A55304472482762100ADE42A /* URLBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBinder.swift; sourceTree = "<group>"; };
 		A57CF7D42472CD24006FFE98 /* Airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57CF7D72472CD24006FFE98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A57CF7DB2472CD24006FFE98 /* RoomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				A519D3D9247D4731003ECC91 /* DetailView */,
 				A5294A29247ADA00005B8A5E /* Network */,
 				A5294A27247AD9E7005B8A5E /* RoomList */,
+				A55304472482762100ADE42A /* URLBinder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				A529F72F2476B00800844E8E /* Room.swift in Sources */,
 				A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */,
 				A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */,
+				A55304482482762100ADE42A /* URLBinder.swift in Sources */,
 				A536AB1724794AB000C3F000 /* Manager.swift in Sources */,
 				A589072A2477A9C4008FCD18 /* NetworkManager.swift in Sources */,
 				A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */,
