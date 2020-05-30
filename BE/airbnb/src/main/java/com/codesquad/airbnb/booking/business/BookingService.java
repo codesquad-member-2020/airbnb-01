@@ -51,10 +51,17 @@ public class BookingService {
     Booking foundBooking = bookingRepository.findById(bookingId)
         .orElseThrow(NoSuchElementException::new);
 
-    foundBooking.cancel(loginUser);
+    Booking canceledBooking;
+
+    if (foundBooking.isHost(loginUser)) {
+      foundBooking.cancel();
+      canceledBooking = bookingRepository.save(foundBooking);
+    } else {
+      throw new RuntimeException("예약자 정보가 틀립니다");
+    }
 
     return BookingView.builder()
-        .booking(bookingRepository.save(foundBooking))
+        .booking(canceledBooking)
         .build();
   }
 }
