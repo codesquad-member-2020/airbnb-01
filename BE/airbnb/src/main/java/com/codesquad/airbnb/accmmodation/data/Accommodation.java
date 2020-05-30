@@ -2,6 +2,7 @@ package com.codesquad.airbnb.accmmodation.data;
 
 import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import com.codesquad.airbnb.accmmodation.data.type.ImageType;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.persistence.Column;
@@ -48,11 +49,8 @@ public class Accommodation {
   @Embedded
   private Price price;
 
-  public List<Image> getImages(ImageType type) {
-    return images.stream()
-        .filter(image -> image.getType().equals(type))
-        .collect(Collectors.toList());
-  }
+  @ElementCollection(fetch = FetchType.EAGER)
+  private List<LocalDate> bookedDate;
 
   @Builder
   public Accommodation(Long id, String name, AccommodationType type, String location,
@@ -64,5 +62,19 @@ public class Accommodation {
     this.coordinate = coordinate;
     this.images = images;
     this.price = price;
+  }
+
+  public boolean isAlreadyBookedDate(LocalDate targetDate) {
+    return bookedDate.stream().anyMatch(bookedDate -> bookedDate.isEqual(targetDate));
+  }
+
+  public void addBookDate(LocalDate targetDate) {
+    bookedDate.add(targetDate);
+  }
+
+  public List<Image> getImages(ImageType type) {
+    return images.stream()
+        .filter(image -> image.getType().equals(type))
+        .collect(Collectors.toList());
   }
 }
