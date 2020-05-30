@@ -3,6 +3,7 @@ package com.codesquad.airbnb.accmmodation.data;
 import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.persistence.Column;
@@ -68,8 +69,20 @@ public class Accommodation {
     return bookedDate.stream().anyMatch(bookedDate -> bookedDate.isEqual(targetDate));
   }
 
-  public void addBookDate(LocalDate targetDate) {
-    bookedDate.add(targetDate);
+  public void addBookDate(LocalDate checkIn, LocalDate checkOut) {
+    List<LocalDate> targetDates = new ArrayList<>();
+    for (LocalDate targetDate = checkIn; targetDate.isBefore(checkOut);
+        targetDate = targetDate.plusDays(1)) {
+      targetDates.add(targetDate);
+    }
+
+    targetDates.forEach(targetDate -> {
+      if (isAlreadyBookedDate(targetDate)) {
+        throw new RuntimeException("이미 예약된 날짜 입니다 : " + targetDate);
+      }
+    });
+
+    bookedDate.addAll(targetDates);
   }
 
   public List<Image> getImages(ImageType type) {

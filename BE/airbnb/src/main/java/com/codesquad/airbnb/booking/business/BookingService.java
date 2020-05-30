@@ -7,7 +7,6 @@ import com.codesquad.airbnb.booking.data.BookingRepository;
 import com.codesquad.airbnb.booking.web.model.BookingCommand;
 import com.codesquad.airbnb.booking.web.model.BookingView;
 import com.codesquad.airbnb.user.data.User;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -24,19 +23,7 @@ public class BookingService {
   public BookingView booking(BookingCommand command, User user) {
     Accommodation accommodation = accommodationRepository.findById(command.getAccommodationId())
         .orElseThrow(NoSuchElementException::new);
-
-    for (LocalDate delimiterDate = command.getCheckIn();
-        delimiterDate.isBefore(command.getCheckOut()); delimiterDate = delimiterDate.plusDays(1)) {
-
-      if (accommodation.isAlreadyBookedDate(delimiterDate)) {
-        throw new RuntimeException("이미 예약된 날짜 입니다 : " + delimiterDate);
-      }
-    }
-
-    for (LocalDate delimiterDate = command.getCheckIn();
-        delimiterDate.isBefore(command.getCheckOut()); delimiterDate = delimiterDate.plusDays(1)) {
-      accommodation.addBookDate(delimiterDate);
-    }
+    accommodation.addBookDate(command.getCheckIn(), command.getCheckOut());
 
     Booking booking = Booking.builder()
         .user(user)
