@@ -32,7 +32,6 @@ public class BookingService {
         .build();
 
     Booking savedBooking = bookingRepository.save(booking);
-    accommodationRepository.save(accommodation);
 
     return BookingView.builder()
         .booking(savedBooking)
@@ -53,13 +52,12 @@ public class BookingService {
 
     Booking canceledBooking;
 
-    if (foundBooking.isHost(loginUser)) {
-      foundBooking.cancel();
-      canceledBooking = bookingRepository.save(foundBooking);
-
+    if (foundBooking.isRightUser(loginUser)) {
       Accommodation accommodation = foundBooking.getAccommodation();
       accommodation.cancel(foundBooking.getCheckIn(), foundBooking.getCheckOut());
-      accommodationRepository.save(accommodation);
+      foundBooking.cancel();
+
+      canceledBooking = bookingRepository.save(foundBooking);
     } else {
       throw new RuntimeException("예약자 정보가 틀립니다");
     }

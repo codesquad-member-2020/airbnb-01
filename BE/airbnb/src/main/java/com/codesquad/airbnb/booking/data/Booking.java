@@ -63,7 +63,7 @@ public class Booking {
     return command.getPersonCount() * days * accommodation.getPrice().getPrice();
   }
 
-  public boolean isHost(User loginUser) {
+  public boolean isRightUser(User loginUser) {
     return user.equals(loginUser.getEmail());
   }
 
