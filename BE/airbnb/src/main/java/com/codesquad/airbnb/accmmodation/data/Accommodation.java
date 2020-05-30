@@ -70,7 +70,7 @@ public class Accommodation {
     return bookedDate.stream().anyMatch(bookedDate -> bookedDate.isEqual(targetDate));
   }
 
-  private List<LocalDate> makeRangedDate(LocalDate checkIn, LocalDate checkOut) {
+  private List<LocalDate> makeTargetDates(LocalDate checkIn, LocalDate checkOut) {
     List<LocalDate> targetDates = new ArrayList<>();
     for (LocalDate targetDate = checkIn; targetDate.isBefore(checkOut.plusDays(1));
         targetDate = targetDate.plusDays(1)) {
@@ -80,7 +80,7 @@ public class Accommodation {
   }
 
   public void book(LocalDate checkIn, LocalDate checkOut) {
-    List<LocalDate> targetDates = makeRangedDate(checkIn, checkOut);
+    List<LocalDate> targetDates = makeTargetDates(checkIn, checkOut);
 
     targetDates.forEach(targetDate -> {
       if (isAlreadyBookedDate(targetDate)) {
@@ -92,7 +92,7 @@ public class Accommodation {
   }
 
   public void cancel(LocalDate checkIn, LocalDate checkOut) {
-    List<LocalDate> targetDates = makeRangedDate(checkIn, checkOut);
+    List<LocalDate> targetDates = makeTargetDates(checkIn, checkOut);
 
     targetDates.forEach(targetDate -> {
       if (isAlreadyBookedDate(targetDate)) {
