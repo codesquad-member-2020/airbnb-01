@@ -68,6 +68,7 @@ public class Booking {
   }
 
   public void cancel() {
+    accommodation.cancel(checkIn, checkOut);
     isCanceled = true;
   }
 }
