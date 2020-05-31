@@ -11,5 +11,7 @@ import Foundation
 class URLBinder {
     
     static let shared = URLBinder()
+    private var binder = [Int: [String: String]]()
+    
     private init() {}
 }

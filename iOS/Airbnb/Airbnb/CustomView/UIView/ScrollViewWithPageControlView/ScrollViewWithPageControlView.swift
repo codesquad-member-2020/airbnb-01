@@ -38,15 +38,15 @@ import UIKit
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    func appendImageView(url: URL) {
+    func appendImageView() {
         let imageView = UIImageView()
         imageStackView.addArrangedSubview(imageView)
-        imageView.image = UIImage(contentsOfFile: url.path)
-        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "codesquad")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalTo: self.imageScrollView.frameLayoutGuide.widthAnchor, multiplier: 1).isActive = true
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageViewCornerRadius
+        imageView.contentMode = .scaleAspectFit
         pageControl.numberOfPages = imageStackView.subviews.count
     }
 }

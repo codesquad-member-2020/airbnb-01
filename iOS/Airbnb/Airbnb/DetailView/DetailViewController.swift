@@ -100,8 +100,8 @@ class DetailViewController: UIViewController {
         images.forEach { [unowned self] in
             self.imageUseCase.requestImage(imageURLPath: $0.url, failureHandler: {
                 AlertView.alertError(viewController: self, message: $0)
-            }, completed: {
-                self.scrollViewWithPageControlView.appendImageView(url: $0)
+            }, completed: { _ in
+                self.scrollViewWithPageControlView.appendImageView()
             })
         }
     }

@@ -38,10 +38,9 @@ import UIKit
         self.nameLabel.text = room.name
         guard let price = room.price?.price else {return}
         self.priceLabel.text = String(price)
-    }
-    
-    func setImage(url: URL) {
-        scrollViewWithPageControlView.appendImageView(url: url)
+        for _ in 0..<room.images.count {
+            scrollViewWithPageControlView.appendImageView()
+        }
     }
     
     private func setXib() {
