@@ -33,6 +33,8 @@ class DetailViewController: UIViewController {
             setAccommodationInfoView()
             setMapView()
             setBookingButton()
+            guard let images = detailRoomInformation?.images else {return}
+            setImageUseCase(images: images)
         }
     }
     
@@ -41,12 +43,21 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.alpha = 0
+        setObserver()
         setNavigationController()
         setModelUseCase()
     }
     
     deinit {
         self.navigationController?.delegate = nil
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(urlBinded(_:)),
+                                               name: .URLBinded,
+                                               object: nil)
     }
     
     private func setBookingButton() {
@@ -97,13 +108,16 @@ class DetailViewController: UIViewController {
     }
     
     private func setImageUseCase(images: [Image]) {
-        images.forEach { [unowned self] in
-            self.imageUseCase.requestImage(imageURLPath: $0.url, failureHandler: {
-                AlertView.alertError(viewController: self, message: $0)
-            }, completed: { _ in
-                self.scrollViewWithPageControlView.appendImageView()
-            })
-        }
+        imageUseCase.enqueueImages(images: images, failureHandler: { [unowned self] in
+            AlertView.alertError(viewController: self, message: $0)
+            }, completed: { [unowned self] in
+                guard let roomId = self.roomId else {
+                    AlertView.alertError(viewController: self, message: "숙소 정보가 없습니다.")
+                    return
+                }
+                URLBinder.shared.updateURL(roomID: roomId, serverURL: $0, localURL: $1)
+            }
+        )
     }
     
     private func setNavigationController() {
@@ -118,14 +132,37 @@ class DetailViewController: UIViewController {
         self.navigationItem.setLeftBarButtonItems([closeButton], animated: true)
     }
     
-    func setModelUseCase() {
+    private func setModelUseCase() {
         guard let roomId = roomId else {return}
         detailViewUseCase.requestDetailView(roomId: roomId, failureHandler: { [unowned self] in
             AlertView.alertError(viewController: self, message: $0)
             }, successHandler: { [unowned self] in
-                self.setImageUseCase(images: $0.images)
+                URLBinder.shared.registerRoomID(room: $0)
+                for _ in 0..<$0.images.count {
+                    self.scrollViewWithPageControlView.appendImageView()
+                }
                 self.detailRoomInformation = $0
         })
+    }
+    
+    private func updatedIndices(url: String) -> [Int] {
+        var indices = [Int]()
+        guard let roomInfo = detailRoomInformation else {return [Int]()}
+        for (index, image) in roomInfo.images.enumerated() {
+            if image.url == url {
+                indices.append(index)
+            }
+        }
+        
+        return indices
+    }
+    
+    @objc func urlBinded(_ notification: Notification) {
+        guard let serverURL = notification.userInfo?["serverURL"] as? String else {return}
+        guard let roomId = roomId else {return}
+        guard let localURL = URLBinder.shared.localUrl(index: roomId, of: serverURL) else {return}
+        let indices = updatedIndices(url: serverURL)
+        scrollViewWithPageControlView.updateImage(indices: indices, url: localURL)
     }
     
     @objc func actionButtonPushed() {

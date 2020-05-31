@@ -43,8 +43,8 @@ import UIKit
         }
     }
     
-    func updateImage(index: Int, url: URL) {
-        scrollViewWithPageControlView.updateImage(index: index, url: url)
+    func updateImage(indices: [Int], url: URL) {
+        scrollViewWithPageControlView.updateImage(indices: indices, url: url)
     }
     
     private func setXib() {

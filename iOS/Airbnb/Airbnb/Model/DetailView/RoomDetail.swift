@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct RoomDetail: Decodable {
+struct RoomDetail: Decodable, HasImage {
     var coordinate: Coordinate
     var id: Int
     var images: [Image]

@@ -15,8 +15,9 @@ class URLBinder {
     
     private init() {}
     
-    func registerRoomID(room: Room) {
+    func registerRoomID(room: HasImage) {
         room.images.forEach {
+            guard binder[room.id]?[$0.url] == nil else {return}
             guard binder[room.id] != nil else {
                 binder[room.id] = [String: URL?]()
                 binder[room.id]?.updateValue(nil, forKey: $0.url)
@@ -31,11 +32,11 @@ class URLBinder {
         return dic?[url]!
     }
     
-    func updateURL(roomID: Int ,serverURL: String, localURL: URL) {
+    func updateURL(roomID: Int, serverURL: String, localURL: URL) {
         binder[roomID]?.updateValue(localURL, forKey: serverURL)
         NotificationCenter.default.post(name: .URLBinded,
                                         object: nil,
-                                        userInfo: ["roomID" : roomID])
+                                        userInfo: ["roomID" : roomID, "serverURL" : serverURL])
     }
 }
 

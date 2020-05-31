@@ -26,14 +26,26 @@ class RoomListDataSource: NSObject, UICollectionViewDataSource {
         cell.likeButton.setRadius()
         guard let room = viewModel?.roomListManager.room(of: indexPath.item) else {return cell}
         cell.configure(about: room)
-        for (index, image) in room.images.enumerated() {
+        for image in room.images {
             guard let url = URLBinder.shared.localUrl(index: room.id, of: image.url) else {
                 return cell
             }
-            cell.updateImage(index: index, url: url)
+            let indices = updatedIndices(room: room, url: image.url)
+            cell.updateImage(indices: indices, url: url)
         }
         
         return cell
+    }
+    
+    private func updatedIndices(room: HasImage, url: String) -> [Int] {
+        var indices = [Int]()
+        for (index, image) in room.images.enumerated() {
+            if image.url == url {
+                indices.append(index)
+            }
+        }
+        
+        return indices
     }
 }
 
