@@ -30,22 +30,11 @@ class RoomListDataSource: NSObject, UICollectionViewDataSource {
             guard let url = URLBinder.shared.localUrl(index: room.id, of: image.url) else {
                 return cell
             }
-            let indices = updatedIndices(room: room, url: image.url)
+            let indices = room.updatedIndices(url: image.url)
             cell.updateImage(indices: indices, url: url)
         }
         
         return cell
-    }
-    
-    private func updatedIndices(room: HasImage, url: String) -> [Int] {
-        var indices = [Int]()
-        for (index, image) in room.images.enumerated() {
-            if image.url == url {
-                indices.append(index)
-            }
-        }
-        
-        return indices
     }
 }
 

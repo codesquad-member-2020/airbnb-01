@@ -145,23 +145,11 @@ class DetailViewController: UIViewController {
         })
     }
     
-    private func updatedIndices(url: String) -> [Int] {
-        var indices = [Int]()
-        guard let roomInfo = detailRoomInformation else {return [Int]()}
-        for (index, image) in roomInfo.images.enumerated() {
-            if image.url == url {
-                indices.append(index)
-            }
-        }
-        
-        return indices
-    }
-    
     @objc func urlBinded(_ notification: Notification) {
         guard let serverURL = notification.userInfo?["serverURL"] as? String else {return}
         guard let roomId = roomId else {return}
         guard let localURL = URLBinder.shared.localUrl(index: roomId, of: serverURL) else {return}
-        let indices = updatedIndices(url: serverURL)
+        guard let indices = detailRoomInformation?.updatedIndices(url: serverURL) else {return}
         scrollViewWithPageControlView.updateImage(indices: indices, url: localURL)
     }
     

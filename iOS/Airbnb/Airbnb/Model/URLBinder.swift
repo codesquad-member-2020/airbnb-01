@@ -15,7 +15,7 @@ class URLBinder {
     
     private init() {}
     
-    func registerRoomID(room: HasImage) {
+    func registerRoomID(room: ImageUpdatable) {
         room.images.forEach {
             guard binder[room.id]?[$0.url] == nil else {return}
             guard binder[room.id] != nil else {

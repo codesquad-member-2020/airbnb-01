@@ -8,12 +8,7 @@
 
 import Foundation
 
-protocol HasImage {
-    var id: Int { get set }
-    var images: [Image] {get set}
-}
-
-struct Room: Decodable, HasImage {
+struct Room: Decodable, ImageUpdatable {
     var id: Int
     var images: [Image]
     var name: String
