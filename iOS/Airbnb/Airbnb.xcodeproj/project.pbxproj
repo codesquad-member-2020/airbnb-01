@@ -17,7 +17,7 @@
 		A529F72C24769E8100844E8E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A529F72B24769E8100844E8E /* Alamofire */; };
 		A529F72F2476B00800844E8E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529F72E2476B00800844E8E /* Room.swift */; };
 		A536AB0D2478F9E900C3F000 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB0C2478F9E900C3F000 /* RoomListViewModel.swift */; };
-		A536AB1724794AB000C3F000 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1624794AB000C3F000 /* Manager.swift */; };
+		A536AB1724794AB000C3F000 /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1624794AB000C3F000 /* RoomManager.swift */; };
 		A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB18247954F200C3F000 /* RoomListDataSource.swift */; };
 		A536AB1B2479811C00C3F000 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1A2479811C00C3F000 /* ImageUseCase.swift */; };
 		A55304482482762100ADE42A /* URLBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55304472482762100ADE42A /* URLBinder.swift */; };
@@ -68,7 +68,7 @@
 		A5294A2C247ADEB3005B8A5E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A529F72E2476B00800844E8E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		A536AB0C2478F9E900C3F000 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
-		A536AB1624794AB000C3F000 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		A536AB1624794AB000C3F000 /* RoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		A536AB18247954F200C3F000 /* RoomListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListDataSource.swift; sourceTree = "<group>"; };
 		A536AB1A2479811C00C3F000 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
 		A55304472482762100ADE42A /* URLBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBinder.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 			children = (
 				A529F72E2476B00800844E8E /* Room.swift */,
 				A536AB0C2478F9E900C3F000 /* RoomListViewModel.swift */,
-				A536AB1624794AB000C3F000 /* Manager.swift */,
+				A536AB1624794AB000C3F000 /* RoomManager.swift */,
 			);
 			path = RoomList;
 			sourceTree = "<group>";
@@ -485,7 +485,7 @@
 				A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */,
 				A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */,
 				A55304482482762100ADE42A /* URLBinder.swift in Sources */,
-				A536AB1724794AB000C3F000 /* Manager.swift in Sources */,
+				A536AB1724794AB000C3F000 /* RoomManager.swift in Sources */,
 				A589072A2477A9C4008FCD18 /* NetworkManager.swift in Sources */,
 				A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */,
 				A58907182476B235008FCD18 /* EndPoint.swift in Sources */,

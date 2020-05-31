@@ -25,10 +25,26 @@ class RoomListViewController: UIViewController {
         setButton()
         setCollectionView()
         setUseCase()
+        setObserver()
         guard #available(iOS 13, *) else {
             setTabBarImage()
             return
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(viewModelChanged),
+                                               name: .ViewModelChanged,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(urlBinded(_:)),
+                                               name: .URLBinded,
+                                               object: nil)
     }
     
     private func setCollectionView() {
@@ -39,7 +55,7 @@ class RoomListViewController: UIViewController {
     
     private func setMockUseCase() {
         useCase.requestMockRoomList(successHandler: { [unowned self] in
-            self.viewModel = RoomListViewModel(roomListManager: Manager<Room>(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
+            self.viewModel = RoomListViewModel(roomListManager: RoomManager(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
                 switch manager.editingStyle {
                 case .none:
                     self.roomListCollectionView.reloadData()
@@ -60,7 +76,7 @@ class RoomListViewController: UIViewController {
                 AlertView.alertError(viewController: self, message: $0)
             },
             successHandler: { [unowned self] in
-                self.viewModel = RoomListViewModel(roomListManager: Manager<Room>(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
+                self.viewModel = RoomListViewModel(roomListManager: RoomManager(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
                     switch manager.editingStyle {
                     case .none:
                         self.roomListCollectionView.reloadData()
@@ -89,6 +105,24 @@ class RoomListViewController: UIViewController {
             $0.setRadius()
         }
         roomListCollectionView.delaysContentTouches = false
+    }
+    
+    @objc func urlBinded(_ notification: Notification) {
+        guard let roomID = notification.userInfo?["roomID"] as? Int else {return}
+        guard let index = viewModel?.roomListManager.index(findBy: roomID) else {return}
+        let updateCellIndexPath = IndexPath(item: index, section: 0)
+        roomListCollectionView.reloadItems(at: [updateCellIndexPath])
+    }
+    
+    @objc func viewModelChanged() {
+        viewModel?.roomListManager.roomList.forEach {
+            let room = $0
+            imageUseCase.enqueueImages(images: room.images, failureHandler: { [unowned self] in
+                AlertView.alertError(viewController: self, message: $0)
+            }, completed: {
+                URLBinder.shared.updateURL(roomID: room.id, serverURL: $0, localURL: $1)
+            })
+        }
     }
     
     @objc func collectionViewTouched(gesture: UITapGestureRecognizer) {

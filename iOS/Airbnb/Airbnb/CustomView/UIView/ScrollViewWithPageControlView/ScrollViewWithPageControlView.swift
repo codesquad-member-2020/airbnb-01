@@ -49,6 +49,16 @@ import UIKit
         imageView.contentMode = .scaleAspectFit
         pageControl.numberOfPages = imageStackView.subviews.count
     }
+    
+    func updateImage(index: Int, url: URL) {
+        for (index, subView) in imageStackView.subviews.enumerated() {
+            guard let imageView = subView as? UIImageView else {return}
+            if index == index {
+                imageView.contentMode = .scaleAspectFill
+                imageView.image = UIImage(contentsOfFile: url.path)
+            }
+        }
+    }
 }
 
 extension ScrollViewWithPageControlView: UIScrollViewDelegate {

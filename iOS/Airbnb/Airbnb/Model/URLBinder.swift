@@ -11,14 +11,14 @@ import Foundation
 class URLBinder {
     
     static let shared = URLBinder()
-    private var binder = [Int: [String: String?]]()
+    private var binder = [Int: [String: URL?]]()
     
     private init() {}
     
     func registerRoomID(room: Room) {
         room.images.forEach {
             guard binder[room.id] != nil else {
-                binder[room.id] = [String: String?]()
+                binder[room.id] = [String: URL?]()
                 binder[room.id]?.updateValue(nil, forKey: $0.url)
                 return
             }
@@ -26,8 +26,19 @@ class URLBinder {
         }
     }
     
-    func localUrl(of url: String) -> String? {
-        
-        return nil
+    func localUrl(index: Int, of url: String) -> URL? {
+        let dic = binder[index]
+        return dic?[url]!
     }
+    
+    func updateURL(roomID: Int ,serverURL: String, localURL: URL) {
+        binder[roomID]?.updateValue(localURL, forKey: serverURL)
+        NotificationCenter.default.post(name: .URLBinded,
+                                        object: nil,
+                                        userInfo: ["roomID" : roomID])
+    }
+}
+
+extension Notification.Name {
+    static let URLBinded = Notification.Name("URLBinded")
 }

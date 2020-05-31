@@ -15,7 +15,7 @@ protocol ViewModelBinding {
 class RoomListViewModel: ViewModelBinding {
 
     typealias Model = Room
-    typealias ModelManager = Manager<Model>
+    typealias ModelManager = RoomManager
     private(set) var roomListManager: ModelManager {
         didSet {
             handler(roomListManager)

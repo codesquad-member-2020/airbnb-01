@@ -10,8 +10,12 @@ import UIKit
 
 class RoomListDataSource: NSObject, UICollectionViewDataSource {
     
-    var viewModel: RoomListViewModel?
-    private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
+    var viewModel: RoomListViewModel? {
+        didSet {
+            NotificationCenter.default.post(name: .ViewModelChanged,
+                                            object: nil)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.roomListManager.count ?? 0
@@ -22,7 +26,17 @@ class RoomListDataSource: NSObject, UICollectionViewDataSource {
         cell.likeButton.setRadius()
         guard let room = viewModel?.roomListManager.room(of: indexPath.item) else {return cell}
         cell.configure(about: room)
+        for (index, image) in room.images.enumerated() {
+            guard let url = URLBinder.shared.localUrl(index: room.id, of: image.url) else {
+                return cell
+            }
+            cell.updateImage(index: index, url: url)
+        }
         
         return cell
     }
+}
+
+extension Notification.Name {
+    static let ViewModelChanged = Notification.Name("viewModelChanged")
 }

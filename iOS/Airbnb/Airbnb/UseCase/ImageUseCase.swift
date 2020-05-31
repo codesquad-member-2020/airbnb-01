@@ -17,6 +17,15 @@ struct ImageUseCase {
         self.networkManager = networkManager
     }
     
+    func enqueueImages(images: [Image], failureHandler: @escaping (String) -> (), completed: @escaping(String ,URL) -> ()) {
+        images.forEach {
+            let url = $0.url
+            requestImage(imageURLPath: url, failureHandler: failureHandler, completed: {
+                completed(url, $0)
+            })
+        }
+    }
+    
     func requestImage(imageURLPath: String, failureHandler: @escaping (String) -> (), completed: @escaping(URL) -> ()) {
         guard let lastComponet = URL(string: imageURLPath)?.lastPathComponent else {
             failureHandler("잘못된 url 입니다.")

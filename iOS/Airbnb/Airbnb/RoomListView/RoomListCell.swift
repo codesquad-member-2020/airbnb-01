@@ -43,6 +43,10 @@ import UIKit
         }
     }
     
+    func updateImage(index: Int, url: URL) {
+        scrollViewWithPageControlView.updateImage(index: index, url: url)
+    }
+    
     private func setXib() {
         let bundle = Bundle(for: RoomListCell.self)
         bundle.loadNibNamed(xibName, owner: self, options: nil)
