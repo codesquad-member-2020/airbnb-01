@@ -70,7 +70,9 @@ class RoomListViewController: UIViewController {
                         }, completion: nil)
                     }
                 })
-                
+                $0.forEach {
+                    URLBinder.shared.registerRoomID(room: $0)
+                }
                 self.dataSource.viewModel = self.viewModel
         })
     }

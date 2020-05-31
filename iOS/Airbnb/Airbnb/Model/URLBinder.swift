@@ -11,7 +11,23 @@ import Foundation
 class URLBinder {
     
     static let shared = URLBinder()
-    private var binder = [Int: [String: String]]()
+    private var binder = [Int: [String: String?]]()
     
     private init() {}
+    
+    func registerRoomID(room: Room) {
+        room.images.forEach {
+            guard binder[room.id] != nil else {
+                binder[room.id] = [String: String?]()
+                binder[room.id]?.updateValue(nil, forKey: $0.url)
+                return
+            }
+            binder[room.id]?.updateValue(nil, forKey: $0.url)
+        }
+    }
+    
+    func localUrl(of url: String) -> String? {
+        
+        return nil
+    }
 }
