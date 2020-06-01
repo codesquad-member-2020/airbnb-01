@@ -2,7 +2,10 @@ package com.codesquad.airbnb.accmmodation.data;
 
 import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import com.codesquad.airbnb.accmmodation.data.type.ImageType;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -48,11 +51,8 @@ public class Accommodation {
   @Embedded
   private Price price;
 
-  public List<Image> getImages(ImageType type) {
-    return images.stream()
-        .filter(image -> image.getType().equals(type))
-        .collect(Collectors.toList());
-  }
+  @ElementCollection(fetch = FetchType.EAGER)
+  private Set<LocalDate> bookedDate;
 
   @Builder
   public Accommodation(Long id, String name, AccommodationType type, String location,
@@ -64,5 +64,46 @@ public class Accommodation {
     this.coordinate = coordinate;
     this.images = images;
     this.price = price;
+  }
+
+  public boolean isAlreadyBookedDate(LocalDate targetDate) {
+    return bookedDate.stream().anyMatch(bookedDate -> bookedDate.isEqual(targetDate));
+  }
+
+  private List<LocalDate> makeTargetDates(LocalDate checkIn, LocalDate checkOut) {
+    List<LocalDate> targetDates = new ArrayList<>();
+    for (LocalDate targetDate = checkIn; targetDate.isBefore(checkOut.plusDays(1));
+        targetDate = targetDate.plusDays(1)) {
+      targetDates.add(targetDate);
+    }
+    return targetDates;
+  }
+
+  public void book(LocalDate checkIn, LocalDate checkOut) {
+    List<LocalDate> targetDates = makeTargetDates(checkIn, checkOut);
+
+    targetDates.forEach(targetDate -> {
+      if (isAlreadyBookedDate(targetDate)) {
+        throw new RuntimeException("이미 예약된 날짜 입니다 : " + targetDate);
+      }
+    });
+
+    bookedDate.addAll(targetDates);
+  }
+
+  public void cancel(LocalDate checkIn, LocalDate checkOut) {
+    List<LocalDate> targetDates = makeTargetDates(checkIn, checkOut);
+
+    targetDates.forEach(targetDate -> {
+      if (isAlreadyBookedDate(targetDate)) {
+        bookedDate.remove(targetDate);
+      }
+    });
+  }
+
+  public List<Image> getImages(ImageType type) {
+    return images.stream()
+        .filter(image -> image.getType().equals(type))
+        .collect(Collectors.toList());
   }
 }

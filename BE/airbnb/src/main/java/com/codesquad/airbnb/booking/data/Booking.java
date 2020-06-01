@@ -63,11 +63,12 @@ public class Booking {
     return command.getPersonCount() * days * accommodation.getPrice().getPrice();
   }
 
-  public void cancel(User loginUser) {
-    if (!user.equals(loginUser.getEmail())) {
-      throw new RuntimeException("예약자 정보가 틀립니다");
-    }
+  public boolean isRightUser(User loginUser) {
+    return user.equals(loginUser.getEmail());
+  }
 
+  public void cancel() {
+    accommodation.cancel(checkIn, checkOut);
     isCanceled = true;
   }
 }
