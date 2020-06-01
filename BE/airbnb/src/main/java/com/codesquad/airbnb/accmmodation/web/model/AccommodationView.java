@@ -3,9 +3,11 @@ package com.codesquad.airbnb.accmmodation.web.model;
 import com.codesquad.airbnb.accmmodation.data.Accommodation;
 import com.codesquad.airbnb.accmmodation.data.Image;
 import com.codesquad.airbnb.accmmodation.data.Price;
+import com.codesquad.airbnb.accmmodation.data.Review;
 import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import java.util.List;
+import java.util.Set;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -18,6 +20,7 @@ public class AccommodationView {
   private final String location;
   private final Price price;
   private final List<Image> images;
+  private final float avgStar;
 
   @Builder
   public AccommodationView(Accommodation accommodation) {
@@ -27,5 +30,12 @@ public class AccommodationView {
     this.location = accommodation.getLocation();
     this.price = accommodation.getPrice();
     this.images = accommodation.getImages(ImageType.MAIN);
+
+    float temp = 0;
+    Set<Review> reviews = accommodation.getReviews();
+    for (Review review : reviews) {
+      temp += review.getStar();
+    }
+    avgStar = temp / reviews.size();
   }
 }

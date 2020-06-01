@@ -3,6 +3,7 @@ package com.codesquad.airbnb.accmmodation.data;
 import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import com.codesquad.airbnb.accmmodation.data.type.ImageType;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -48,12 +49,6 @@ public class Accommodation {
   @Embedded
   private Price price;
 
-  public List<Image> getImages(ImageType type) {
-    return images.stream()
-        .filter(image -> image.getType().equals(type))
-        .collect(Collectors.toList());
-  }
-
   @Builder
   public Accommodation(Long id, String name, AccommodationType type, String location,
       Coordinate coordinate, List<Image> images, Price price) {
@@ -64,5 +59,14 @@ public class Accommodation {
     this.coordinate = coordinate;
     this.images = images;
     this.price = price;
+  }
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  private Set<Review> reviews;
+
+  public List<Image> getImages(ImageType type) {
+    return images.stream()
+        .filter(image -> image.getType().equals(type))
+        .collect(Collectors.toList());
   }
 }

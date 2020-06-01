@@ -3,8 +3,10 @@ package com.codesquad.airbnb.accmmodation.web.model;
 import com.codesquad.airbnb.accmmodation.data.Accommodation;
 import com.codesquad.airbnb.accmmodation.data.Coordinate;
 import com.codesquad.airbnb.accmmodation.data.Image;
+import com.codesquad.airbnb.accmmodation.data.Review;
 import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import java.util.List;
+import java.util.Set;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -17,6 +19,7 @@ public class DetailAccommodationView {
   private final String location;
   private final Coordinate coordinate;
   private final List<Image> images;
+  private final Set<Review> reviews;
 
   @Builder
   public DetailAccommodationView(Accommodation accommodation) {
@@ -26,5 +29,6 @@ public class DetailAccommodationView {
     this.location = accommodation.getLocation();
     this.coordinate = accommodation.getCoordinate();
     this.images = accommodation.getImages();
+    this.reviews = accommodation.getReviews();
   }
 }
