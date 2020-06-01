@@ -8,16 +8,10 @@
 
 import Foundation
 
-protocol ModelManageble {
-    associatedtype model
-}
-
-struct Manager<T>: ModelManageble {
-    
-    typealias model = T
+struct RoomManager {
     
     enum EditingStyle {
-        case insert(T, IndexPath)
+        case insert(Room, IndexPath)
         case none
     }
     
@@ -38,9 +32,18 @@ struct Manager<T>: ModelManageble {
         }
     }
     
-    private(set) var roomList: [T]
+    private(set) var roomList: [Room]
     
-    func room(of index: Int) -> T {
+    func room(of index: Int) -> Room {
         return roomList[index]
+    }
+    
+    func index(findBy id: Int) -> Int? {
+        for (index, room) in roomList.enumerated() {
+            if room.id == id {
+                return index
+            }
+        }
+        return nil
     }
 }

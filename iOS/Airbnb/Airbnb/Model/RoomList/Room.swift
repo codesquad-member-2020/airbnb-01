@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Room: Decodable {
+struct Room: Decodable, ImageUpdatable {
     var id: Int
     var images: [Image]
     var name: String
-    var price: Price
+    var price: Price?
     var type: String
 }
 

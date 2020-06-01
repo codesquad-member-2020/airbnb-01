@@ -12,14 +12,19 @@ import Alamofire
 protocol NetworkManageable {
     typealias DataResult = Result<Data?, AFError>
     typealias URLResult = Result<URL?, AFError>
-    func loadResource(handler: @escaping (DataResult) -> ())
+    func loadResource(requestURL: String, handler: @escaping (DataResult) -> ())
     func downloadResource(urlPath: String, handler: @escaping (URLResult) -> ())
 }
 
 class NetworkManager: NetworkManageable {
-    
-    func loadResource(handler: @escaping (DataResult) -> ()) {
-        AF.request(EndPoint.defaultURL + EndPoint.RoomList).validate(statusCode: 200..<300).response {
+
+    func loadResource(requestURL: String, handler: @escaping (DataResult) -> ()) {
+        guard let url = (requestURL).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {
+            handler(.failure(.invalidURL(url: EndPoint.defaultURL + EndPoint.RoomList)))
+            return
+        }
+        
+        AF.request(url).validate(statusCode: 200..<300).response {
             handler($0.result)
         }
     }

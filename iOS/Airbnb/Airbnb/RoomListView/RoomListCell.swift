@@ -13,10 +13,8 @@ import UIKit
     private let xibName = String(describing: RoomListCell.self)
     
     @IBOutlet var view: UIView!
+    @IBOutlet weak var scrollViewWithPageControlView: ScrollViewWithPageControlView!
     @IBOutlet weak var likeButton: LikeButton!
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var imageScrollView: UIScrollView!
-    @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var ratingImage: UIImageView!
     @IBOutlet weak var superHostImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,8 +23,6 @@ import UIKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setXib()
-        imageScrollView.delegate = self
-        pageControl.numberOfPages = imageStackView.subviews.count
         guard #available(iOS 13, *) else {
             setSymbolImages()
             return
@@ -36,24 +32,19 @@ import UIKit
     override init(frame: CGRect) {
         super.init(frame: frame)
         setXib()
-        imageScrollView.delegate = self
-        pageControl.numberOfPages = imageStackView.subviews.count
     }
     
     func configure(about room: Room) {
         self.nameLabel.text = room.name
-        self.priceLabel.text = String(room.price.price)
+        guard let price = room.price?.price else {return}
+        self.priceLabel.text = String(price)
+        for _ in 0..<room.images.count {
+            scrollViewWithPageControlView.appendImageView()
+        }
     }
     
-    func setImage(url: URL) {
-        let imageView = UIImageView()
-        self.imageStackView.addArrangedSubview(imageView)
-        imageView.image = UIImage(contentsOfFile: url.path)
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
-        imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 10
+    func updateImage(indices: [Int], url: URL) {
+        scrollViewWithPageControlView.updateImage(indices: indices, url: url)
     }
     
     private func setXib() {
@@ -72,17 +63,8 @@ import UIKit
     }
     
     override func prepareForReuse() {
-        imageStackView.subviews.forEach {
+        scrollViewWithPageControlView.imageStackView.subviews.forEach {
             $0.removeFromSuperview()
-        }
-    }
-}
-
-extension RoomListCell: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentOffset: Int = Int(scrollView.contentOffset.x)
-        if currentOffset % Int(scrollView.frame.width) == 0 {
-            pageControl.currentPage = currentOffset / Int(scrollView.frame.width)
         }
     }
 }

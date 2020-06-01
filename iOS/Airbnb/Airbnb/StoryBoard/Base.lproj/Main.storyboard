@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--숙소-->
+        <!--Room List View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="RoomListViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,10 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe3-Og-e4e" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
-                                <rect key="frame" x="20.5" y="64" width="373" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe3-Og-e4e" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="108" width="373" height="40"/>
                                 <subviews>
-                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HlN-xQ-VOY" customClass="PaddingTextField" customModule="Airbnb" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HlN-xQ-VOY" customClass="PaddingTextField" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
@@ -50,8 +50,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NU2-GJ-o2k" userLabel="Filter Stack View">
-                                <rect key="frame" x="20.5" y="119" width="258.5" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NU2-GJ-o2k" userLabel="Filter Stack View">
+                                <rect key="frame" x="20.5" y="163" width="258.5" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yv-Rv-eff" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="83" height="40"/>
@@ -113,7 +113,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Nk3-iJ-S5b">
-                                <rect key="frame" x="0.0" y="189" width="414" height="624"/>
+                                <rect key="frame" x="0.0" y="233" width="414" height="580"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N6z-27-uiy">
                                     <size key="itemSize" width="373" height="308"/>
@@ -133,7 +133,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjx-WY-jQC" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjx-WY-jQC" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
                                 <rect key="frame" x="354" y="753" width="40" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYO-br-9Bq">
@@ -181,7 +181,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="숙소" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" id="s0K-Dd-GyB"/>
                     <connections>
                         <outlet property="roomListCollectionView" destination="Nk3-iJ-S5b" id="ZXV-ez-1RW"/>
                         <outletCollection property="filterButtons" destination="3Yv-Rv-eff" collectionClass="NSMutableArray" id="NA3-2e-gxq"/>
@@ -191,23 +191,146 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795.6521739130435" y="-171.42857142857142"/>
+            <point key="canvasLocation" x="1851" y="-176"/>
         </scene>
-        <!--즐겨찾기-->
-        <scene sceneID="wg7-f3-ORb">
+        <!--Detail View Controller-->
+        <scene sceneID="fVF-F3-g4V">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                <viewController storyboardIdentifier="DetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D4C-M7-bEB" customClass="DetailViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lj5-0O-qpB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ce5-l1-cMv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="736"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-Dk-ZtU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="734.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-gZ-kvi" customClass="ScrollViewWithPageControlView" customModule="Airbnb" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="U81-7M-8pD"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGc-Co-VfC" customClass="AccommodationInfoView" customModule="Airbnb" customModuleProvider="target">
+                                                <rect key="frame" x="20.5" y="310" width="373" height="100"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="Sfh-6U-tEb"/>
+                                                </constraints>
+                                            </view>
+                                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KEj-QO-5fZ" userLabel="DivisionView">
+                                                <rect key="frame" x="20.5" y="420" width="373" height="1"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="NVL-zf-Uxn"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8x7-bu-lPH" customClass="GMSMapView">
+                                                <rect key="frame" x="20.5" y="431" width="373" height="248.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="8x7-bu-lPH" secondAttribute="height" multiplier="1.5:1" id="x7F-gh-g3m"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMx-Xl-1m0" customClass="BorderButton" customModule="Airbnb" customModuleProvider="target">
+                                                <rect key="frame" x="20.5" y="689.5" width="373" height="45"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="9MU-U2-PV3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="지도 자세히 보기">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="corderRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="detailMap:" destination="D4C-M7-bEB" eventType="touchUpInside" id="pgo-dd-xMz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="8x7-bu-lPH" firstAttribute="width" secondItem="bGr-Dk-ZtU" secondAttribute="width" multiplier="0.9" id="6P6-FF-cxn"/>
+                                            <constraint firstItem="OMx-Xl-1m0" firstAttribute="width" secondItem="8x7-bu-lPH" secondAttribute="width" id="zMf-NB-FgZ"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="H9O-fV-War" firstAttribute="top" secondItem="bGr-Dk-ZtU" secondAttribute="top" id="7Po-hV-K5X"/>
+                                    <constraint firstItem="bGr-Dk-ZtU" firstAttribute="width" secondItem="kFG-75-M6x" secondAttribute="width" id="Eej-Xg-e1E"/>
+                                    <constraint firstItem="KEj-QO-5fZ" firstAttribute="width" secondItem="kFG-75-M6x" secondAttribute="width" multiplier="0.9" id="J4A-aL-zXv"/>
+                                    <constraint firstItem="bGc-Co-VfC" firstAttribute="width" secondItem="kFG-75-M6x" secondAttribute="width" multiplier="0.9" id="Xmw-IQ-KcK"/>
+                                    <constraint firstItem="bGr-Dk-ZtU" firstAttribute="bottom" secondItem="H9O-fV-War" secondAttribute="bottom" id="aRo-5o-vFs"/>
+                                    <constraint firstItem="bGr-Dk-ZtU" firstAttribute="trailing" secondItem="H9O-fV-War" secondAttribute="trailing" id="icN-Xs-Egn"/>
+                                    <constraint firstItem="bGr-Dk-ZtU" firstAttribute="leading" secondItem="H9O-fV-War" secondAttribute="leading" id="zJQ-LS-GlP"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="H9O-fV-War"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="kFG-75-M6x"/>
+                            </scrollView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Qmo-a4-nae">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJl-qL-ELi" customClass="BookingButtonView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="780" width="414" height="82"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="ce5-l1-cMv" firstAttribute="height" secondItem="Ub4-V7-i2f" secondAttribute="height" multiplier="0.9" id="0O3-mH-CUd"/>
+                            <constraint firstItem="Qmo-a4-nae" firstAttribute="centerX" secondItem="Lj5-0O-qpB" secondAttribute="centerX" id="GM3-St-mmq"/>
+                            <constraint firstItem="Ub4-V7-i2f" firstAttribute="trailing" secondItem="bJl-qL-ELi" secondAttribute="trailing" id="O0X-zB-yg1"/>
+                            <constraint firstItem="bJl-qL-ELi" firstAttribute="top" secondItem="ce5-l1-cMv" secondAttribute="bottom" id="PUI-T4-LrX"/>
+                            <constraint firstItem="Ub4-V7-i2f" firstAttribute="trailing" secondItem="ce5-l1-cMv" secondAttribute="trailing" id="WGe-Of-Nsa"/>
+                            <constraint firstItem="ce5-l1-cMv" firstAttribute="leading" secondItem="Ub4-V7-i2f" secondAttribute="leading" id="eSp-jS-8jZ"/>
+                            <constraint firstItem="ce5-l1-cMv" firstAttribute="top" secondItem="Ub4-V7-i2f" secondAttribute="top" id="hOL-fg-8hq"/>
+                            <constraint firstItem="bJl-qL-ELi" firstAttribute="leading" secondItem="Ub4-V7-i2f" secondAttribute="leading" id="ocx-D6-VGQ"/>
+                            <constraint firstItem="Qmo-a4-nae" firstAttribute="centerY" secondItem="Lj5-0O-qpB" secondAttribute="centerY" id="sVz-4L-LCb"/>
+                            <constraint firstItem="Ub4-V7-i2f" firstAttribute="bottom" secondItem="bJl-qL-ELi" secondAttribute="bottom" id="y1W-Ws-mQT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ub4-V7-i2f"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HK7-w0-MA9"/>
+                    <connections>
+                        <outlet property="accommodationInfoView" destination="bGc-Co-VfC" id="A1p-rl-HaN"/>
+                        <outlet property="activityIndicator" destination="Qmo-a4-nae" id="wHh-eI-MQD"/>
+                        <outlet property="bookingButtonView" destination="bJl-qL-ELi" id="0NO-Nx-EgK"/>
+                        <outlet property="mapView" destination="8x7-bu-lPH" id="LPz-s1-CEY"/>
+                        <outlet property="scrollView" destination="ce5-l1-cMv" id="ukb-Pf-ENT"/>
+                        <outlet property="scrollViewWithPageControlView" destination="Tva-gZ-kvi" id="9Nh-lX-vpw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bYH-sN-V99" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2606" y="-176"/>
+        </scene>
+        <!--Detail Map View Controller-->
+        <scene sceneID="OOJ-P8-WMJ">
+            <objects>
+                <viewController storyboardIdentifier="DetailMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tGI-Dq-1iL" customClass="DetailMapViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Dh-rz-Fvg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
+                        <viewLayoutGuide key="safeArea" id="dMS-GR-6h2"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="즐겨찾기" image="heart" catalog="system" selectedImage="heart.fill" id="cPa-gy-q4n"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DIx-Ok-Uab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="797" y="522"/>
+            <point key="canvasLocation" x="3362" y="-176"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -219,18 +342,34 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="bV6-7Q-dqX" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
+        <!--숙소-->
+        <scene sceneID="icr-v7-bDT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bV6-7Q-dqX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="숙소" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="alP-tH-mIx">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="yY0-Hg-I6d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LfN-ZR-r6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1040.5797101449275" y="-176.11607142857142"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="location" width="21.333333969116211" height="21.333333969116211"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
     </resources>
