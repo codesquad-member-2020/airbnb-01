@@ -14,6 +14,11 @@ class RoomListViewController: UIViewController {
     @IBOutlet weak var roomListCollectionView: UICollectionView!
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var searchTextField: PaddingTextField!
+    @IBAction func calendarButtonClicked(_ sender: FilterButton) {
+        guard let calendarViewController = storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as? CalendarViewController else {return}
+        calendarViewController.modalPresentationStyle = .overFullScreen
+        present(calendarViewController, animated: true)
+    }
     
     private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var useCase = RoomListUseCase(networkManager: NetworkManager())
