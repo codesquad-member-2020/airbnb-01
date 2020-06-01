@@ -29,6 +29,13 @@ public class AccommodationController {
     return accommodationService.accommodation(query);
   }
 
+  @ApiImplicitParam(name = "location", value = "지역명", required = true)
+  @ApiOperation(value = "검색 조건에 맞는 숙소의 가격 정보만 가져옵니다")
+  @GetMapping("/p/{location}")
+  public List<Long> accommodationsPrice(AccommodationQuery query) {
+    return accommodationService.accommodationsPrice(query);
+  }
+
   @ApiImplicitParam(name = "id", value = "전체 리스트에서 가져오는 숙소 ID", required = true)
   @ApiOperation(value = "특정 숙소의 상세 정보를 가져옵니다")
   @GetMapping("/{id}")

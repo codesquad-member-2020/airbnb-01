@@ -32,6 +32,19 @@ public class AccommodationService {
     return accommodations.stream().map(AccommodationView::new).collect(Collectors.toList());
   }
 
+  public List<Long> accommodationsPrice(AccommodationQuery query) {
+    Price minPrice = Price.builder().price(query.getPriceMin()).build();
+    Price maxPrice = Price.builder().price(query.getPriceMax()).build();
+    PageRequest requestPage = PageRequest.of(query.getPageCount(), Integer.MAX_VALUE);
+
+    Page<Accommodation> accommodations =
+        accommodationRepository.findByLocationContainingAndPriceBetween(
+            query.getLocation(), minPrice, maxPrice, requestPage);
+
+    return accommodations.stream().map(accommodation -> accommodation.getPrice().getPrice()).collect(
+        Collectors.toList());
+  }
+
   public DetailAccommodationView detailAccommodation(Long id) {
     Accommodation accommodation = accommodationRepository.findById(id)
         .orElseThrow(NoSuchElementException::new);
