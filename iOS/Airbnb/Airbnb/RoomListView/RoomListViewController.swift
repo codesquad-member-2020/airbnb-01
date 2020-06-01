@@ -13,6 +13,7 @@ class RoomListViewController: UIViewController {
     @IBOutlet var filterButtons: [FilterButton]!
     @IBOutlet weak var roomListCollectionView: UICollectionView!
     @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var searchTextField: PaddingTextField!
     
     private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var useCase = RoomListUseCase(networkManager: NetworkManager())
@@ -20,17 +21,22 @@ class RoomListViewController: UIViewController {
     private var viewModel: RoomListViewModel?
     
     private var dataSource = RoomListDataSource()
+    private var currentLocation = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setButton()
         setCollectionView()
-        setUseCase()
         setObserver()
+        searchTextField.delegate = self
         guard #available(iOS 13, *) else {
             setTabBarImage()
             return
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
     }
     
     deinit {
@@ -72,11 +78,15 @@ class RoomListViewController: UIViewController {
     }
     
     private func setUseCase() {
-        useCase.requestRoomList(
+        useCase.requestRoomList(location: currentLocation,
             failureHandler: { [unowned self] in
                 AlertView.alertError(viewController: self, message: $0)
             },
             successHandler: { [unowned self] in
+                guard $0.count != 0 else {
+                    AlertView.alertError(viewController: self, message: "검색 결과가 없습니다!")
+                    return
+                }
                 self.viewModel = RoomListViewModel(roomListManager: RoomManager(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
                     switch manager.editingStyle {
                     case .none:
@@ -158,7 +168,7 @@ extension RoomListViewController: UICollectionViewDelegateFlowLayout {
         guard let count = viewModel?.roomListManager.count else {return}
         if indexPath.item == count - 1 {
             let page: Int = count / 10
-            useCase.requestRoomList(page: page, failureHandler: {[unowned self] in
+            useCase.requestRoomList(page: page, location: currentLocation, failureHandler: {[unowned self] in
                 AlertView.alertError(viewController: self, message: $0)
                 }, successHandler: {
                     $0.forEach { [unowned self] in
@@ -169,5 +179,22 @@ extension RoomListViewController: UICollectionViewDelegateFlowLayout {
                                                     object: nil)
             })
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
+}
+
+extension RoomListViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let location = textField.text, location != "" else {
+            AlertView.alertError(viewController: self, message: "검색어를 입력해주세요!")
+            return true
+        }
+        currentLocation = location
+        setUseCase()
+        self.view.endEditing(true)
+        return true
     }
 }

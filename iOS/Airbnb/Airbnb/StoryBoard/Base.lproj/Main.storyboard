@@ -184,6 +184,7 @@
                     <navigationItem key="navigationItem" id="s0K-Dd-GyB"/>
                     <connections>
                         <outlet property="roomListCollectionView" destination="Nk3-iJ-S5b" id="ZXV-ez-1RW"/>
+                        <outlet property="searchTextField" destination="HlN-xQ-VOY" id="emq-J4-XGI"/>
                         <outletCollection property="filterButtons" destination="3Yv-Rv-eff" collectionClass="NSMutableArray" id="NA3-2e-gxq"/>
                         <outletCollection property="filterButtons" destination="ba4-98-28T" collectionClass="NSMutableArray" id="s43-uN-FL6"/>
                         <outletCollection property="filterButtons" destination="EA3-aa-NiH" collectionClass="NSMutableArray" id="oSA-z0-mz9"/>
