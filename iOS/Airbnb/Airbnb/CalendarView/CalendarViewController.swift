@@ -136,4 +136,12 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
          return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if calendarManager.count - 1 == indexPath.section {
+            let startSection = calendarManager.count
+            calendarManager.addYearInfo()
+            collectionView.insertSections(IndexSet(startSection..<calendarManager.count))
+        }
+    }
 }
