@@ -26,7 +26,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rm5-Ox-Een">
                                     <rect key="frame" x="0.0" y="0.0" width="402" height="70"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -54,20 +54,34 @@
                                 <constraint firstItem="Rm5-Ox-Een" firstAttribute="top" secondItem="1Oh-2y-ARO" secondAttribute="top" id="uc7-qx-rFL"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXl-eE-uQV">
+                            <rect key="frame" x="10.5" y="70" width="402" height="1"/>
+                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="me6-4r-JMG"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBP-G0-bFx" userLabel="Filter View">
-                            <rect key="frame" x="0.0" y="70" width="423" height="323"/>
+                            <rect key="frame" x="0.0" y="71" width="423" height="321"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMd-vA-P3u">
+                            <rect key="frame" x="10.5" y="392" width="402" height="1"/>
+                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="dMD-4y-901"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="vcA-6N-hlq" userLabel="Action View">
                             <rect key="frame" x="10.5" y="393" width="402" height="70"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do5-Sb-4ii" customClass="BorderButton" customModule="Airbnb" customModuleProvider="target">
-                                    <rect key="frame" x="306.5" y="7" width="95.5" height="56"/>
+                                    <rect key="frame" x="318.5" y="10.5" width="83.5" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="do5-Sb-4ii" secondAttribute="height" multiplier="1.7:1" id="wPn-jC-qSV"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <state key="normal" title="완료">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
@@ -81,7 +95,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYE-H6-zhS">
-                                    <rect key="frame" x="0.0" y="30" width="45" height="33"/>
+                                    <rect key="frame" x="0.0" y="26.5" width="45" height="33"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" title="초기화">
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,7 +108,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstItem="KYE-H6-zhS" firstAttribute="leading" secondItem="vcA-6N-hlq" secondAttribute="leading" id="9UI-rX-WpH"/>
-                                <constraint firstItem="do5-Sb-4ii" firstAttribute="height" secondItem="vcA-6N-hlq" secondAttribute="height" multiplier="0.8" id="NqB-6q-4Yc"/>
+                                <constraint firstItem="do5-Sb-4ii" firstAttribute="height" secondItem="vcA-6N-hlq" secondAttribute="height" multiplier="0.7" id="NqB-6q-4Yc"/>
                                 <constraint firstAttribute="trailing" secondItem="do5-Sb-4ii" secondAttribute="trailing" id="Pvg-RU-bZB"/>
                                 <constraint firstAttribute="height" constant="70" id="ez9-od-scu"/>
                                 <constraint firstItem="do5-Sb-4ii" firstAttribute="centerY" secondItem="vcA-6N-hlq" secondAttribute="centerY" id="iO3-uy-VCI"/>
@@ -106,6 +120,8 @@
                         <constraint firstItem="1Oh-2y-ARO" firstAttribute="width" secondItem="4Oo-LT-YKc" secondAttribute="width" multiplier="0.95" id="HKW-Sk-0sR"/>
                         <constraint firstItem="WBP-G0-bFx" firstAttribute="width" secondItem="4Oo-LT-YKc" secondAttribute="width" id="O00-PT-Cy2"/>
                         <constraint firstItem="vcA-6N-hlq" firstAttribute="width" secondItem="4Oo-LT-YKc" secondAttribute="width" multiplier="0.95" id="O26-gr-NR7"/>
+                        <constraint firstItem="pXl-eE-uQV" firstAttribute="width" secondItem="1Oh-2y-ARO" secondAttribute="width" id="SLp-cn-Srj"/>
+                        <constraint firstItem="hMd-vA-P3u" firstAttribute="width" secondItem="vcA-6N-hlq" secondAttribute="width" id="tne-Mb-FBM"/>
                     </constraints>
                 </stackView>
             </subviews>

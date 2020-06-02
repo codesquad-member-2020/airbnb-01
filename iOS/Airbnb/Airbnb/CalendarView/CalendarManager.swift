@@ -13,17 +13,22 @@ class CalendarManager {
     private var months: [MonthInfo]
     private var currentYear = Calendar.current.component(.year, from: Date())
     private var currentMonth = Calendar.current.component(.month, from: Date())
-
+    var count: Int {
+        get {
+            return months.count
+        }
+    }
+    
     init() {
         months = [MonthInfo]()
         addYearInfo()
     }
-
+    
     func addYearInfo() {
         for _ in 0...12 {
             let startOfMonth = weekDay(year: currentYear, month: currentMonth)
             let totalDay = Calendar.current.component(.day, from: "\(currentYear)-\(currentMonth)-01".convertDate().endOfMonth)
-
+            
             let monthInfo = MonthInfo(month: currentMonth, startOfMonth: startOfMonth, totalDays: totalDay, year: currentYear)
             months.append(monthInfo)
             

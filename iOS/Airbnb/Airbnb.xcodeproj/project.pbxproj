@@ -52,6 +52,8 @@
 		A5FABAF92486D05B006CB6A6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAF82486D05B006CB6A6 /* String.swift */; };
 		A5FABAFB2486D074006CB6A6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAFA2486D074006CB6A6 /* Date.swift */; };
 		A5FABAFD2486D84F006CB6A6 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */; };
+		A5FABB002486EE82006CB6A6 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAFE2486EE82006CB6A6 /* CalendarCollectionViewCell.swift */; };
+		A5FABB012486EE82006CB6A6 /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FABAFF2486EE82006CB6A6 /* CalendarCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		A5FABAF82486D05B006CB6A6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A5FABAFA2486D074006CB6A6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		A5FABAFE2486EE82006CB6A6 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5FABAFF2486EE82006CB6A6 /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
 		B7FEBAA3383DA9DDDBF6A76B /* Pods_Airbnb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Airbnb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -244,6 +248,8 @@
 			children = (
 				A5336897248588A2008ADCFE /* CalendarViewController.swift */,
 				A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */,
+				A5FABAFE2486EE82006CB6A6 /* CalendarCollectionViewCell.swift */,
+				A5FABAFF2486EE82006CB6A6 /* CalendarCollectionViewCell.xib */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -469,6 +475,7 @@
 				A57CF7E62472CD27006FFE98 /* LaunchScreen.storyboard in Resources */,
 				A57CF7E32472CD27006FFE98 /* Assets.xcassets in Resources */,
 				A5F2F11B247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib in Resources */,
+				A5FABB012486EE82006CB6A6 /* CalendarCollectionViewCell.xib in Resources */,
 				A586178524750126009CA661 /* RoomListCell.xib in Resources */,
 				A533689D248593AA008ADCFE /* FilterContainerView.xib in Resources */,
 				A57CF7E12472CD24006FFE98 /* Main.storyboard in Resources */,
@@ -562,6 +569,7 @@
 				A5A8E06C247FDCEA006E4A71 /* BookingButtonView.swift in Sources */,
 				A536AB1B2479811C00C3F000 /* ImageUseCase.swift in Sources */,
 				A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */,
+				A5FABB002486EE82006CB6A6 /* CalendarCollectionViewCell.swift in Sources */,
 				A5A8E068247FC38C006E4A71 /* AccommodationInfoView.swift in Sources */,
 				A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */,
 				A5FABAF92486D05B006CB6A6 /* String.swift in Sources */,
