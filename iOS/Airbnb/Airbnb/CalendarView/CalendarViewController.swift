@@ -40,6 +40,7 @@ class CalendarViewController: UIViewController {
     
     private func setCalendarCollectionView() {
         calendarCollectionView.register(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "dayCell")
+        calendarCollectionView.register(CalendarHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
         calendarCollectionView.dataSource = self
         calendarCollectionView.delegate = self
         
@@ -104,6 +105,23 @@ extension CalendarViewController: UICollectionViewDataSource {
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.width / 7)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerView", for: indexPath) as? CalendarHeaderView else {
+                return UICollectionReusableView()
+            }
+            let month = calendarManager.monthInfo(of: indexPath.section)
+            headerView.monthLabel.text = "\(month.year)년 \(month.month)월"
+            return headerView
+        }
+        
+        return UICollectionReusableView()
+    }
 }
 
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
@@ -113,5 +131,9 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+         return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
 }

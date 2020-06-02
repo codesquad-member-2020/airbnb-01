@@ -10,7 +10,7 @@ import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var backGroundView: UIView!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var dayLabel: UILabel!
     
     override func awakeFromNib() {

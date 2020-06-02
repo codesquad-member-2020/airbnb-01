@@ -44,7 +44,7 @@
                 <constraint firstAttribute="bottom" secondItem="R5e-ju-YkM" secondAttribute="bottom" id="arC-vl-ono"/>
             </constraints>
             <connections>
-                <outlet property="backGroundView" destination="R5e-ju-YkM" id="ieX-WJ-J04"/>
+                <outlet property="containerView" destination="R5e-ju-YkM" id="iQ4-Ue-fXT"/>
                 <outlet property="dayLabel" destination="3uv-gq-hdD" id="iJf-Ox-g5M"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
