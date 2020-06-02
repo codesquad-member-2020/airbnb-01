@@ -49,6 +49,8 @@
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 		A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */; };
 		A5F2F11B247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */; };
+		A5FABAF92486D05B006CB6A6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAF82486D05B006CB6A6 /* String.swift */; };
+		A5FABAFB2486D074006CB6A6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAFA2486D074006CB6A6 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 		A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWithPageControlView.swift; sourceTree = "<group>"; };
 		A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewWithPageControlView.xib; sourceTree = "<group>"; };
+		A5FABAF82486D05B006CB6A6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		A5FABAFA2486D074006CB6A6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B7FEBAA3383DA9DDDBF6A76B /* Pods_Airbnb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Airbnb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -223,6 +227,7 @@
 		A529F72D2476AFFB00844E8E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5FABAF72486D051006CB6A6 /* Extension */,
 				A553044924842E7900ADE42A /* Protocol */,
 				A519D3D9247D4731003ECC91 /* DetailView */,
 				A5294A29247ADA00005B8A5E /* Network */,
@@ -358,6 +363,15 @@
 				A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		A5FABAF72486D051006CB6A6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A5FABAF82486D05B006CB6A6 /* String.swift */,
+				A5FABAFA2486D074006CB6A6 /* Date.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,6 +549,7 @@
 				A553044B24842E8400ADE42A /* ImageUpdatable.swift in Sources */,
 				A519D3DF247D4C2E003ECC91 /* RoomDetail.swift in Sources */,
 				A59D835D247E8B3A007944B3 /* Secret.swift in Sources */,
+				A5FABAFB2486D074006CB6A6 /* Date.swift in Sources */,
 				A5294A2D247ADEB3005B8A5E /* DetailViewController.swift in Sources */,
 				A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */,
 				A586177F2474252C009CA661 /* LikeButton.swift in Sources */,
@@ -546,6 +561,7 @@
 				A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */,
 				A5A8E068247FC38C006E4A71 /* AccommodationInfoView.swift in Sources */,
 				A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */,
+				A5FABAF92486D05B006CB6A6 /* String.swift in Sources */,
 				A586177D2474249B009CA661 /* FilterButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
