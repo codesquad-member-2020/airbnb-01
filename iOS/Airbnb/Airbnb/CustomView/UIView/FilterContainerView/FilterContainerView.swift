@@ -16,6 +16,23 @@ import UIKit
         NotificationCenter.default.post(name: .CloseButtonClicked,
                                         object: nil)
     }
+    @IBAction func resetButtonClicked(_ sender: UIButton) {
+        NotificationCenter.default.post(name: .ResetButtonClicked,
+                                        object: nil)
+    }
+    @IBAction func doneButtonClicked(_ sender: UIButton) {
+        NotificationCenter.default.post(name: .DoneButtonClicked,
+                                        object: nil)
+    }
+    @IBOutlet weak var title: UILabel!
+    
+    func setTitle(text: String) {
+        title.text = text
+    }
+    
+    func addSubviewInFilterView(view: UIView) {
+        filterView.addSubview(view)
+    }
     
     private let xibName = String(describing: FilterContainerView.self)
     
@@ -40,4 +57,6 @@ import UIKit
 
 extension Notification.Name {
     static let CloseButtonClicked = Notification.Name("CloseButtonClicked")
+    static let ResetButtonClicked = Notification.Name("ResetButtonClicked")
+    static let DoneButtonClicked = Notification.Name("DoneButtonClicked")
 }

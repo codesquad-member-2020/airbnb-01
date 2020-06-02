@@ -9,17 +9,17 @@
 import Foundation
 
 class CalendarManager {
-    private let daysArr = ["일", "월", "화", "수", "목", "금", "토"]
-    var months: [MonthInfo]
+    static let daysArr = ["일", "월", "화", "수", "목", "금", "토"]
+    private var months: [MonthInfo]
     private var currentYear = Calendar.current.component(.year, from: Date())
     private var currentMonth = Calendar.current.component(.month, from: Date())
 
     init() {
         months = [MonthInfo]()
-        yearInfo()
+        addYearInfo()
     }
 
-    func yearInfo() {
+    func addYearInfo() {
         for _ in 0...12 {
             let startOfMonth = weekDay(year: currentYear, month: currentMonth)
             let totalDay = Calendar.current.component(.day, from: "\(currentYear)-\(currentMonth)-01".convertDate().endOfMonth)
@@ -36,7 +36,11 @@ class CalendarManager {
         }
     }
     
-    func weekDay(year: Int, month: Int) -> Int {
+    func monthInfo(of section: Int) -> MonthInfo {
+        return months[section]
+    }
+    
+    private func weekDay(year: Int, month: Int) -> Int {
         return Calendar.current.component(.weekday, from: "\(year)-\(month)-01".convertDate())
     }
 }
