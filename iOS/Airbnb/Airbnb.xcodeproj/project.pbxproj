@@ -51,6 +51,7 @@
 		A5F2F11B247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */; };
 		A5FABAF92486D05B006CB6A6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAF82486D05B006CB6A6 /* String.swift */; };
 		A5FABAFB2486D074006CB6A6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAFA2486D074006CB6A6 /* Date.swift */; };
+		A5FABAFD2486D84F006CB6A6 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewWithPageControlView.xib; sourceTree = "<group>"; };
 		A5FABAF82486D05B006CB6A6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A5FABAFA2486D074006CB6A6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		B7FEBAA3383DA9DDDBF6A76B /* Pods_Airbnb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Airbnb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				A5336897248588A2008ADCFE /* CalendarViewController.swift */,
+				A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */,
 				A5FABAF92486D05B006CB6A6 /* String.swift in Sources */,
 				A586177D2474249B009CA661 /* FilterButton.swift in Sources */,
+				A5FABAFD2486D84F006CB6A6 /* CalendarManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
