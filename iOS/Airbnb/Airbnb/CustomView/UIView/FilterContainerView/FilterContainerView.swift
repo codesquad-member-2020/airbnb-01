@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable class FilterContainerView: UIView {
 
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var filterView: UIView!
     @IBAction func closeButtonClicked(_ sender: UIButton) {
         NotificationCenter.default.post(name: .CloseButtonClicked,
                                         object: nil)

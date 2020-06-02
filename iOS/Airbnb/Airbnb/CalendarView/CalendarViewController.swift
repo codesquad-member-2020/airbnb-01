@@ -10,15 +10,16 @@ import UIKit
 
 class CalendarViewController: UIViewController {
 
-    @IBOutlet weak var filterView: FilterContainerView!
+    @IBOutlet weak var filterContainerView: FilterContainerView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        filterView.layer.cornerRadius = 10
+        filterContainerView.layer.cornerRadius = 10
         view.backgroundColor = view.backgroundColor!.withAlphaComponent(0.5)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(closeButtonClicked),
                                                name: .CloseButtonClicked,
                                                object: nil)
+        filterContainerView.filterView.backgroundColor = .red
     }
     
     deinit {

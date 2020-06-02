@@ -376,7 +376,7 @@
                         <viewLayoutGuide key="safeArea" id="YjL-Zb-1O5"/>
                     </view>
                     <connections>
-                        <outlet property="filterView" destination="s0h-Wu-fXm" id="gDz-m1-cwY"/>
+                        <outlet property="filterContainerView" destination="s0h-Wu-fXm" id="gDz-m1-cwY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1P-TP-02j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
