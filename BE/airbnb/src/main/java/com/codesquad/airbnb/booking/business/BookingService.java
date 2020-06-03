@@ -23,6 +23,8 @@ public class BookingService {
   public BookingView booking(BookingCommand command, User user) {
     Accommodation accommodation = accommodationRepository.findById(command.getAccommodationId())
         .orElseThrow(NoSuchElementException::new);
+    accommodation.book(command.getCheckIn(), command.getCheckOut());
+
     Booking booking = Booking.builder()
         .user(user)
         .accommodation(accommodation)
@@ -48,10 +50,17 @@ public class BookingService {
     Booking foundBooking = bookingRepository.findById(bookingId)
         .orElseThrow(NoSuchElementException::new);
 
-    foundBooking.cancel(loginUser);
+    if (!foundBooking.isRightUser(loginUser)) {
+      throw new RuntimeException("예약자 정보가 틀립니다");
+    }
+
+    foundBooking.cancel();
+
+    Booking canceledBooking;
+    canceledBooking = bookingRepository.save(foundBooking);
 
     return BookingView.builder()
-        .booking(bookingRepository.save(foundBooking))
+        .booking(canceledBooking)
         .build();
   }
 }
