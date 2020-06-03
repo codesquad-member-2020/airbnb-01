@@ -23,6 +23,7 @@
 		A536AB1724794AB000C3F000 /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1624794AB000C3F000 /* RoomManager.swift */; };
 		A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB18247954F200C3F000 /* RoomListDataSource.swift */; };
 		A536AB1B2479811C00C3F000 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1A2479811C00C3F000 /* ImageUseCase.swift */; };
+		A54D5DE524878DE1008CA2E6 /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DE424878DE1008CA2E6 /* FilterManager.swift */; };
 		A55304482482762100ADE42A /* URLBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55304472482762100ADE42A /* URLBinder.swift */; };
 		A553044B24842E8400ADE42A /* ImageUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553044A24842E8400ADE42A /* ImageUpdatable.swift */; };
 		A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7D72472CD24006FFE98 /* AppDelegate.swift */; };
@@ -84,6 +85,7 @@
 		A536AB1624794AB000C3F000 /* RoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		A536AB18247954F200C3F000 /* RoomListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListDataSource.swift; sourceTree = "<group>"; };
 		A536AB1A2479811C00C3F000 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
+		A54D5DE424878DE1008CA2E6 /* FilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManager.swift; sourceTree = "<group>"; };
 		A55304472482762100ADE42A /* URLBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBinder.swift; sourceTree = "<group>"; };
 		A553044A24842E8400ADE42A /* ImageUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpdatable.swift; sourceTree = "<group>"; };
 		A57CF7D42472CD24006FFE98 /* Airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +254,7 @@
 				A5336897248588A2008ADCFE /* CalendarViewController.swift */,
 				A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */,
 				A5CF3CEE2487004E0007EC3E /* CalendarHeaderView.swift */,
+				A54D5DE424878DE1008CA2E6 /* FilterManager.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */,
 				A5FABB002486EE82006CB6A6 /* CalendarCollectionViewCell.swift in Sources */,
 				A5A8E068247FC38C006E4A71 /* AccommodationInfoView.swift in Sources */,
+				A54D5DE524878DE1008CA2E6 /* FilterManager.swift in Sources */,
 				A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */,
 				A5FABAF92486D05B006CB6A6 /* String.swift in Sources */,
 				A586177D2474249B009CA661 /* FilterButton.swift in Sources */,

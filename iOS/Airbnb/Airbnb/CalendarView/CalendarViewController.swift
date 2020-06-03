@@ -10,8 +10,10 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     
-    private var startDay: IndexPath?
-    private var endDay: IndexPath?
+    private var startDayIndexPath: IndexPath?
+    private var endDayIndexPath: IndexPath?
+    private var startDay: SelectedDay?
+    private var endDay: SelectedDay?
     
     private let weekDayStackView: UIStackView = {
         let stackView = UIStackView()
@@ -46,6 +48,10 @@ class CalendarViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(resetButtonClicked),
                                                name: .ResetButtonClicked,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(doneButtonClicked),
+                                               name: .DoneButtonClicked,
                                                object: nil)
     }
     
@@ -93,25 +99,47 @@ class CalendarViewController: UIViewController {
     }
     
     @objc func closeButtonClicked() {
-        dismiss(animated: true)
+        dismiss(animated: true, completion: {
+            NotificationCenter.default.post(name: .DateCancel,
+                                            object: nil)
+        })
     }
     
     @objc func dateSelected() {
-        let startMonth = calendarManager.monthInfo(of: startDay!.section)
-        let endMonth = calendarManager.monthInfo(of: endDay!.section)
+        guard let start = startDayIndexPath, let end = endDayIndexPath else {return}
+        let startMonth = calendarManager.monthInfo(of: start.section)
+        let endMonth = calendarManager.monthInfo(of: end.section)
+        startDay = SelectedDay(year: startMonth.year, month: startMonth.month, day: start.item - (startMonth.startOfMonth - 2))
+        endDay = SelectedDay(year: endMonth.year, month: endMonth.month, day: end.item - (endMonth.startOfMonth - 2))
+        
+        guard let startDayUnwrapped = startDay, let endDayUnwrapped = endDay else {return}
+        filterContainerView.doneButtonEnabled()
         if startMonth.year == endMonth.year {
-            filterContainerView.setTitle(text: "\(startMonth.month)월 \(startDay!.item - (startMonth.startOfMonth - 2))일 - \(endMonth.month)월 \(endDay!.item - (endMonth.startOfMonth - 2))일")
+            filterContainerView.setTitle(text: "\(startDayUnwrapped.month)월 \(startDayUnwrapped.day)일 - \(endDayUnwrapped.month)월 \(endDayUnwrapped.day)일")
         } else {
-            filterContainerView.setTitle(text: "\(startMonth.year)년 \(startMonth.month)월 \(startDay!.item - (startMonth.startOfMonth - 2))일 - \(endMonth.year)년 \(endMonth.month)월 \(endDay!.item - (endMonth.startOfMonth - 2))일")
+            filterContainerView.setTitle(text: "\(startDayUnwrapped.year)년 \(startDayUnwrapped.month)월 \(startDayUnwrapped.day)일 - \(endDayUnwrapped.year)년 \(endDayUnwrapped.month)월 \(endDayUnwrapped.day)일")
         }
         calendarCollectionView.reloadData()
     }
     
     @objc func resetButtonClicked() {
-        startDay = nil
-        endDay = nil
+        filterContainerView.doneButtonDisenabled()
+        startDayIndexPath = nil
+        endDayIndexPath = nil
         filterContainerView.setTitle(text: "체크인 - 체크아웃")
         calendarCollectionView.reloadData()
+    }
+    
+    @objc func doneButtonClicked() {
+        guard let start = startDay, let end = endDay else {
+            AlertView.alertError(viewController: self, message: "날짜 정보를 확인해주세요!")
+            return
+        }
+        dismiss(animated: true, completion: {
+            NotificationCenter.default.post(name: .DateDone,
+                                            object: nil,
+                                            userInfo: ["start": "\(start)".convertDate(), "end": "\(end)".convertDate()])
+        })
     }
 }
 
@@ -140,14 +168,14 @@ extension CalendarViewController: UICollectionViewDataSource {
             cell.isHidden = true
         }
         
-        guard let start = startDay else {return cell}
+        guard let start = startDayIndexPath else {return cell}
         
         if start == indexPath {
             cell.selected()
             cell.rightView.backgroundColor = UIColor(named: "CustomGray")
         }
         
-        guard let end = endDay else {return cell}
+        guard let end = endDayIndexPath else {return cell}
         
         if end == indexPath {
             cell.selected()
@@ -203,15 +231,16 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell else {return}
-        if startDay == nil {
-            startDay = indexPath
+        if startDayIndexPath == nil {
+            startDayIndexPath = indexPath
             cell.selected()
-        } else if endDay == nil {
-            guard let start = startDay, start != indexPath else {return}
-            endDay = indexPath
-            if startDay! > endDay! {
-                endDay = startDay
-                startDay = indexPath
+        } else if endDayIndexPath == nil {
+            guard let start = startDayIndexPath, start != indexPath else {return}
+            endDayIndexPath = indexPath
+            guard let end = endDayIndexPath else {return}
+            if start > end {
+                endDayIndexPath = startDayIndexPath
+                startDayIndexPath = indexPath
             }
             cell.selected()
             NotificationCenter.default.post(name: .DateSelected,
@@ -219,7 +248,7 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
         } else {
             NotificationCenter.default.post(name: .ResetButtonClicked,
                                             object: nil)
-            startDay = indexPath
+            startDayIndexPath = indexPath
             cell.selected()
         }
     }
@@ -227,4 +256,6 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 
 extension Notification.Name {
     static let DateSelected = Notification.Name("DateSelected")
+    static let DateCancel = Notification.Name("DateCancel")
+    static let DateDone = Notification.Name("DateDone")
 }

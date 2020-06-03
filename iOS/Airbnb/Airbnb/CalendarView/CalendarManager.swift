@@ -60,3 +60,13 @@ struct MonthInfo {
     let totalDays: Int
     let year: Int
 }
+
+struct SelectedDay: CustomStringConvertible {
+    var description: String {
+        return "\(year)-\(month)-\(day)"
+    }
+    
+    let year: Int
+    let month: Int
+    let day: Int
+}

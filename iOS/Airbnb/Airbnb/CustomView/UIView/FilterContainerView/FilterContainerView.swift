@@ -25,6 +25,7 @@ import UIKit
                                         object: nil)
     }
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var doneButton: BorderButton!
     
     func setTitle(text: String) {
         title.text = text
@@ -32,6 +33,18 @@ import UIKit
     
     func addSubviewInFilterView(view: UIView) {
         filterView.addSubview(view)
+    }
+    
+    func doneButtonEnabled() {
+        doneButton.isEnabled = true
+        doneButton.alpha = 1
+        doneButton.setTitleColor(.white, for: .normal)
+    }
+    
+    func doneButtonDisenabled() {
+        doneButton.isEnabled = false
+        doneButton.alpha = 0.8
+        doneButton.setTitleColor(.lightGray, for: .normal)
     }
     
     private let xibName = String(describing: FilterContainerView.self)

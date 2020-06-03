@@ -27,6 +27,7 @@ class RoomListViewController: UIViewController {
     
     private var dataSource = RoomListDataSource()
     private var currentLocation = ""
+    private let filterManager = FilterManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ class RoomListViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-          self.view.endEditing(true)
+        self.view.endEditing(true)
     }
     
     deinit {
@@ -56,6 +57,14 @@ class RoomListViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(urlBinded(_:)),
                                                name: .URLBinded,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(dateDone(_:)),
+                                               name: .DateDone,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(dateCancel),
+                                               name: .DateCancel,
                                                object: nil)
     }
     
@@ -84,30 +93,30 @@ class RoomListViewController: UIViewController {
     
     private func setUseCase() {
         useCase.requestRoomList(location: currentLocation,
-            failureHandler: { [unowned self] in
-                AlertView.alertError(viewController: self, message: $0)
+                                failureHandler: { [unowned self] in
+                                    AlertView.alertError(viewController: self, message: $0)
             },
-            successHandler: { [unowned self] in
-                guard $0.count != 0 else {
-                    AlertView.alertError(viewController: self, message: "검색 결과가 없습니다!")
-                    return
-                }
-                self.viewModel = RoomListViewModel(roomListManager: RoomManager(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
-                    switch manager.editingStyle {
-                    case .none:
-                        self.roomListCollectionView.reloadData()
-                    case let .insert(_, indexPath):
-                        self.roomListCollectionView.performBatchUpdates({
-                            self.roomListCollectionView.insertItems(at: [indexPath])
-                        }, completion: nil)
-                    }
-                })
-                $0.forEach {
-                    URLBinder.shared.registerRoomID(room: $0)
-                }
-                self.dataSource.viewModel = self.viewModel
-                NotificationCenter.default.post(name: .ViewModelChanged,
-                                                object: nil)
+                                successHandler: { [unowned self] in
+                                    guard $0.count != 0 else {
+                                        AlertView.alertError(viewController: self, message: "검색 결과가 없습니다!")
+                                        return
+                                    }
+                                    self.viewModel = RoomListViewModel(roomListManager: RoomManager(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
+                                        switch manager.editingStyle {
+                                        case .none:
+                                            self.roomListCollectionView.reloadData()
+                                        case let .insert(_, indexPath):
+                                            self.roomListCollectionView.performBatchUpdates({
+                                                self.roomListCollectionView.insertItems(at: [indexPath])
+                                            }, completion: nil)
+                                        }
+                                    })
+                                    $0.forEach {
+                                        URLBinder.shared.registerRoomID(room: $0)
+                                    }
+                                    self.dataSource.viewModel = self.viewModel
+                                    NotificationCenter.default.post(name: .ViewModelChanged,
+                                                                    object: nil)
         })
     }
     
@@ -150,6 +159,16 @@ class RoomListViewController: UIViewController {
         guard let roomId = viewModel?.roomListManager.room(of: indexPath.item).id else {return}
         detailViewController.roomId = roomId
         self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    @objc func dateCancel() {
+        filterButtons[0].deselected()
+    }
+    
+    @objc func dateDone(_ notification: Notification) {
+        guard let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date else {return}
+        filterManager.dateFilter = DateFilter(startDate: start, endDate: end)
+        filterButtons[0].selected()
     }
 }
 

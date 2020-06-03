@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterContainerView" customModule="Airbnb" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="kUZ-Gd-9rb"/>
+                <outlet property="doneButton" destination="do5-Sb-4ii" id="ngK-Ee-ich"/>
                 <outlet property="filterView" destination="WBP-G0-bFx" id="yac-QF-6oH"/>
                 <outlet property="title" destination="Rm5-Ox-Een" id="0RB-ad-LoD"/>
             </connections>
@@ -75,7 +76,7 @@
                         <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="vcA-6N-hlq" userLabel="Action View">
                             <rect key="frame" x="10.5" y="393" width="402" height="70"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do5-Sb-4ii" customClass="BorderButton" customModule="Airbnb" customModuleProvider="target">
+                                <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do5-Sb-4ii" customClass="BorderButton" customModule="Airbnb" customModuleProvider="target">
                                     <rect key="frame" x="318.5" y="10.5" width="83.5" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -83,7 +84,7 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <state key="normal" title="완료">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="corderRadius">
