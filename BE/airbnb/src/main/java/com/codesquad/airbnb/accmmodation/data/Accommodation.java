@@ -2,8 +2,8 @@ package com.codesquad.airbnb.accmmodation.data;
 
 import com.codesquad.airbnb.accmmodation.data.type.AccommodationType;
 import com.codesquad.airbnb.accmmodation.data.type.ImageType;
+import com.codesquad.airbnb.util.CommonUtil;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -53,6 +53,9 @@ public class Accommodation {
 
   @ElementCollection(fetch = FetchType.EAGER)
   private Set<LocalDate> bookedDate;
+  @ElementCollection(fetch = FetchType.EAGER)
+  private Set<Review> reviews;
+
 
   @Builder
   public Accommodation(Long id, String name, AccommodationType type, String location,
@@ -66,25 +69,18 @@ public class Accommodation {
     this.price = price;
   }
 
+  public boolean isPossibleBookedDates(LocalDate checkIn, LocalDate checkOut) {
+    List<LocalDate> targetDates = CommonUtil.makeTargetDates(checkIn, checkOut);
 
-  @ElementCollection(fetch = FetchType.EAGER)
-  private Set<Review> reviews;
+    return targetDates.stream().noneMatch(this::isAlreadyBookedDate);
+  }
 
   public boolean isAlreadyBookedDate(LocalDate targetDate) {
     return bookedDate.stream().anyMatch(bookedDate -> bookedDate.isEqual(targetDate));
   }
 
-  private List<LocalDate> makeTargetDates(LocalDate checkIn, LocalDate checkOut) {
-    List<LocalDate> targetDates = new ArrayList<>();
-    for (LocalDate targetDate = checkIn; targetDate.isBefore(checkOut.plusDays(1));
-        targetDate = targetDate.plusDays(1)) {
-      targetDates.add(targetDate);
-    }
-    return targetDates;
-  }
-
   public void book(LocalDate checkIn, LocalDate checkOut) {
-    List<LocalDate> targetDates = makeTargetDates(checkIn, checkOut);
+    List<LocalDate> targetDates = CommonUtil.makeTargetDates(checkIn, checkOut);
 
     targetDates.forEach(targetDate -> {
       if (isAlreadyBookedDate(targetDate)) {
@@ -96,7 +92,7 @@ public class Accommodation {
   }
 
   public void cancel(LocalDate checkIn, LocalDate checkOut) {
-    List<LocalDate> targetDates = makeTargetDates(checkIn, checkOut);
+    List<LocalDate> targetDates = CommonUtil.makeTargetDates(checkIn, checkOut);
 
     targetDates.forEach(targetDate -> {
       if (isAlreadyBookedDate(targetDate)) {
