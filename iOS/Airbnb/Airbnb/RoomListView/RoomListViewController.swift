@@ -19,6 +19,11 @@ class RoomListViewController: UIViewController {
         calendarViewController.modalPresentationStyle = .overFullScreen
         present(calendarViewController, animated: true)
     }
+    @IBAction func numberButtonClicked(_ sender: FilterButton) {
+        guard let numberViewController = storyboard?.instantiateViewController(withIdentifier: "NumberViewController") as? NumberViewController else {return}
+        numberViewController.modalPresentationStyle = .overFullScreen
+        present(numberViewController, animated: true)
+    }
     
     private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var useCase = RoomListUseCase(networkManager: NetworkManager())
