@@ -16,10 +16,14 @@
 		A5294A2D247ADEB3005B8A5E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5294A2C247ADEB3005B8A5E /* DetailViewController.swift */; };
 		A529F72C24769E8100844E8E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A529F72B24769E8100844E8E /* Alamofire */; };
 		A529F72F2476B00800844E8E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529F72E2476B00800844E8E /* Room.swift */; };
+		A5336898248588A2008ADCFE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5336897248588A2008ADCFE /* CalendarViewController.swift */; };
+		A533689B2485939F008ADCFE /* FilterContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A533689A2485939F008ADCFE /* FilterContainerView.swift */; };
+		A533689D248593AA008ADCFE /* FilterContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A533689C248593AA008ADCFE /* FilterContainerView.xib */; };
 		A536AB0D2478F9E900C3F000 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB0C2478F9E900C3F000 /* RoomListViewModel.swift */; };
 		A536AB1724794AB000C3F000 /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1624794AB000C3F000 /* RoomManager.swift */; };
 		A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB18247954F200C3F000 /* RoomListDataSource.swift */; };
 		A536AB1B2479811C00C3F000 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1A2479811C00C3F000 /* ImageUseCase.swift */; };
+		A54D5DE524878DE1008CA2E6 /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DE424878DE1008CA2E6 /* FilterManager.swift */; };
 		A55304482482762100ADE42A /* URLBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55304472482762100ADE42A /* URLBinder.swift */; };
 		A553044B24842E8400ADE42A /* ImageUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A553044A24842E8400ADE42A /* ImageUpdatable.swift */; };
 		A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57CF7D72472CD24006FFE98 /* AppDelegate.swift */; };
@@ -43,9 +47,15 @@
 		A5A8E06A247FC796006E4A71 /* AccommodationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5A8E069247FC796006E4A71 /* AccommodationInfoView.xib */; };
 		A5A8E06C247FDCEA006E4A71 /* BookingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A8E06B247FDCEA006E4A71 /* BookingButtonView.swift */; };
 		A5A8E06E247FDCF0006E4A71 /* BookingButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5A8E06D247FDCF0006E4A71 /* BookingButtonView.xib */; };
+		A5CF3CEF2487004E0007EC3E /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CF3CEE2487004E0007EC3E /* CalendarHeaderView.swift */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 		A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */; };
 		A5F2F11B247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */; };
+		A5FABAF92486D05B006CB6A6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAF82486D05B006CB6A6 /* String.swift */; };
+		A5FABAFB2486D074006CB6A6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAFA2486D074006CB6A6 /* Date.swift */; };
+		A5FABAFD2486D84F006CB6A6 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */; };
+		A5FABB002486EE82006CB6A6 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FABAFE2486EE82006CB6A6 /* CalendarCollectionViewCell.swift */; };
+		A5FABB012486EE82006CB6A6 /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FABAFF2486EE82006CB6A6 /* CalendarCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,10 +78,14 @@
 		A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		A5294A2C247ADEB3005B8A5E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A529F72E2476B00800844E8E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		A5336897248588A2008ADCFE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		A533689A2485939F008ADCFE /* FilterContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterContainerView.swift; sourceTree = "<group>"; };
+		A533689C248593AA008ADCFE /* FilterContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterContainerView.xib; sourceTree = "<group>"; };
 		A536AB0C2478F9E900C3F000 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
 		A536AB1624794AB000C3F000 /* RoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		A536AB18247954F200C3F000 /* RoomListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListDataSource.swift; sourceTree = "<group>"; };
 		A536AB1A2479811C00C3F000 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
+		A54D5DE424878DE1008CA2E6 /* FilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManager.swift; sourceTree = "<group>"; };
 		A55304472482762100ADE42A /* URLBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBinder.swift; sourceTree = "<group>"; };
 		A553044A24842E8400ADE42A /* ImageUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpdatable.swift; sourceTree = "<group>"; };
 		A57CF7D42472CD24006FFE98 /* Airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,9 +113,15 @@
 		A5A8E069247FC796006E4A71 /* AccommodationInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccommodationInfoView.xib; sourceTree = "<group>"; };
 		A5A8E06B247FDCEA006E4A71 /* BookingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingButtonView.swift; sourceTree = "<group>"; };
 		A5A8E06D247FDCF0006E4A71 /* BookingButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingButtonView.xib; sourceTree = "<group>"; };
+		A5CF3CEE2487004E0007EC3E /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 		A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWithPageControlView.swift; sourceTree = "<group>"; };
 		A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewWithPageControlView.xib; sourceTree = "<group>"; };
+		A5FABAF82486D05B006CB6A6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		A5FABAFA2486D074006CB6A6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		A5FABAFE2486EE82006CB6A6 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5FABAFF2486EE82006CB6A6 /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
 		B7FEBAA3383DA9DDDBF6A76B /* Pods_Airbnb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Airbnb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -145,6 +165,7 @@
 		A5150548247FE256005E76FA /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				A533689924858CAF008ADCFE /* FilterContainerView */,
 				A5150549247FE265005E76FA /* ScrollViewWithPageControlView */,
 				A520FA332473C6C9009AC6F8 /* ShadowView.swift */,
 				A5D4C9972473EF8100555311 /* CornerRadiusView.swift */,
@@ -216,6 +237,7 @@
 		A529F72D2476AFFB00844E8E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5FABAF72486D051006CB6A6 /* Extension */,
 				A553044924842E7900ADE42A /* Protocol */,
 				A519D3D9247D4731003ECC91 /* DetailView */,
 				A5294A29247ADA00005B8A5E /* Network */,
@@ -223,6 +245,27 @@
 				A55304472482762100ADE42A /* URLBinder.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A533689624858132008ADCFE /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				A5FABB022486FEC9006CB6A6 /* Cell */,
+				A5336897248588A2008ADCFE /* CalendarViewController.swift */,
+				A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */,
+				A5CF3CEE2487004E0007EC3E /* CalendarHeaderView.swift */,
+				A54D5DE424878DE1008CA2E6 /* FilterManager.swift */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		A533689924858CAF008ADCFE /* FilterContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				A533689A2485939F008ADCFE /* FilterContainerView.swift */,
+				A533689C248593AA008ADCFE /* FilterContainerView.xib */,
+			);
+			path = FilterContainerView;
 			sourceTree = "<group>";
 		};
 		A553044924842E7900ADE42A /* Protocol */ = {
@@ -257,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				A5D4C9932473D23700555311 /* AppDelegate */,
+				A533689624858132008ADCFE /* CalendarView */,
 				A5D4C9962473D25500555311 /* CustomView */,
 				A5294A2B247ADE63005B8A5E /* DetailView */,
 				A529F72D2476AFFB00844E8E /* Model */,
@@ -333,6 +377,24 @@
 				A520FA352473CD8E009AC6F8 /* PaddingTextField.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		A5FABAF72486D051006CB6A6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A5FABAF82486D05B006CB6A6 /* String.swift */,
+				A5FABAFA2486D074006CB6A6 /* Date.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A5FABB022486FEC9006CB6A6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A5FABAFE2486EE82006CB6A6 /* CalendarCollectionViewCell.swift */,
+				A5FABAFF2486EE82006CB6A6 /* CalendarCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,7 +489,9 @@
 				A57CF7E62472CD27006FFE98 /* LaunchScreen.storyboard in Resources */,
 				A57CF7E32472CD27006FFE98 /* Assets.xcassets in Resources */,
 				A5F2F11B247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib in Resources */,
+				A5FABB012486EE82006CB6A6 /* CalendarCollectionViewCell.xib in Resources */,
 				A586178524750126009CA661 /* RoomListCell.xib in Resources */,
+				A533689D248593AA008ADCFE /* FilterContainerView.xib in Resources */,
 				A57CF7E12472CD24006FFE98 /* Main.storyboard in Resources */,
 				A5A8E06E247FDCF0006E4A71 /* BookingButtonView.xib in Resources */,
 				A5A8E06A247FC796006E4A71 /* AccommodationInfoView.xib in Resources */,
@@ -490,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5336898248588A2008ADCFE /* CalendarViewController.swift in Sources */,
 				A519D3DB247D4760003ECC91 /* DetailImageViewModel.swift in Sources */,
 				A519D3DD247D4C09003ECC91 /* DetailViewUseCase.swift in Sources */,
 				A529F72F2476B00800844E8E /* Room.swift in Sources */,
@@ -503,22 +568,29 @@
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
 				A59D835F247EA118007944B3 /* DetailMapViewController.swift in Sources */,
 				A536AB0D2478F9E900C3F000 /* RoomListViewModel.swift in Sources */,
+				A533689B2485939F008ADCFE /* FilterContainerView.swift in Sources */,
 				A59D8361247EB1FD007944B3 /* BorderButton.swift in Sources */,
 				A553044B24842E8400ADE42A /* ImageUpdatable.swift in Sources */,
 				A519D3DF247D4C2E003ECC91 /* RoomDetail.swift in Sources */,
 				A59D835D247E8B3A007944B3 /* Secret.swift in Sources */,
+				A5FABAFB2486D074006CB6A6 /* Date.swift in Sources */,
 				A5294A2D247ADEB3005B8A5E /* DetailViewController.swift in Sources */,
 				A58907202476BDA7008FCD18 /* RoomListUseCase.swift in Sources */,
 				A586177F2474252C009CA661 /* LikeButton.swift in Sources */,
 				A58907222476C483008FCD18 /* AlertView.swift in Sources */,
 				A586178124742684009CA661 /* RoomListCell.swift in Sources */,
+				A5CF3CEF2487004E0007EC3E /* CalendarHeaderView.swift in Sources */,
 				A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */,
 				A5A8E06C247FDCEA006E4A71 /* BookingButtonView.swift in Sources */,
 				A536AB1B2479811C00C3F000 /* ImageUseCase.swift in Sources */,
 				A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */,
+				A5FABB002486EE82006CB6A6 /* CalendarCollectionViewCell.swift in Sources */,
 				A5A8E068247FC38C006E4A71 /* AccommodationInfoView.swift in Sources */,
+				A54D5DE524878DE1008CA2E6 /* FilterManager.swift in Sources */,
 				A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */,
+				A5FABAF92486D05B006CB6A6 /* String.swift in Sources */,
 				A586177D2474249B009CA661 /* FilterButton.swift in Sources */,
+				A5FABAFD2486D84F006CB6A6 /* CalendarManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

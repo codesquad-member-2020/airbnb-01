@@ -29,7 +29,6 @@ import UIKit
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.addTarget(self, action: #selector(clicked(_:)), for: .touchUpInside)
     }
     
     override init(frame: CGRect) {
@@ -55,8 +54,12 @@ import UIKit
         }
         
     }
+
+    func deselected() {
+        isClicked = false
+    }
     
-    @objc func clicked(_ sender: UIButton) {
-        isClicked = !isClicked
+    func selected() {
+        isClicked = true
     }
 }

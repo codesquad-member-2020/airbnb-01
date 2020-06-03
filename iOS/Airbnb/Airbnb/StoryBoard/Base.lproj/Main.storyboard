@@ -70,6 +70,9 @@
                                                 <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="calendarButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="AUY-4e-czK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba4-98-28T" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="88" y="0.0" width="83" height="40"/>
@@ -349,6 +352,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="U8i-ux-U2z">
+            <objects>
+                <viewController storyboardIdentifier="CalendarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I9M-GC-dRt" customClass="CalendarViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Coq-t3-Mf9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0h-Wu-fXm" customClass="FilterContainerView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="144" width="373" height="537.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="s0h-Wu-fXm" firstAttribute="top" secondItem="YjL-Zb-1O5" secondAttribute="top" constant="100" id="4MK-2B-xAl"/>
+                            <constraint firstItem="s0h-Wu-fXm" firstAttribute="centerX" secondItem="YjL-Zb-1O5" secondAttribute="centerX" id="X8J-rb-qx1"/>
+                            <constraint firstItem="s0h-Wu-fXm" firstAttribute="width" secondItem="Coq-t3-Mf9" secondAttribute="width" multiplier="0.9" id="gpT-qj-jqI"/>
+                            <constraint firstItem="s0h-Wu-fXm" firstAttribute="height" secondItem="Coq-t3-Mf9" secondAttribute="height" multiplier="0.6" id="jnr-9X-JNe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YjL-Zb-1O5"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterContainerView" destination="s0h-Wu-fXm" id="gDz-m1-cwY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V1P-TP-02j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1321" y="-870"/>
         </scene>
         <!--숙소-->
         <scene sceneID="icr-v7-bDT">
