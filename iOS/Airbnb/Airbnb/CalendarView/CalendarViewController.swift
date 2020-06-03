@@ -10,6 +10,9 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     
+    private var startDay: IndexPath?
+    private var endDay: IndexPath?
+    
     private let weekDayStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
@@ -35,6 +38,14 @@ class CalendarViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(closeButtonClicked),
                                                name: .CloseButtonClicked,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(dateSelected),
+                                               name: .DateSelected,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(resetButtonClicked),
+                                               name: .ResetButtonClicked,
                                                object: nil)
     }
     
@@ -66,7 +77,9 @@ class CalendarViewController: UIViewController {
         
         for weekDay in CalendarManager.daysArr {
             let label = UILabel()
+            label.font = .boldSystemFont(ofSize: 15)
             label.text = weekDay
+            label.textColor = .lightGray
             label.textAlignment = .center
             label.translatesAutoresizingMaskIntoConstraints = false
             weekDayStackView.addArrangedSubview(label)
@@ -81,6 +94,24 @@ class CalendarViewController: UIViewController {
     
     @objc func closeButtonClicked() {
         dismiss(animated: true)
+    }
+    
+    @objc func dateSelected() {
+        let startMonth = calendarManager.monthInfo(of: startDay!.section)
+        let endMonth = calendarManager.monthInfo(of: endDay!.section)
+        if startMonth.year == endMonth.year {
+            filterContainerView.setTitle(text: "\(startMonth.month)월 \(startDay!.item - (startMonth.startOfMonth - 2))일 - \(endMonth.month)월 \(endDay!.item - (endMonth.startOfMonth - 2))일")
+        } else {
+            filterContainerView.setTitle(text: "\(startMonth.year)년 \(startMonth.month)월 \(startDay!.item - (startMonth.startOfMonth - 2))일 - \(endMonth.year)년 \(endMonth.month)월 \(endDay!.item - (endMonth.startOfMonth - 2))일")
+        }
+        calendarCollectionView.reloadData()
+    }
+    
+    @objc func resetButtonClicked() {
+        startDay = nil
+        endDay = nil
+        filterContainerView.setTitle(text: "체크인 - 체크아웃")
+        calendarCollectionView.reloadData()
     }
 }
 
@@ -99,10 +130,35 @@ extension CalendarViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dayCell", for: indexPath) as? CalendarCollectionViewCell else {return UICollectionViewCell()}
         let month = calendarManager.monthInfo(of: indexPath.section)
         if indexPath.item >= month.startOfMonth - 1 {
-            cell.dayLabel.text = "\(indexPath.item - (month.startOfMonth - 2))"
+            let today = indexPath.item - (month.startOfMonth - 2)
+            if indexPath.section == 0 && calendarManager.today() > today{
+                cell.isUserInteractionEnabled = false
+                cell.dayLabel.textColor = .lightGray
+            }
+            cell.dayLabel.text = "\(today)"
         } else {
             cell.isHidden = true
         }
+        
+        guard let start = startDay else {return cell}
+        
+        if start == indexPath {
+            cell.selected()
+            cell.rightView.backgroundColor = UIColor(named: "CustomGray")
+        }
+        
+        guard let end = endDay else {return cell}
+        
+        if end == indexPath {
+            cell.selected()
+            cell.leftView.backgroundColor = UIColor(named: "CustomGray")
+        }
+        
+        if indexPath < end && indexPath > start {
+            cell.rightView.backgroundColor = UIColor(named: "CustomGray")
+            cell.leftView.backgroundColor = UIColor(named: "CustomGray")
+        }
+        
         return cell
     }
     
@@ -134,7 +190,7 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-         return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
@@ -144,4 +200,31 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
             collectionView.insertSections(IndexSet(startSection..<calendarManager.count))
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell else {return}
+        if startDay == nil {
+            startDay = indexPath
+            cell.selected()
+        } else if endDay == nil {
+            guard let start = startDay, start != indexPath else {return}
+            endDay = indexPath
+            if startDay! > endDay! {
+                endDay = startDay
+                startDay = indexPath
+            }
+            cell.selected()
+            NotificationCenter.default.post(name: .DateSelected,
+                                            object: nil)
+        } else {
+            NotificationCenter.default.post(name: .ResetButtonClicked,
+                                            object: nil)
+            startDay = indexPath
+            cell.selected()
+        }
+    }
+}
+
+extension Notification.Name {
+    static let DateSelected = Notification.Name("DateSelected")
 }

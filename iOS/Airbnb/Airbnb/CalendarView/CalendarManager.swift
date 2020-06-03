@@ -45,6 +45,10 @@ class CalendarManager {
         return months[section]
     }
     
+    func today() -> Int {
+        return Calendar.current.component(.day, from: Date())
+    }
+    
     private func weekDay(year: Int, month: Int) -> Int {
         return Calendar.current.component(.weekday, from: "\(year)-\(month)-01".convertDate())
     }

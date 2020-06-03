@@ -13,7 +13,7 @@ class CalendarHeaderView: UICollectionReusableView {
     var monthLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 22)
+        label.font = .boldSystemFont(ofSize: 17)
         return label
     }()
     
@@ -30,7 +30,7 @@ class CalendarHeaderView: UICollectionReusableView {
         self.addSubview(monthLabel)
         monthLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         monthLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        monthLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9).isActive = true
+        monthLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.95).isActive = true
         monthLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
 }

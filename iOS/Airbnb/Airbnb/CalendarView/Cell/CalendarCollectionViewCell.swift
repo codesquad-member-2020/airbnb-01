@@ -9,9 +9,10 @@
 import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet weak var containerView: UIView!
+    
     @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var leftView: UIView!
+    @IBOutlet weak var rightView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,5 +20,24 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         self.isHidden = false
+        self.isUserInteractionEnabled = true
+        leftView.backgroundColor = .clear
+        rightView.backgroundColor = .clear
+        deselected()
     }
+    
+    func selected() {
+        dayLabel.textColor = .white
+        dayLabel.backgroundColor = .black
+        dayLabel.layer.cornerRadius = dayLabel.frame.height / 2
+        dayLabel.layer.masksToBounds = true
+    }
+    
+    func deselected() {
+        dayLabel.textColor = .label
+        dayLabel.backgroundColor = .clear
+        dayLabel.layer.cornerRadius = 0
+        dayLabel.layer.masksToBounds = false
+    }
+
 }
