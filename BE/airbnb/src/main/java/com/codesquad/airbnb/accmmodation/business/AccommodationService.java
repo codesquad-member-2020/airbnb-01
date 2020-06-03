@@ -30,7 +30,11 @@ public class AccommodationService {
     Page<Accommodation> accommodations =
         accommodationRepository.findByLocationContainingAndPriceBetween(
             query.getLocation(), minPrice, maxPrice, requestPage);
-    return accommodations.stream().map(AccommodationView::new).collect(Collectors.toList());
+
+    return accommodations.stream().filter(accommodation ->
+        accommodation.isPossibleBookedDates(query.getCheckIn(), query.getCheckOut()))
+        .map(AccommodationView::new)
+        .collect(Collectors.toList());
   }
 
   public List<Long> accommodationsPrice(AccommodationQuery query) {
@@ -42,7 +46,9 @@ public class AccommodationService {
         accommodationRepository.findByLocationContainingAndPriceBetween(
             query.getLocation(), minPrice, maxPrice, requestPage);
 
-    return accommodations.stream().map(accommodation -> accommodation.getPrice().getPrice())
+    return accommodations.stream().filter(accommodation ->
+        accommodation.isPossibleBookedDates(query.getCheckIn(), query.getCheckOut()))
+        .map(accommodation -> accommodation.getPrice().getPrice())
         .collect(Collectors.toList());
   }
 
