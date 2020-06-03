@@ -8,4 +8,8 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
 
   Page<Accommodation> findByLocationContainingAndPriceBetween(String location, Price min, Price max,
       Pageable Pageable);
+
+  Page<Accommodation> findByCoordinate_LatitudeBetweenAndCoordinate_LongitudeBetween(
+      Double leftTopLatitude, Double rightBottomLatitude
+      , Double leftTopLongitude, Double rightBottomLongitude, Pageable Pageable);
 }

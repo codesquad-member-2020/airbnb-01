@@ -3,6 +3,7 @@ package com.codesquad.airbnb.accmmodation.business;
 import com.codesquad.airbnb.accmmodation.data.Accommodation;
 import com.codesquad.airbnb.accmmodation.data.AccommodationRepository;
 import com.codesquad.airbnb.accmmodation.data.Price;
+import com.codesquad.airbnb.accmmodation.web.model.AccommodationCoordinateQuery;
 import com.codesquad.airbnb.accmmodation.web.model.AccommodationQuery;
 import com.codesquad.airbnb.accmmodation.web.model.AccommodationView;
 import com.codesquad.airbnb.accmmodation.web.model.DetailAccommodationView;
@@ -19,16 +20,40 @@ import org.springframework.stereotype.Service;
 public class AccommodationService {
 
   private final AccommodationRepository accommodationRepository;
+  private final int PAGE_ROW_COUNT = 10;
 
   public List<AccommodationView> accommodation(AccommodationQuery query) {
     Price minPrice = Price.builder().price(query.getPriceMin()).build();
     Price maxPrice = Price.builder().price(query.getPriceMax()).build();
-    final int PAGE_ROW_COUNT = 10;
     PageRequest requestPage = PageRequest.of(query.getPageCount(), PAGE_ROW_COUNT);
 
     Page<Accommodation> accommodations =
         accommodationRepository.findByLocationContainingAndPriceBetween(
             query.getLocation(), minPrice, maxPrice, requestPage);
+    return accommodations.stream().map(AccommodationView::new).collect(Collectors.toList());
+  }
+
+  public List<Long> accommodationsPrice(AccommodationQuery query) {
+    Price minPrice = Price.builder().price(query.getPriceMin()).build();
+    Price maxPrice = Price.builder().price(query.getPriceMax()).build();
+    PageRequest requestPage = PageRequest.of(query.getPageCount(), Integer.MAX_VALUE);
+
+    Page<Accommodation> accommodations =
+        accommodationRepository.findByLocationContainingAndPriceBetween(
+            query.getLocation(), minPrice, maxPrice, requestPage);
+
+    return accommodations.stream().map(accommodation -> accommodation.getPrice().getPrice())
+        .collect(Collectors.toList());
+  }
+
+  public List<AccommodationView> accommodationsCoordinate(AccommodationCoordinateQuery query) {
+    PageRequest requestPage = PageRequest.of(query.getPageCount(), PAGE_ROW_COUNT);
+    Page<Accommodation> accommodations = accommodationRepository
+        .findByCoordinate_LatitudeBetweenAndCoordinate_LongitudeBetween(
+            query.getLeftTop().getLatitude(), query.getRightBottom().getLatitude(),
+            query.getLeftTop().getLongitude(), query.getRightBottom().getLongitude(),
+            requestPage);
+
     return accommodations.stream().map(AccommodationView::new).collect(Collectors.toList());
   }
 
