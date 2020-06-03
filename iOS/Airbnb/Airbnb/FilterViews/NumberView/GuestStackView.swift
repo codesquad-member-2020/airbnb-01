@@ -52,4 +52,8 @@ class GuestStackView: UIStackView {
         }
         return true
     }
+    
+    func totalGuest() -> [String] {
+      return subviews.reduce(into: [String]()) {$0.append("\($1)")}
+    }
 }

@@ -59,6 +59,7 @@ class GuestView: UIView {
     @IBOutlet weak var plusButton: BorderButton!
     @IBOutlet weak var minusButton: BorderButton!
     @IBAction func plusButtonClicked(_ sender: UIButton) {
+        guard  number < 8 else {return}
         number += 1
     }
     @IBAction func minusButtonClicked(_ sender: UIButton) {

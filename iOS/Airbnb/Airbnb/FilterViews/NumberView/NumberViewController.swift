@@ -77,10 +77,16 @@ class NumberViewController: UIViewController {
     }
     
     @objc func doneButtonClicked() {
-        
+        let result = guestStackView.totalGuest()
+        dismiss(animated: true, completion: {
+            NotificationCenter.default.post(name: .NumberDone,
+                                            object: nil,
+                                            userInfo: ["result" : result])
+        })
     }
 }
 
 extension Notification.Name {
     static let NumberCancel = Notification.Name("NumberCancel")
+    static let NumberDone = Notification.Name("NumberDone")
 }

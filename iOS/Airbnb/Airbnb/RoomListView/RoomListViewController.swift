@@ -68,8 +68,8 @@ class RoomListViewController: UIViewController {
                                                name: .DateDone,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(dateCancel),
-                                               name: .DateCancel,
+                                               selector: #selector(addGuestInfo(_:)),
+                                               name: .NumberDone,
                                                object: nil)
     }
     
@@ -166,14 +166,16 @@ class RoomListViewController: UIViewController {
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
-    @objc func dateCancel() {
-        filterButtons[0].deselected()
-    }
-    
     @objc func dateDone(_ notification: Notification) {
         guard let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date else {return}
         filterManager.dateFilter = DateFilter(startDate: start, endDate: end)
         filterButtons[0].selected()
+    }
+    
+    @objc func addGuestInfo(_ notification: Notification) {
+        guard let totalGuest = notification.userInfo?["result"] as? [String] else {return}
+        filterManager.guestInfo = GuestInfo(adult: totalGuest[0], youth: totalGuest[1], infants: totalGuest[2])
+        filterButtons[1].selected()
     }
 }
 
