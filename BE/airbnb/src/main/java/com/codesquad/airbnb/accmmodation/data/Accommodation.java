@@ -41,6 +41,9 @@ public class Accommodation {
   @Column(nullable = false)
   private String location;
 
+  @Column
+  private Integer guests;
+
   @Embedded
   private Coordinate coordinate;
 

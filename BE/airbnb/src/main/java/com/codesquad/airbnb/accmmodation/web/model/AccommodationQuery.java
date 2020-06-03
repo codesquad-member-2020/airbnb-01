@@ -26,10 +26,11 @@ public class AccommodationQuery {
 
   private Long priceMin = 0L;
   private Long priceMax = 1000000L;
+  private Integer guests = 4;
   private Integer pageCount = 0;
 
   public AccommodationQuery(String location, LocalDate checkIn, LocalDate checkOut, Long priceMin,
-      Long priceMax, Integer pageCount) {
+      Long priceMax, Integer guests, Integer pageCount) {
     if (ObjectUtils.isEmpty(location.trim())) {
       throw new RuntimeException("지명은 검색 필수 조건 입니다");
     }
@@ -39,6 +40,7 @@ public class AccommodationQuery {
     this.checkOut = (Objects.isNull(checkOut)) ? this.checkOut : checkOut;
     this.priceMin = (Objects.isNull(priceMin)) ? this.priceMin : priceMin;
     this.priceMax = (Objects.isNull(priceMax)) ? this.priceMax : priceMax;
+    this.guests = (Objects.isNull(guests)) ? this.guests : guests;
     this.pageCount = (Objects.isNull(pageCount)) ? this.pageCount : pageCount;
   }
 }
