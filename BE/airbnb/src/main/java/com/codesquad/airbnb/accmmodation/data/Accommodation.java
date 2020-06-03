@@ -66,6 +66,10 @@ public class Accommodation {
     this.price = price;
   }
 
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  private Set<Review> reviews;
+
   public boolean isAlreadyBookedDate(LocalDate targetDate) {
     return bookedDate.stream().anyMatch(bookedDate -> bookedDate.isEqual(targetDate));
   }
