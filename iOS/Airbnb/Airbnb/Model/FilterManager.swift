@@ -8,7 +8,9 @@
 
 import Foundation
 
-class QueryStringManager {
+class FilterManager {
+    
+    static let shared = FilterManager()
     
     var currentLocation: String?
     var page: Int?
@@ -40,6 +42,8 @@ class QueryStringManager {
 struct DateFilter {
     var startDate: Date
     var endDate: Date
+    var startIndexPath: IndexPath
+    var endIndexPath: IndexPath
 }
 
 struct GuestInfo {

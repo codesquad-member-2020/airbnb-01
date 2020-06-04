@@ -31,7 +31,7 @@ class RoomListViewController: UIViewController {
     private var viewModel: RoomListViewModel?
     
     private var dataSource = RoomListDataSource()
-    private let filterManager = QueryStringManager()
+    private var filterManager = FilterManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,8 +163,8 @@ class RoomListViewController: UIViewController {
     }
     
     @objc func dateDone(_ notification: Notification) {
-        guard let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date else {return}
-        filterManager.dateFilter = DateFilter(startDate: start, endDate: end)
+        guard let dateFilter = notification.userInfo?["dateFilter"] as? DateFilter else {return}
+        filterManager.dateFilter = dateFilter
         filterButtons[0].selected()
         setUseCase()
     }

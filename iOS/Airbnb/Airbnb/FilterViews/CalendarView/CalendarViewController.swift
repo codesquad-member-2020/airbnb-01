@@ -30,10 +30,18 @@ class CalendarViewController: UIViewController {
         filterContainerView.layer.cornerRadius = 10
         view.backgroundColor = view.backgroundColor!.withAlphaComponent(0.5)
         
+        checkAlearySelected()
         setObserver()
         setTitle()
         setWeekDayStackView()
         setCalendarCollectionView()
+    }
+    
+    private func checkAlearySelected() {
+        if let date = FilterManager.shared.dateFilter {
+            startDayIndexPath = date.startIndexPath
+            endDayIndexPath = date.endIndexPath
+        }
     }
     
     private func setObserver() {
@@ -131,14 +139,17 @@ class CalendarViewController: UIViewController {
     }
     
     @objc func doneButtonClicked() {
-        guard let start = startDay, let end = endDay else {
+        guard let start = startDay, let end = endDay, let startIndexPath = startDayIndexPath, let endIndexPath = endDayIndexPath else {
             AlertView.alertError(viewController: self, message: "날짜 정보를 확인해주세요!")
             return
         }
+        
+        let dateFilter = DateFilter(startDate: start.description.convertDate(), endDate: end.description.convertDate(), startIndexPath: startIndexPath, endIndexPath: endIndexPath)
+        
         dismiss(animated: true, completion: {
             NotificationCenter.default.post(name: .DateDone,
                                             object: nil,
-                                            userInfo: ["start": "\(start)".convertDate(), "end": "\(end)".convertDate()])
+                                            userInfo: ["dateFilter": dateFilter])
         })
     }
 }

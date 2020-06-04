@@ -11,7 +11,6 @@ import GoogleMaps
 
 class DetailViewController: UIViewController {
     
-    
     @IBOutlet weak var bookingButtonView: BookingButtonView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!

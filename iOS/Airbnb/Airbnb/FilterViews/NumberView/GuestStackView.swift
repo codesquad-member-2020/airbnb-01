@@ -54,6 +54,15 @@ class GuestStackView: UIStackView {
     }
     
     func totalGuest() -> [String] {
-      return subviews.reduce(into: [String]()) {$0.append("\($1)")}
+        return subviews.reduce(into: [String]()) {$0.append("\($1)")}
+    }
+    
+    func setNumbers(adult: String, youth: String, infants: String) {
+        let guest = [adult, youth, infants]
+        for (index, subView) in subviews.enumerated() {
+            guard let guestView = subView as? GuestView else {return}
+            guard let number = Int(guest[index]) else {return}
+            guestView.setNumber(number: number)
+        }
     }
 }

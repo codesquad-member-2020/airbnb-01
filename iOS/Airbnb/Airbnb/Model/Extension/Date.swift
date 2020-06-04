@@ -29,4 +29,25 @@ extension Date {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: self)
     }
+    
+    var year: Int {
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: self)
+        
+        return year
+    }
+    
+    var month: Int {
+        let calendar = Calendar.current
+        let month = calendar.component(.month, from: self)
+        
+        return month
+    }
+    
+    var day: Int {
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: self)
+        
+        return day
+    }
 }

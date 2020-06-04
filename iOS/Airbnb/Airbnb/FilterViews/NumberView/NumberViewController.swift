@@ -21,6 +21,7 @@ class NumberViewController: UIViewController {
         setObserver()
         setTitle()
         setGuestStackView()
+        hasPreviousResult()
     }
     
     deinit {
@@ -28,6 +29,11 @@ class NumberViewController: UIViewController {
     }
     
     @IBOutlet weak var filterContainerView: FilterContainerView!
+    
+    private func hasPreviousResult() {
+        guard let info = FilterManager.shared.guestInfo else {return}
+        guestStackView.setNumbers(adult: info.adult, youth: info.youth, infants: info.infants)
+    }
     
     private func setTitle() {
         filterContainerView.setTitle(text: "인원")

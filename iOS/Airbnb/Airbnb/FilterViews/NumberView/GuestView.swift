@@ -40,6 +40,10 @@ class GuestView: UIView {
         super.init(coder: coder)
     }
     
+    func setNumber(number: Int) {
+        self.number = number
+    }
+    
     func setTitle(text: String) {
         titleLabel.text = text
     }

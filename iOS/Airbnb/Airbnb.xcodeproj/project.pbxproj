@@ -23,7 +23,7 @@
 		A536AB1724794AB000C3F000 /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1624794AB000C3F000 /* RoomManager.swift */; };
 		A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB18247954F200C3F000 /* RoomListDataSource.swift */; };
 		A536AB1B2479811C00C3F000 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1A2479811C00C3F000 /* ImageUseCase.swift */; };
-		A54D5DE524878DE1008CA2E6 /* QueryStringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DE424878DE1008CA2E6 /* QueryStringManager.swift */; };
+		A54D5DE524878DE1008CA2E6 /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DE424878DE1008CA2E6 /* FilterManager.swift */; };
 		A54D5DEA2487961A008CA2E6 /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DE92487961A008CA2E6 /* NumberViewController.swift */; };
 		A54D5DEC2487A719008CA2E6 /* GuestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D5DEB2487A719008CA2E6 /* GuestView.xib */; };
 		A54D5DEE2487ABDB008CA2E6 /* GuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DED2487ABDB008CA2E6 /* GuestView.swift */; };
@@ -89,7 +89,7 @@
 		A536AB1624794AB000C3F000 /* RoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		A536AB18247954F200C3F000 /* RoomListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListDataSource.swift; sourceTree = "<group>"; };
 		A536AB1A2479811C00C3F000 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
-		A54D5DE424878DE1008CA2E6 /* QueryStringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryStringManager.swift; sourceTree = "<group>"; };
+		A54D5DE424878DE1008CA2E6 /* FilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManager.swift; sourceTree = "<group>"; };
 		A54D5DE92487961A008CA2E6 /* NumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		A54D5DEB2487A719008CA2E6 /* GuestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestView.xib; sourceTree = "<group>"; };
 		A54D5DED2487ABDB008CA2E6 /* GuestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestView.swift; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */,
-				A54D5DE424878DE1008CA2E6 /* QueryStringManager.swift */,
+				A54D5DE424878DE1008CA2E6 /* FilterManager.swift */,
 				A5FABAF72486D051006CB6A6 /* Extension */,
 				A553044924842E7900ADE42A /* Protocol */,
 				A519D3D9247D4731003ECC91 /* DetailView */,
@@ -617,7 +617,7 @@
 				A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */,
 				A5FABB002486EE82006CB6A6 /* CalendarCollectionViewCell.swift in Sources */,
 				A5A8E068247FC38C006E4A71 /* AccommodationInfoView.swift in Sources */,
-				A54D5DE524878DE1008CA2E6 /* QueryStringManager.swift in Sources */,
+				A54D5DE524878DE1008CA2E6 /* FilterManager.swift in Sources */,
 				A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */,
 				A5FABAF92486D05B006CB6A6 /* String.swift in Sources */,
 				A54D5DEE2487ABDB008CA2E6 /* GuestView.swift in Sources */,
