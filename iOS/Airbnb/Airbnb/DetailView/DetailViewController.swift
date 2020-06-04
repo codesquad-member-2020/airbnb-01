@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
         detailMapViewController.roomInfo = roomInfo
         self.navigationController?.pushViewController(detailMapViewController, animated: true)
     }
+    @IBOutlet weak var reviewCollectionView: UICollectionView!
     
     private let detailViewUseCase = DetailViewUseCase(networkManager: NetworkManager())
     private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
@@ -34,6 +35,7 @@ class DetailViewController: UIViewController {
             setBookingButton()
             guard let images = detailRoomInformation?.images else {return}
             setImageUseCase(images: images)
+            reviewCollectionView.reloadData()
         }
     }
     
@@ -45,6 +47,8 @@ class DetailViewController: UIViewController {
         setObserver()
         setNavigationController()
         setModelUseCase()
+        reviewCollectionView.dataSource = self
+        reviewCollectionView.delegate = self
     }
     
     deinit {
@@ -114,7 +118,8 @@ class DetailViewController: UIViewController {
                                         AlertView.alertError(viewController: self, message: "숙소 정보가 없습니다.")
                                         return
                                     }
-                                    URLBinder.shared.updateURL(roomID: roomId, serverURL: $0, localURL: $1)})
+                                    URLBinder.shared.updateURL(roomID: roomId, serverURL: $0, localURL: $1)
+                                    self.reviewCollectionView.reloadData()})
     }
     
     private func setNavigationController() {
@@ -138,6 +143,7 @@ class DetailViewController: UIViewController {
                                                 for _ in 0..<$0.images.count {
                                                     self.scrollViewWithPageControlView.appendImageView()
                                                 }
+                                            
                                                 self.detailRoomInformation = $0 })
     }
     
@@ -164,5 +170,34 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+}
+
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return detailRoomInformation?.reviews.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reviewCell", for: indexPath) as? ReviewCollectionViewCell else {return UICollectionViewCell()}
+        guard let review = detailRoomInformation?.reviews[indexPath.item] else {return UICollectionViewCell()}
+        cell.descriptionLabel.text = review.content
+        cell.emailInfo.text = review.email
+        guard let url = URL(string: review.profileURL) else {return cell}
+        let data = try! Data(contentsOf: url)
+        cell.profileImageView.image = UIImage(data: data)
+        cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.height / 2
+        return cell
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

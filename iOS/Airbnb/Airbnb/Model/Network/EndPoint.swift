@@ -17,7 +17,6 @@ enum EndPoint {
     static let checkIn = "checkIn="
     static let checkOut = "checkOut"
     static let guest = "guests="
-    static let RoomDetail = "accommodations/"
     static let minPrice = "priceMin"
     static let maxPrice = "priceMax"
 }

@@ -28,6 +28,7 @@
 		A54A17582489914100B2692C /* rangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54A17572489914100B2692C /* rangeSlider.swift */; };
 		A54A175A2489918700B2692C /* RangeSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54A17592489918700B2692C /* RangeSliderTrackLayer.swift */; };
 		A54A175C24899D1500B2692C /* PriceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54A175B24899D1500B2692C /* PriceUseCase.swift */; };
+		A54A175E2489B50200B2692C /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54A175D2489B50200B2692C /* ReviewCollectionViewCell.swift */; };
 		A54D5DE524878DE1008CA2E6 /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DE424878DE1008CA2E6 /* FilterManager.swift */; };
 		A54D5DEA2487961A008CA2E6 /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DE92487961A008CA2E6 /* NumberViewController.swift */; };
 		A54D5DEC2487A719008CA2E6 /* GuestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D5DEB2487A719008CA2E6 /* GuestView.xib */; };
@@ -99,6 +100,7 @@
 		A54A17572489914100B2692C /* rangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rangeSlider.swift; sourceTree = "<group>"; };
 		A54A17592489918700B2692C /* RangeSliderTrackLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderTrackLayer.swift; sourceTree = "<group>"; };
 		A54A175B24899D1500B2692C /* PriceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceUseCase.swift; sourceTree = "<group>"; };
+		A54A175D2489B50200B2692C /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		A54D5DE424878DE1008CA2E6 /* FilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManager.swift; sourceTree = "<group>"; };
 		A54D5DE92487961A008CA2E6 /* NumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		A54D5DEB2487A719008CA2E6 /* GuestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestView.xib; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				A5A8E069247FC796006E4A71 /* AccommodationInfoView.xib */,
 				A5A8E06B247FDCEA006E4A71 /* BookingButtonView.swift */,
 				A5A8E06D247FDCF0006E4A71 /* BookingButtonView.xib */,
+				A54A175D2489B50200B2692C /* ReviewCollectionViewCell.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				A519D3DB247D4760003ECC91 /* DetailImageViewModel.swift in Sources */,
 				A519D3DD247D4C09003ECC91 /* DetailViewUseCase.swift in Sources */,
 				A529F72F2476B00800844E8E /* Room.swift in Sources */,
+				A54A175E2489B50200B2692C /* ReviewCollectionViewCell.swift in Sources */,
 				A520FA342473C6C9009AC6F8 /* ShadowView.swift in Sources */,
 				A520FA362473CD8E009AC6F8 /* PaddingTextField.swift in Sources */,
 				A55304482482762100ADE42A /* URLBinder.swift in Sources */,
