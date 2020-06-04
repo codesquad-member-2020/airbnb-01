@@ -9,12 +9,14 @@
 import Foundation
 
 enum EndPoint {
-    static let defaultURL = "http://13.125.127.249:8080/api/"
-    static let RoomList = "accommodations/s/location?"
+    static let defaultURL = "http://13.125.127.249:8080/api/accommodations/"
+    static let RoomList = "s/location?"
+    static let pirce = "p/location?"
     static let location = "location="
-    static let PageCount = "&pageCount="
-    static let checkIn = "&checkIn="
-    static let checkOut = "&checkOut"
-    static let guest = "&guests="
-    static let RoomDetail = "accommodations/"
+    static let PageCount = "pageCount="
+    static let checkIn = "checkIn="
+    static let checkOut = "checkOut"
+    static let guest = "guests="
+    static let minPrice = "priceMin"
+    static let maxPrice = "priceMax"
 }

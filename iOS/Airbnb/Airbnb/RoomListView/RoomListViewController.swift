@@ -24,6 +24,11 @@ class RoomListViewController: UIViewController {
         numberViewController.modalPresentationStyle = .overFullScreen
         present(numberViewController, animated: true)
     }
+    @IBAction func PriceButtonClicked(_ sender: FilterButton) {
+        guard let priceViewController = storyboard?.instantiateViewController(withIdentifier: "PriceViewController") as? PriceViewController else {return}
+        priceViewController.modalPresentationStyle = .overFullScreen
+        present(priceViewController, animated: true)
+    }
     
     private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var useCase = RoomListUseCase(networkManager: NetworkManager())
@@ -69,6 +74,10 @@ class RoomListViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(addGuestInfo(_:)),
                                                name: .NumberDone,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(priceDone(_:)),
+                                               name: .PriceDone,
                                                object: nil)
     }
     
@@ -174,6 +183,13 @@ class RoomListViewController: UIViewController {
         filterManager.guestInfo = GuestInfo(adult: totalGuest[0], youth: totalGuest[1], infants: totalGuest[2])
         filterButtons[1].selected()
         setUseCase()
+    }
+    
+    @objc func priceDone(_ notification: Notification) {
+        guard let min = notification.userInfo?["lower"] as? String,
+            let max = notification.userInfo?["max"] as? String else {return}
+        
+        filterManager.priceFilter = PriceFilter(min: min, max: max)
     }
 }
 

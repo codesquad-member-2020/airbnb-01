@@ -15,9 +15,24 @@ struct RoomDetail: Decodable, ImageUpdatable {
     var location: String
     var name: String
     var type: String
+    var reviews: [Review]
 }
 
 struct Coordinate: Decodable {
     var latitude: Double
     var longitude: Double
+}
+
+struct Review: Decodable {
+    var star: Int
+    var content: String
+    var email: String
+    var profileURL: String
+    
+    enum CodingKeys : String, CodingKey{
+        case star
+        case content
+        case email = "authorEmail"
+        case profileURL = "url"
+    }
 }

@@ -16,6 +16,7 @@ class FilterManager {
     var page: Int?
     var dateFilter: DateFilter?
     var guestInfo: GuestInfo?
+    var priceFilter: PriceFilter?
     
     func queryString() -> String {
         var query = ""
@@ -33,6 +34,10 @@ class FilterManager {
         
         if let guestInfo = guestInfo {
             query += "&" + EndPoint.guest + guestInfo.totalGuest()
+        }
+        
+        if let price = priceFilter {
+            query += "&" + EndPoint.minPrice + price.min + "&" + EndPoint.maxPrice + price.max
         }
         
         return query
@@ -55,4 +60,9 @@ struct GuestInfo {
         guard let adultInteger = Int(adult), let youthInteger = Int(youth), let infantsInteger = Int(infants) else {return "0"}
         return String(adultInteger + youthInteger + infantsInteger)
     }
+}
+
+struct PriceFilter {
+    var min: String
+    var max: String
 }
