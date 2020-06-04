@@ -31,8 +31,7 @@ class RoomListViewController: UIViewController {
     private var viewModel: RoomListViewModel?
     
     private var dataSource = RoomListDataSource()
-    private var currentLocation = ""
-    private let filterManager = FilterManager()
+    private let filterManager = QueryStringManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +96,9 @@ class RoomListViewController: UIViewController {
     }
     
     private func setUseCase() {
-        useCase.requestRoomList(location: currentLocation,
+        filterManager.page = 0
+        roomListCollectionView.setContentOffset(.zero, animated: false)
+        useCase.requestRoomList(queryString: filterManager.queryString(),
                                 failureHandler: { [unowned self] in AlertView.alertError(viewController: self, message: $0)},
                                 successHandler: { [unowned self] in
                                     guard $0.count != 0 else {
@@ -165,12 +166,14 @@ class RoomListViewController: UIViewController {
         guard let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date else {return}
         filterManager.dateFilter = DateFilter(startDate: start, endDate: end)
         filterButtons[0].selected()
+        setUseCase()
     }
     
     @objc func addGuestInfo(_ notification: Notification) {
         guard let totalGuest = notification.userInfo?["result"] as? [String] else {return}
         filterManager.guestInfo = GuestInfo(adult: totalGuest[0], youth: totalGuest[1], infants: totalGuest[2])
         filterButtons[1].selected()
+        setUseCase()
     }
 }
 
@@ -193,9 +196,8 @@ extension RoomListViewController: UICollectionViewDelegateFlowLayout {
         
         guard let count = viewModel?.roomListManager.count else {return}
         if indexPath.item == count - 1 {
-            let page: Int = count / 10
-            useCase.requestRoomList(page: page,
-                                    location: currentLocation,
+            filterManager.page = count / 10
+            useCase.requestRoomList(queryString: filterManager.queryString(),
                                     failureHandler: {[unowned self] in AlertView.alertError(viewController: self, message: $0)},
                                     successHandler: {
                                         $0.forEach { [unowned self] in
@@ -217,7 +219,8 @@ extension RoomListViewController: UITextFieldDelegate {
             AlertView.alertError(viewController: self, message: "검색어를 입력해주세요!")
             return true
         }
-        currentLocation = location
+        filterManager.currentLocation = location
+        filterManager.page = 0
         setUseCase()
         self.view.endEditing(true)
         return true
