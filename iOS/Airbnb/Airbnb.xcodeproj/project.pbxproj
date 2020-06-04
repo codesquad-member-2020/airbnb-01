@@ -23,6 +23,7 @@
 		A536AB1724794AB000C3F000 /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1624794AB000C3F000 /* RoomManager.swift */; };
 		A536AB19247954F200C3F000 /* RoomListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB18247954F200C3F000 /* RoomListDataSource.swift */; };
 		A536AB1B2479811C00C3F000 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536AB1A2479811C00C3F000 /* ImageUseCase.swift */; };
+		A54A17542489839900B2692C /* PriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54A17532489839900B2692C /* PriceViewController.swift */; };
 		A54D5DE524878DE1008CA2E6 /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DE424878DE1008CA2E6 /* FilterManager.swift */; };
 		A54D5DEA2487961A008CA2E6 /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D5DE92487961A008CA2E6 /* NumberViewController.swift */; };
 		A54D5DEC2487A719008CA2E6 /* GuestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D5DEB2487A719008CA2E6 /* GuestView.xib */; };
@@ -89,6 +90,7 @@
 		A536AB1624794AB000C3F000 /* RoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		A536AB18247954F200C3F000 /* RoomListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListDataSource.swift; sourceTree = "<group>"; };
 		A536AB1A2479811C00C3F000 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
+		A54A17532489839900B2692C /* PriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceViewController.swift; sourceTree = "<group>"; };
 		A54D5DE424878DE1008CA2E6 /* FilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManager.swift; sourceTree = "<group>"; };
 		A54D5DE92487961A008CA2E6 /* NumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		A54D5DEB2487A719008CA2E6 /* GuestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestView.xib; sourceTree = "<group>"; };
@@ -276,9 +278,18 @@
 			path = FilterContainerView;
 			sourceTree = "<group>";
 		};
+		A54A17522489838300B2692C /* PriceView */ = {
+			isa = PBXGroup;
+			children = (
+				A54A17532489839900B2692C /* PriceViewController.swift */,
+			);
+			path = PriceView;
+			sourceTree = "<group>";
+		};
 		A54D5DE72487936F008CA2E6 /* FilterViews */ = {
 			isa = PBXGroup;
 			children = (
+				A54A17522489838300B2692C /* PriceView */,
 				A533689624858132008ADCFE /* CalendarView */,
 				A54D5DE824879383008CA2E6 /* NumberView */,
 			);
@@ -610,6 +621,7 @@
 				A586177F2474252C009CA661 /* LikeButton.swift in Sources */,
 				A58907222476C483008FCD18 /* AlertView.swift in Sources */,
 				A586178124742684009CA661 /* RoomListCell.swift in Sources */,
+				A54A17542489839900B2692C /* PriceViewController.swift in Sources */,
 				A5CF3CEF2487004E0007EC3E /* CalendarHeaderView.swift in Sources */,
 				A57CF7D82472CD24006FFE98 /* AppDelegate.swift in Sources */,
 				A5A8E06C247FDCEA006E4A71 /* BookingButtonView.swift in Sources */,

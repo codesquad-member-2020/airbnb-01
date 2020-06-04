@@ -24,6 +24,11 @@ class RoomListViewController: UIViewController {
         numberViewController.modalPresentationStyle = .overFullScreen
         present(numberViewController, animated: true)
     }
+    @IBAction func PriceButtonClicked(_ sender: FilterButton) {
+        guard let priceViewController = storyboard?.instantiateViewController(withIdentifier: "PriceViewController") as? PriceViewController else {return}
+        priceViewController.modalPresentationStyle = .overFullScreen
+        present(priceViewController, animated: true)
+    }
     
     private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var useCase = RoomListUseCase(networkManager: NetworkManager())
