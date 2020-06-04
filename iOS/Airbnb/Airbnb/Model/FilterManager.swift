@@ -11,9 +11,16 @@ import Foundation
 class FilterManager {
     
     var dateFilter: DateFilter?
+    var guestInfo: GuestInfo?
 }
 
 struct DateFilter {
     var startDate: Date
     var endDate: Date
+}
+
+struct GuestInfo {
+    var adult: String
+    var youth: String
+    var infants: String
 }

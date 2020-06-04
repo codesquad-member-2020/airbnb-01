@@ -108,16 +108,14 @@ class DetailViewController: UIViewController {
     }
     
     private func setImageUseCase(images: [Image]) {
-        imageUseCase.enqueueImages(images: images, failureHandler: { [unowned self] in
-            AlertView.alertError(viewController: self, message: $0)
-            }, completed: { [unowned self] in
-                guard let roomId = self.roomId else {
-                    AlertView.alertError(viewController: self, message: "숙소 정보가 없습니다.")
-                    return
-                }
-                URLBinder.shared.updateURL(roomID: roomId, serverURL: $0, localURL: $1)
-            }
-        )
+        imageUseCase.enqueueImages(images: images,
+                                   failureHandler: { [unowned self] in AlertView.alertError(viewController: self, message: $0) },
+                                   completed: { [unowned self] in
+                                    guard let roomId = self.roomId else {
+                                        AlertView.alertError(viewController: self, message: "숙소 정보가 없습니다.")
+                                        return
+                                    }
+                                    URLBinder.shared.updateURL(roomID: roomId, serverURL: $0, localURL: $1)})
     }
     
     private func setNavigationController() {
@@ -134,15 +132,14 @@ class DetailViewController: UIViewController {
     
     private func setModelUseCase() {
         guard let roomId = roomId else {return}
-        detailViewUseCase.requestDetailView(roomId: roomId, failureHandler: { [unowned self] in
-            AlertView.alertError(viewController: self, message: $0)
-            }, successHandler: { [unowned self] in
-                URLBinder.shared.registerRoomID(room: $0)
-                for _ in 0..<$0.images.count {
-                    self.scrollViewWithPageControlView.appendImageView()
-                }
-                self.detailRoomInformation = $0
-        })
+        detailViewUseCase.requestDetailView(roomId: roomId,
+                                            failureHandler: { [unowned self] in AlertView.alertError(viewController: self, message: $0) },
+                                            successHandler: { [unowned self] in
+                                                URLBinder.shared.registerRoomID(room: $0)
+                                                for _ in 0..<$0.images.count {
+                                                    self.scrollViewWithPageControlView.appendImageView()
+                                                }
+                                                self.detailRoomInformation = $0 })
     }
     
     @objc func urlBinded(_ notification: Notification) {

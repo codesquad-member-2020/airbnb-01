@@ -19,6 +19,11 @@ class RoomListViewController: UIViewController {
         calendarViewController.modalPresentationStyle = .overFullScreen
         present(calendarViewController, animated: true)
     }
+    @IBAction func numberButtonClicked(_ sender: FilterButton) {
+        guard let numberViewController = storyboard?.instantiateViewController(withIdentifier: "NumberViewController") as? NumberViewController else {return}
+        numberViewController.modalPresentationStyle = .overFullScreen
+        present(numberViewController, animated: true)
+    }
     
     private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var useCase = RoomListUseCase(networkManager: NetworkManager())
@@ -63,39 +68,37 @@ class RoomListViewController: UIViewController {
                                                name: .DateDone,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(dateCancel),
-                                               name: .DateCancel,
+                                               selector: #selector(addGuestInfo(_:)),
+                                               name: .NumberDone,
                                                object: nil)
     }
     
     private func setCollectionView() {
         roomListCollectionView.dataSource = dataSource
         roomListCollectionView.delegate = self
-        roomListCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(collectionViewTouched(gesture:))))
+        roomListCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                           action: #selector(collectionViewTouched(gesture:))))
     }
     
     private func setMockUseCase() {
         useCase.requestMockRoomList(successHandler: { [unowned self] in
-            self.viewModel = RoomListViewModel(roomListManager: RoomManager(editingStyle: .none, roomList: $0), handler: { [unowned self] manager in
-                switch manager.editingStyle {
-                case .none:
-                    self.roomListCollectionView.reloadData()
-                case let .insert(_, indexPath):
-                    self.roomListCollectionView.performBatchUpdates({
-                        self.roomListCollectionView.insertItems(at: [indexPath])
-                    }, completion: nil)
-                }
-            })
-            
+            self.viewModel = RoomListViewModel(roomListManager: RoomManager(editingStyle: .none, roomList: $0),
+                                               handler: { [unowned self] manager in
+                                                switch manager.editingStyle {
+                                                case .none:
+                                                    self.roomListCollectionView.reloadData()
+                                                case let .insert(_, indexPath):
+                                                    self.roomListCollectionView.performBatchUpdates({
+                                                        self.roomListCollectionView.insertItems(at: [indexPath])
+                                                    }, completion: nil)
+                                                }})
             self.dataSource.viewModel = self.viewModel
         })
     }
     
     private func setUseCase() {
         useCase.requestRoomList(location: currentLocation,
-                                failureHandler: { [unowned self] in
-                                    AlertView.alertError(viewController: self, message: $0)
-            },
+                                failureHandler: { [unowned self] in AlertView.alertError(viewController: self, message: $0)},
                                 successHandler: { [unowned self] in
                                     guard $0.count != 0 else {
                                         AlertView.alertError(viewController: self, message: "검색 결과가 없습니다!")
@@ -116,8 +119,7 @@ class RoomListViewController: UIViewController {
                                     }
                                     self.dataSource.viewModel = self.viewModel
                                     NotificationCenter.default.post(name: .ViewModelChanged,
-                                                                    object: nil)
-        })
+                                                                    object: nil)})
     }
     
     private func setTabBarImage() {
@@ -144,11 +146,9 @@ class RoomListViewController: UIViewController {
     @objc func viewModelChanged() {
         viewModel?.roomListManager.roomList.forEach {
             let room = $0
-            imageUseCase.enqueueImages(images: room.images, failureHandler: { [unowned self] in
-                AlertView.alertError(viewController: self, message: $0)
-                }, completed: {
-                    URLBinder.shared.updateURL(roomID: room.id, serverURL: $0, localURL: $1)
-            })
+            imageUseCase.enqueueImages(images: room.images,
+                                       failureHandler: { [unowned self] in AlertView.alertError(viewController: self, message: $0) },
+                                       completed: { URLBinder.shared.updateURL(roomID: room.id, serverURL: $0, localURL: $1) })
         }
     }
     
@@ -161,14 +161,16 @@ class RoomListViewController: UIViewController {
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
-    @objc func dateCancel() {
-        filterButtons[0].deselected()
-    }
-    
     @objc func dateDone(_ notification: Notification) {
         guard let start = notification.userInfo?["start"] as? Date, let end = notification.userInfo?["end"] as? Date else {return}
         filterManager.dateFilter = DateFilter(startDate: start, endDate: end)
         filterButtons[0].selected()
+    }
+    
+    @objc func addGuestInfo(_ notification: Notification) {
+        guard let totalGuest = notification.userInfo?["result"] as? [String] else {return}
+        filterManager.guestInfo = GuestInfo(adult: totalGuest[0], youth: totalGuest[1], infants: totalGuest[2])
+        filterButtons[1].selected()
     }
 }
 
@@ -192,17 +194,16 @@ extension RoomListViewController: UICollectionViewDelegateFlowLayout {
         guard let count = viewModel?.roomListManager.count else {return}
         if indexPath.item == count - 1 {
             let page: Int = count / 10
-            useCase.requestRoomList(page: page, location: currentLocation, failureHandler: {[unowned self] in
-                AlertView.alertError(viewController: self, message: $0)
-                }, successHandler: {
-                    $0.forEach { [unowned self] in
-                        self.viewModel?.appendRoom(room: $0)
-                        URLBinder.shared.registerRoomID(room: $0)
-                    }
-                    NotificationCenter.default.post(name: .ViewModelChanged,
-                                                    object: nil)
-            })
-        }
+            useCase.requestRoomList(page: page,
+                                    location: currentLocation,
+                                    failureHandler: {[unowned self] in AlertView.alertError(viewController: self, message: $0)},
+                                    successHandler: {
+                                        $0.forEach { [unowned self] in
+                                            self.viewModel?.appendRoom(room: $0)
+                                            URLBinder.shared.registerRoomID(room: $0)
+                                        }
+                                        NotificationCenter.default.post(name: .ViewModelChanged,
+                                                                        object: nil)})}
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
