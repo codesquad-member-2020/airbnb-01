@@ -75,6 +75,10 @@ class RoomListViewController: UIViewController {
                                                selector: #selector(addGuestInfo(_:)),
                                                name: .NumberDone,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(priceDone(_:)),
+                                               name: .PriceDone,
+                                               object: nil)
     }
     
     private func setCollectionView() {
@@ -179,6 +183,13 @@ class RoomListViewController: UIViewController {
         filterManager.guestInfo = GuestInfo(adult: totalGuest[0], youth: totalGuest[1], infants: totalGuest[2])
         filterButtons[1].selected()
         setUseCase()
+    }
+    
+    @objc func priceDone(_ notification: Notification) {
+        guard let min = notification.userInfo?["lower"] as? String,
+            let max = notification.userInfo?["max"] as? String else {return}
+        
+        filterManager.priceFilter = PriceFilter(min: min, max: max)
     }
 }
 
