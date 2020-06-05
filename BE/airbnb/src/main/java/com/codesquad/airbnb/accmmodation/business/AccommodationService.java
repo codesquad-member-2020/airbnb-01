@@ -53,10 +53,10 @@ public class AccommodationService {
   }
 
   public List<AccommodationView> accommodationsCoordinate(AccommodationCoordinateQuery query) {
-    PageRequest requestPage = PageRequest.of(query.getPageCount(), PAGE_ROW_COUNT);
+    PageRequest requestPage = PageRequest.of(query.getPageCount(), Integer.MAX_VALUE);
     Page<Accommodation> accommodations = accommodationRepository
         .findByCoordinate_LatitudeBetweenAndCoordinate_LongitudeBetween(
-            query.getLeftTop().getLatitude(), query.getRightBottom().getLatitude(),
+            query.getRightBottom().getLatitude(), query.getLeftTop().getLatitude(),
             query.getLeftTop().getLongitude(), query.getRightBottom().getLongitude(),
             requestPage);
 
