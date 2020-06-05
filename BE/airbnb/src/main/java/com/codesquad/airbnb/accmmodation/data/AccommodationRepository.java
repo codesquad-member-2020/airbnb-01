@@ -10,7 +10,8 @@ public interface AccommodationRepository extends JpaRepository<Accommodation, Lo
                                                                                          Integer guests,
                                                                                          Pageable Pageable);
 
-    Page<Accommodation> findByCoordinate_LatitudeBetweenAndCoordinate_LongitudeBetween(
-            Double leftTopLatitude, Double rightBottomLatitude
-            , Double leftTopLongitude, Double rightBottomLongitude, Pageable Pageable);
+
+  Page<Accommodation> findByCoordinate_LatitudeBetweenAndCoordinate_LongitudeBetween(
+      Double rightBottomLatitude, Double leftTopLatitude
+      , Double leftTopLongitude, Double rightBottomLongitude, Pageable Pageable);
 }
