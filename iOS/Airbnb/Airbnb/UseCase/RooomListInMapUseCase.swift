@@ -1,5 +1,5 @@
 //
-//  PriceUseCase.swift
+//  MapListUseCase.swift
 //  Airbnb
 //
 //  Created by 신한섭 on 2020/06/05.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-class PriceUseCase {
+struct RooomListInMapUseCase {
+    
     
     private var networkManager: NetworkManageable
     
@@ -16,8 +17,8 @@ class PriceUseCase {
         self.networkManager = networkManager
     }
     
-    func requestPrice(queryString: String, failureHandler: @escaping (String) -> (), successHandler: @escaping ([Int]) -> ()) {
-        networkManager.loadResource(requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.pirce + queryString){
+    func requestRoomList(queryString: String, failureHandler: @escaping (String) -> (), successHandler: @escaping ([Room]) -> ()) {
+        networkManager.loadResource(requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.RoomList + queryString){
             switch $0 {
             case .success(let data):
                 guard let data = data else {
@@ -26,7 +27,7 @@ class PriceUseCase {
                 }
                 
                 do {
-                    let model = try JSONDecoder().decode([Int].self, from: data)
+                    let model = try JSONDecoder().decode([Room].self, from: data)
                     successHandler(model)
                 } catch {
                     failureHandler("Json decode error")

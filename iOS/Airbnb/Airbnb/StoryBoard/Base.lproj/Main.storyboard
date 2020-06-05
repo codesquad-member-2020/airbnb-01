@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VTI-5o-7Wc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -51,7 +51,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NU2-GJ-o2k" userLabel="Filter Stack View">
-                                <rect key="frame" x="20.5" y="163" width="258.5" height="40"/>
+                                <rect key="frame" x="20.5" y="163" width="171" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yv-Rv-eff" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="83" height="40"/>
@@ -95,8 +95,8 @@
                                             <action selector="numberButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="9uf-Fr-g1B"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA3-aa-NiH" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="176" y="0.0" width="82.5" height="40"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA3-aa-NiH" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="171" y="0.0" width="0.0" height="40"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="가격">
                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,6 +148,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYO-br-9Bq">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <state key="normal" image="location"/>
+                                        <connections>
+                                            <action selector="locationButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ICa-xD-o8R"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -192,6 +195,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="s0K-Dd-GyB"/>
                     <connections>
+                        <outlet property="priceButton" destination="EA3-aa-NiH" id="vK0-du-kgC"/>
                         <outlet property="roomListCollectionView" destination="Nk3-iJ-S5b" id="ZXV-ez-1RW"/>
                         <outlet property="searchTextField" destination="HlN-xQ-VOY" id="emq-J4-XGI"/>
                         <outletCollection property="filterButtons" destination="3Yv-Rv-eff" collectionClass="NSMutableArray" id="NA3-2e-gxq"/>
@@ -202,6 +206,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1851" y="-176"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="r7G-U0-cns">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7hh-EB-Q27" customClass="MapViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vjl-WU-EGJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FCF-aR-X7F"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a55-oB-7PJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1780" y="494"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="fVF-F3-g4V">
@@ -415,10 +434,97 @@
             </objects>
             <point key="canvasLocation" x="3362" y="-176"/>
         </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="HHe-62-JUX">
+            <objects>
+                <viewController storyboardIdentifier="OAuthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qK2-7t-kcj" customClass="OAuthViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JIw-nE-S2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfj-Or-O9F">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="gfj-Or-O9F" secondAttribute="bottom" id="JEK-gM-bj8"/>
+                            <constraint firstItem="gfj-Or-O9F" firstAttribute="leading" secondItem="71p-mR-b56" secondAttribute="leading" id="Nld-oP-xqd"/>
+                            <constraint firstItem="71p-mR-b56" firstAttribute="trailing" secondItem="gfj-Or-O9F" secondAttribute="trailing" id="ce3-Un-zG9"/>
+                            <constraint firstItem="gfj-Or-O9F" firstAttribute="top" secondItem="71p-mR-b56" secondAttribute="top" id="nKY-5H-ZQY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="71p-mR-b56"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="gfj-Or-O9F" id="ahI-Ax-hwu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qdp-kH-yUj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-851" y="-696"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="tp6-FW-SbE">
+            <objects>
+                <viewController id="VTI-5o-7Wc" customClass="LoginViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pb6-Ur-h0h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-Yk-6C8" customClass="BorderButton" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="41.5" y="575" width="331" height="54"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="   Github으로 로그인" image="GitHub-Mark-Light-120px-plus">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="corderRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="asd:" destination="VTI-5o-7Wc" eventType="touchUpInside" id="Xeg-ns-d5E"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="trD-iW-YSk">
+                                <rect key="frame" x="41.5" y="194" width="331" height="331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="trD-iW-YSk" secondAttribute="height" multiplier="1:1" id="7wA-o4-Qh4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="trD-iW-YSk" firstAttribute="centerX" secondItem="pb6-Ur-h0h" secondAttribute="centerX" id="8BH-oZ-HPr"/>
+                            <constraint firstItem="trD-iW-YSk" firstAttribute="top" secondItem="6SH-5K-Lhz" secondAttribute="top" constant="150" id="GtM-RC-7Ld"/>
+                            <constraint firstItem="hT4-Yk-6C8" firstAttribute="centerX" secondItem="pb6-Ur-h0h" secondAttribute="centerX" id="MBX-a6-hF3"/>
+                            <constraint firstItem="trD-iW-YSk" firstAttribute="width" secondItem="pb6-Ur-h0h" secondAttribute="width" multiplier="0.8" id="X2C-A0-9Hm"/>
+                            <constraint firstItem="hT4-Yk-6C8" firstAttribute="width" secondItem="pb6-Ur-h0h" secondAttribute="width" multiplier="0.8" id="ejW-AZ-pqM"/>
+                            <constraint firstItem="hT4-Yk-6C8" firstAttribute="height" secondItem="pb6-Ur-h0h" secondAttribute="height" multiplier="0.06" id="hVG-ee-6rh"/>
+                            <constraint firstItem="hT4-Yk-6C8" firstAttribute="top" secondItem="trD-iW-YSk" secondAttribute="bottom" constant="50" id="hqQ-TV-3O6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6SH-5K-Lhz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKX-NF-Q7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-873.91304347826099" y="-6.0267857142857144"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabbarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -543,8 +649,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="GitHub-Mark-Light-120px-plus" width="40" height="40"/>
         <image name="codesquad" width="266.66665649414062" height="115.66666412353516"/>
         <image name="location" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="logo" width="150.33332824707031" height="164.33332824707031"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
     </resources>
 </document>

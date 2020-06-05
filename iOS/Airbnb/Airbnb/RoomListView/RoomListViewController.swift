@@ -13,6 +13,7 @@ class RoomListViewController: UIViewController {
     @IBOutlet var filterButtons: [FilterButton]!
     @IBOutlet weak var roomListCollectionView: UICollectionView!
     @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var priceButton: FilterButton!
     @IBOutlet weak var searchTextField: PaddingTextField!
     @IBAction func calendarButtonClicked(_ sender: FilterButton) {
         guard let calendarViewController = storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as? CalendarViewController else {return}
@@ -28,6 +29,10 @@ class RoomListViewController: UIViewController {
         guard let priceViewController = storyboard?.instantiateViewController(withIdentifier: "PriceViewController") as? PriceViewController else {return}
         priceViewController.modalPresentationStyle = .overFullScreen
         present(priceViewController, animated: true)
+    }
+    @IBAction func locationButtonClicked(_ sender: UIButton) {
+        guard let mapViewController = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else {return}
+        self.navigationController?.pushViewController(mapViewController, animated: true)
     }
     
     private var imageUseCase = ImageUseCase(networkManager: NetworkManager())
@@ -176,6 +181,9 @@ class RoomListViewController: UIViewController {
         filterManager.dateFilter = dateFilter
         filterButtons[0].selected()
         setUseCase()
+        if filterManager.dateFilter != nil, filterManager.guestInfo != nil {
+            priceButton.isHidden = false
+        }
     }
     
     @objc func addGuestInfo(_ notification: Notification) {
@@ -183,6 +191,9 @@ class RoomListViewController: UIViewController {
         filterManager.guestInfo = GuestInfo(adult: totalGuest[0], youth: totalGuest[1], infants: totalGuest[2])
         filterButtons[1].selected()
         setUseCase()
+        if filterManager.dateFilter != nil, filterManager.guestInfo != nil {
+            priceButton.isHidden = false
+        }
     }
     
     @objc func priceDone(_ notification: Notification) {

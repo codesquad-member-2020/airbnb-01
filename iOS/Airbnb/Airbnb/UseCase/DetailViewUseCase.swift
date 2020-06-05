@@ -17,7 +17,7 @@ struct DetailViewUseCase {
     }
     
     func requestDetailView(roomId: Int, failureHandler: @escaping (String) -> (), successHandler: @escaping (RoomDetail) -> ()) {        
-        networkManager.loadResource(requestURL: EndPoint.defaultURL + "\(roomId)") {
+        networkManager.loadResource(requestURL: EndPoint.defaultURL + EndPoint.accommodations + "\(roomId)") {
             switch $0 {
             case .success(let data):
                 guard let data = data else {

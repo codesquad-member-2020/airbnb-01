@@ -17,6 +17,9 @@ protocol NetworkManageable {
 }
 
 class NetworkManager: NetworkManageable {
+    
+    static var shared = NetworkManager()
+    var token: String?
 
     func loadResource(requestURL: String, handler: @escaping (DataResult) -> ()) {
         guard let url = (requestURL).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else {
