@@ -16,6 +16,7 @@ public class AccommodationView {
 
   private final Long id;
   private final String name;
+  private final Integer guests;
   private final AccommodationType type;
   private final String location;
   private final Price price;
@@ -26,6 +27,7 @@ public class AccommodationView {
   public AccommodationView(Accommodation accommodation) {
     this.id = accommodation.getId();
     this.name = accommodation.getName();
+    this.guests = accommodation.getGuests();
     this.type = accommodation.getType();
     this.location = accommodation.getLocation();
     this.price = accommodation.getPrice();

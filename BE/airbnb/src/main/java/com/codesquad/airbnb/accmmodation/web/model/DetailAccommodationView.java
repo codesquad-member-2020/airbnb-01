@@ -15,6 +15,7 @@ public class DetailAccommodationView {
 
   private final Long id;
   private final String name;
+  private final Integer guests;
   private final AccommodationType type;
   private final String location;
   private final Coordinate coordinate;
@@ -25,6 +26,7 @@ public class DetailAccommodationView {
   public DetailAccommodationView(Accommodation accommodation) {
     this.id = accommodation.getId();
     this.name = accommodation.getName();
+    this.guests = accommodation.getGuests();
     this.type = accommodation.getType();
     this.location = accommodation.getLocation();
     this.coordinate = accommodation.getCoordinate();

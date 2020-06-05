@@ -28,8 +28,8 @@ public class AccommodationService {
     PageRequest requestPage = PageRequest.of(query.getPageCount(), PAGE_ROW_COUNT);
 
     Page<Accommodation> accommodations =
-        accommodationRepository.findByLocationContainingAndPriceBetween(
-            query.getLocation(), minPrice, maxPrice, requestPage);
+        accommodationRepository.findByLocationContainingAndPriceBetweenAndGuestsGreaterThanEqual(
+            query.getLocation(), minPrice, maxPrice, query.getGuests(), requestPage);
 
     return accommodations.stream().filter(accommodation ->
         accommodation.isPossibleBookedDates(query.getCheckIn(), query.getCheckOut()))
@@ -43,8 +43,8 @@ public class AccommodationService {
     PageRequest requestPage = PageRequest.of(query.getPageCount(), Integer.MAX_VALUE);
 
     Page<Accommodation> accommodations =
-        accommodationRepository.findByLocationContainingAndPriceBetween(
-            query.getLocation(), minPrice, maxPrice, requestPage);
+        accommodationRepository.findByLocationContainingAndPriceBetweenAndGuestsGreaterThanEqual(
+            query.getLocation(), minPrice, maxPrice, query.getGuests(), requestPage);
 
     return accommodations.stream().filter(accommodation ->
         accommodation.isPossibleBookedDates(query.getCheckIn(), query.getCheckOut()))

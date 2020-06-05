@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AccommodationRepository extends JpaRepository<Accommodation, Long> {
 
-  Page<Accommodation> findByLocationContainingAndPriceBetween(String location, Price min, Price max,
-      Pageable Pageable);
+    Page<Accommodation> findByLocationContainingAndPriceBetweenAndGuestsGreaterThanEqual (String location, Price min, Price max,
+                                                                                         Integer guests,
+                                                                                         Pageable Pageable);
+
 
   Page<Accommodation> findByCoordinate_LatitudeBetweenAndCoordinate_LongitudeBetween(
       Double rightBottomLatitude, Double leftTopLatitude
