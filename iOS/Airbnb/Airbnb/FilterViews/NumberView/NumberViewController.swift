@@ -64,7 +64,7 @@ class NumberViewController: UIViewController {
         guestStackView.bottomAnchor.constraint(equalTo: filterContainerView.filterView.bottomAnchor).isActive = true
         guestStackView.leadingAnchor.constraint(equalTo: filterContainerView.filterView.leadingAnchor).isActive = true
         guestStackView.trailingAnchor.constraint(equalTo: filterContainerView.filterView.trailingAnchor).isActive = true
-
+        
     }
     
     @objc func closeButtonClicked() {
@@ -84,10 +84,11 @@ class NumberViewController: UIViewController {
     
     @objc func doneButtonClicked() {
         let result = guestStackView.totalGuest()
+        
         dismiss(animated: true, completion: {
+            FilterManager.shared.guestInfo = GuestInfo(adult: result[0], youth: result[1], infants: result[2])
             NotificationCenter.default.post(name: .NumberDone,
-                                            object: nil,
-                                            userInfo: ["result" : result])
+                                            object: nil)
         })
     }
 }

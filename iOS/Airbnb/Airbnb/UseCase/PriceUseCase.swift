@@ -17,7 +17,7 @@ class PriceUseCase {
     }
     
     func requestPrice(queryString: String, failureHandler: @escaping (String) -> (), successHandler: @escaping ([Int]) -> ()) {
-        networkManager.loadResource(requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.pirce + queryString){
+        networkManager.loadResource(method: .get, headers: nil, bodys: nil, statusCode: 300,  requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.pirce + queryString){
             switch $0 {
             case .success(let data):
                 guard let data = data else {

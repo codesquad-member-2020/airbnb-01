@@ -100,9 +100,9 @@ class PriceViewController: UIViewController {
     @objc func doneButtonClicked() {
         guard let lower = lower, let upper = upper else {return}
         dismiss(animated: true, completion: {
+            FilterManager.shared.priceFilter = PriceFilter(min: String(lower), max: String(upper))
             NotificationCenter.default.post(name: .PriceDone,
-                                            object: nil,
-                                            userInfo: ["lower" : lower, "upper" : upper])
+                                            object: nil)
         })
     }
 }

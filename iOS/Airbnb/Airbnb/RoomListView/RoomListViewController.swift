@@ -171,14 +171,23 @@ class RoomListViewController: UIViewController {
         let touchLocation:CGPoint = gesture.location(ofTouch: 0, in: roomListCollectionView)
         guard let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {return}
         guard let indexPath = roomListCollectionView.indexPathForItem(at: touchLocation) else {return}
-        guard let roomId = viewModel?.roomListManager.room(of: indexPath.item).id else {return}
-        detailViewController.roomId = roomId
+        guard let room = viewModel?.roomListManager.room(of: indexPath.item) else {return}
+        detailViewController.roomId = room.id
+        detailViewController.price = room.price?.price
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if filterManager.dateFilter != nil {
+            filterButtons[0].selected()
+        }
+        
+        if filterManager.guestInfo != nil {
+            filterButtons[1].selected()
+        }
+    }
+    
     @objc func dateDone(_ notification: Notification) {
-        guard let dateFilter = notification.userInfo?["dateFilter"] as? DateFilter else {return}
-        filterManager.dateFilter = dateFilter
         filterButtons[0].selected()
         setUseCase()
         if filterManager.dateFilter != nil, filterManager.guestInfo != nil {
@@ -187,8 +196,6 @@ class RoomListViewController: UIViewController {
     }
     
     @objc func addGuestInfo(_ notification: Notification) {
-        guard let totalGuest = notification.userInfo?["result"] as? [String] else {return}
-        filterManager.guestInfo = GuestInfo(adult: totalGuest[0], youth: totalGuest[1], infants: totalGuest[2])
         filterButtons[1].selected()
         setUseCase()
         if filterManager.dateFilter != nil, filterManager.guestInfo != nil {
@@ -197,10 +204,7 @@ class RoomListViewController: UIViewController {
     }
     
     @objc func priceDone(_ notification: Notification) {
-        guard let min = notification.userInfo?["lower"] as? String,
-            let max = notification.userInfo?["max"] as? String else {return}
-        
-        filterManager.priceFilter = PriceFilter(min: min, max: max)
+        filterButtons[2].selected()
     }
 }
 

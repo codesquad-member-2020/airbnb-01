@@ -27,6 +27,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var reviewCollectionView: UICollectionView!
     
     private let detailViewUseCase = DetailViewUseCase(networkManager: NetworkManager())
+    private let bookingUseCase = BookingUseCase(networkManager: NetworkManager())
     private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var detailRoomInformation: RoomDetail? {
         didSet {
@@ -35,11 +36,13 @@ class DetailViewController: UIViewController {
             setBookingButton()
             guard let images = detailRoomInformation?.images else {return}
             setImageUseCase(images: images)
+            setDescriptionLabel()
             reviewCollectionView.reloadData()
         }
     }
     
     var roomId: Int?
+    var price: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,18 +64,34 @@ class DetailViewController: UIViewController {
                                                selector: #selector(urlBinded(_:)),
                                                name: .URLBinded,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(bookingButtonCliked),
+                                               name: .BookingButtonClicked,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(doneClicked),
+                                               name: .DateDone,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(doneClicked),
+                                               name: .NumberDone,
+                                               object: nil)
     }
     
     private func setBookingButton() {
         bookingButtonView.bookingButton.isEnabled = true
-        bookingButtonView.bookingButton.setTitle("예약 가능 여부 확인", for: .normal)
+        bookingButtonView.bookingButton.setTitle("예약", for: .normal)
         bookingButtonView.bookingButton.alpha = 1
     }
     
     private func setAccommodationInfoView() {
         guard let roomInfo = detailRoomInformation else {return}
         accommodationInfoView.setNameLabel(name: roomInfo.name)
-        accommodationInfoView.setRatingLabel(rating: 4.81)
+        
+        let rating = Double(roomInfo.reviews.reduce(0) {$0 + $1.star}) / 3.0
+        
+        accommodationInfoView.setRatingLabel(rating: round(rating * 100) / 100)
+        bookingButtonView.setRating(rating: round(rating * 100) / 100)
         let addressList = roomInfo.location.components(separatedBy: " ")
         guard addressList.count >= 3 else {
             accommodationInfoView.setAddressLabel(address: addressList.joined(separator: " "))
@@ -110,6 +129,21 @@ class DetailViewController: UIViewController {
         marker.map = mapView
     }
     
+    private func setDescriptionLabel() {
+        guard let date = FilterManager.shared.dateFilter else {
+            bookingButtonView.setDescriptionLabel(text: "요금을 확인하려면 날짜를 입력하세요.")
+            return}
+        guard let guest = FilterManager.shared.guestInfo else {
+            bookingButtonView.setDescriptionLabel(text: "요금을 확인하려면 인원을 입력하세요.")
+            return
+        }
+        guard let price = price else {return}
+        
+        let totalPirce = guest.totalIntegerGuest() * Int(date.endDate.timeIntervalSince(date.startDate) / 86400) * price
+        
+        bookingButtonView.setDescriptionLabel(text: "\(totalPirce)원에 예약하세요!")
+    }
+    
     private func setImageUseCase(images: [Image]) {
         imageUseCase.enqueueImages(images: images,
                                    failureHandler: { [unowned self] in AlertView.alertError(viewController: self, message: $0) },
@@ -143,7 +177,7 @@ class DetailViewController: UIViewController {
                                                 for _ in 0..<$0.images.count {
                                                     self.scrollViewWithPageControlView.appendImageView()
                                                 }
-                                            
+                                                
                                                 self.detailRoomInformation = $0 })
     }
     
@@ -160,6 +194,32 @@ class DetailViewController: UIViewController {
     
     @objc func likeButtonPushed() {
         
+    }
+    
+    @objc func doneClicked() {
+        setDescriptionLabel()
+    }
+    
+    @objc func bookingButtonCliked() {
+        guard FilterManager.shared.dateFilter != nil else {
+            guard let calendarViewController = storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as? CalendarViewController else {return}
+            calendarViewController.modalPresentationStyle = .overFullScreen
+            present(calendarViewController, animated: true)
+            return
+        }
+        
+        guard FilterManager.shared.guestInfo != nil else {
+            guard let numberViewController = storyboard?.instantiateViewController(withIdentifier: "NumberViewController") as? NumberViewController else {return}
+            numberViewController.modalPresentationStyle = .overFullScreen
+            present(numberViewController, animated: true)
+            return
+        }
+        guard let roomId = roomId else {return}
+        
+        bookingUseCase.booking(roomId: roomId,
+                               failureHandler: {[unowned self] in AlertView.alertError(viewController: self, message: $0)},
+                               successHandler: {[unowned self] in
+                                AlertView.alert(viewController: self, message: $0)})
     }
     
     @objc func close() {

@@ -17,7 +17,7 @@ struct RoomListUseCase {
     }
     
     func requestRoomList(queryString: String, failureHandler: @escaping (String) -> (), successHandler: @escaping ([Room]) -> ()) {
-        networkManager.loadResource(requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.RoomList + queryString){
+        networkManager.loadResource(method: .get, headers: nil, bodys: nil, statusCode: 300, requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.RoomList + queryString){
             switch $0 {
             case .success(let data):
                 guard let data = data else {

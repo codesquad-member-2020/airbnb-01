@@ -147,9 +147,9 @@ class CalendarViewController: UIViewController {
         let dateFilter = DateFilter(startDate: start.description.convertDate(), endDate: end.description.convertDate(), startIndexPath: startIndexPath, endIndexPath: endIndexPath)
         
         dismiss(animated: true, completion: {
+            FilterManager.shared.dateFilter = dateFilter
             NotificationCenter.default.post(name: .DateDone,
-                                            object: nil,
-                                            userInfo: ["dateFilter": dateFilter])
+                                            object: nil)
         })
     }
 }

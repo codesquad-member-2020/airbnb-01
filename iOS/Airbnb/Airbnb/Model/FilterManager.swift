@@ -57,8 +57,12 @@ struct GuestInfo {
     var infants: String
     
     func totalGuest() -> String {
-        guard let adultInteger = Int(adult), let youthInteger = Int(youth), let infantsInteger = Int(infants) else {return "0"}
-        return String(adultInteger + youthInteger + infantsInteger)
+        return String(totalIntegerGuest())
+    }
+    
+    func totalIntegerGuest() -> Int {
+        guard let adultInteger = Int(adult), let youthInteger = Int(youth), let infantsInteger = Int(infants) else {return 0}
+        return adultInteger + youthInteger + infantsInteger
     }
 }
 
