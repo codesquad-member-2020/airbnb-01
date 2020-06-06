@@ -29,7 +29,8 @@ class URLBinder {
     
     func localUrl(index: Int, of url: String) -> URL? {
         let dic = binder[index]
-        return dic?[url]!
+        guard let result = dic?[url] else {return URL(fileURLWithPath: "")}
+        return result
     }
     
     func updateURL(roomID: Int, serverURL: String, localURL: URL) {
