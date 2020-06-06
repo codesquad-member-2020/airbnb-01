@@ -1,14 +1,15 @@
 //
-//  RoomListUseCase.swift
+//  MapListUseCase.swift
 //  Airbnb
 //
-//  Created by 신한섭 on 2020/05/21.
+//  Created by 신한섭 on 2020/06/05.
 //  Copyright © 2020 신한섭. All rights reserved.
 //
 
 import Foundation
 
-struct RoomListUseCase {
+struct RooomListInMapUseCase {
+    
     
     private var networkManager: NetworkManageable
     
@@ -17,7 +18,7 @@ struct RoomListUseCase {
     }
     
     func requestRoomList(queryString: String, failureHandler: @escaping (String) -> (), successHandler: @escaping ([Room]) -> ()) {
-        networkManager.loadResource(method: .get, headers: nil, bodys: nil, statusCode: 300, requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.RoomList + queryString){
+        networkManager.loadResource(method: .get, headers: nil, bodys: nil, statusCode: 300,  requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.RoomList + queryString){
             switch $0 {
             case .success(let data):
                 guard let data = data else {
@@ -37,10 +38,5 @@ struct RoomListUseCase {
                 break
             }
         }
-    }
-    
-    func requestMockRoomList(successHandler: @escaping ([Room]) -> ()) {
-        let model = [Room](repeating: Room(id: 1, images: [Image(type: "hotel", url: "https://a0.muscache.com/im/pictures/cd6aa55e-1af7-450d-8975-bec51aa6b93e.jpg?im_w=1200"), Image(type: "hotel", url: "https://images.unsplash.com/photo-1466766655439-2c4b4f788ebf?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9"), Image(type: "hotel", url: "https://images.unsplash.com/photo-1565443512485-4802529a006e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9")], name: "호텔호텔호텔", price: Price(price: 50000), type: "ㅁㄴㅇ"), count: 10)
-        successHandler(model)
     }
 }

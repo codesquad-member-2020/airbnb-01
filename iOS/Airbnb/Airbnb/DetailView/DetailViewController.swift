@@ -11,7 +11,6 @@ import GoogleMaps
 
 class DetailViewController: UIViewController {
     
-    
     @IBOutlet weak var bookingButtonView: BookingButtonView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -25,8 +24,10 @@ class DetailViewController: UIViewController {
         detailMapViewController.roomInfo = roomInfo
         self.navigationController?.pushViewController(detailMapViewController, animated: true)
     }
+    @IBOutlet weak var reviewCollectionView: UICollectionView!
     
     private let detailViewUseCase = DetailViewUseCase(networkManager: NetworkManager())
+    private let bookingUseCase = BookingUseCase(networkManager: NetworkManager())
     private let imageUseCase = ImageUseCase(networkManager: NetworkManager())
     private var detailRoomInformation: RoomDetail? {
         didSet {
@@ -35,10 +36,13 @@ class DetailViewController: UIViewController {
             setBookingButton()
             guard let images = detailRoomInformation?.images else {return}
             setImageUseCase(images: images)
+            setDescriptionLabel()
+            reviewCollectionView.reloadData()
         }
     }
     
     var roomId: Int?
+    var price: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,8 @@ class DetailViewController: UIViewController {
         setObserver()
         setNavigationController()
         setModelUseCase()
+        reviewCollectionView.dataSource = self
+        reviewCollectionView.delegate = self
     }
     
     deinit {
@@ -58,18 +64,34 @@ class DetailViewController: UIViewController {
                                                selector: #selector(urlBinded(_:)),
                                                name: .URLBinded,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(bookingButtonCliked),
+                                               name: .BookingButtonClicked,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(doneClicked),
+                                               name: .DateDone,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(doneClicked),
+                                               name: .NumberDone,
+                                               object: nil)
     }
     
     private func setBookingButton() {
         bookingButtonView.bookingButton.isEnabled = true
-        bookingButtonView.bookingButton.setTitle("예약 가능 여부 확인", for: .normal)
+        bookingButtonView.bookingButton.setTitle("예약", for: .normal)
         bookingButtonView.bookingButton.alpha = 1
     }
     
     private func setAccommodationInfoView() {
         guard let roomInfo = detailRoomInformation else {return}
         accommodationInfoView.setNameLabel(name: roomInfo.name)
-        accommodationInfoView.setRatingLabel(rating: 4.81)
+        
+        let rating = Double(roomInfo.reviews.reduce(0) {$0 + $1.star}) / 3.0
+        
+        accommodationInfoView.setRatingLabel(rating: round(rating * 100) / 100)
+        bookingButtonView.setRating(rating: round(rating * 100) / 100)
         let addressList = roomInfo.location.components(separatedBy: " ")
         guard addressList.count >= 3 else {
             accommodationInfoView.setAddressLabel(address: addressList.joined(separator: " "))
@@ -107,17 +129,31 @@ class DetailViewController: UIViewController {
         marker.map = mapView
     }
     
+    private func setDescriptionLabel() {
+        guard let date = FilterManager.shared.dateFilter else {
+            bookingButtonView.setDescriptionLabel(text: "요금을 확인하려면 날짜를 입력하세요.")
+            return}
+        guard let guest = FilterManager.shared.guestInfo else {
+            bookingButtonView.setDescriptionLabel(text: "요금을 확인하려면 인원을 입력하세요.")
+            return
+        }
+        guard let price = price else {return}
+        
+        let totalPirce = guest.totalIntegerGuest() * Int(date.endDate.timeIntervalSince(date.startDate) / 86400) * price
+        
+        bookingButtonView.setDescriptionLabel(text: "\(totalPirce)원에 예약하세요!")
+    }
+    
     private func setImageUseCase(images: [Image]) {
-        imageUseCase.enqueueImages(images: images, failureHandler: { [unowned self] in
-            AlertView.alertError(viewController: self, message: $0)
-            }, completed: { [unowned self] in
-                guard let roomId = self.roomId else {
-                    AlertView.alertError(viewController: self, message: "숙소 정보가 없습니다.")
-                    return
-                }
-                URLBinder.shared.updateURL(roomID: roomId, serverURL: $0, localURL: $1)
-            }
-        )
+        imageUseCase.enqueueImages(images: images,
+                                   failureHandler: { [unowned self] in AlertView.alertError(viewController: self, message: $0) },
+                                   completed: { [unowned self] in
+                                    guard let roomId = self.roomId else {
+                                        AlertView.alertError(viewController: self, message: "숙소 정보가 없습니다.")
+                                        return
+                                    }
+                                    URLBinder.shared.updateURL(roomID: roomId, serverURL: $0, localURL: $1)
+                                    self.reviewCollectionView.reloadData()})
     }
     
     private func setNavigationController() {
@@ -134,15 +170,15 @@ class DetailViewController: UIViewController {
     
     private func setModelUseCase() {
         guard let roomId = roomId else {return}
-        detailViewUseCase.requestDetailView(roomId: roomId, failureHandler: { [unowned self] in
-            AlertView.alertError(viewController: self, message: $0)
-            }, successHandler: { [unowned self] in
-                URLBinder.shared.registerRoomID(room: $0)
-                for _ in 0..<$0.images.count {
-                    self.scrollViewWithPageControlView.appendImageView()
-                }
-                self.detailRoomInformation = $0
-        })
+        detailViewUseCase.requestDetailView(roomId: roomId,
+                                            failureHandler: { [unowned self] in AlertView.alertError(viewController: self, message: $0) },
+                                            successHandler: { [unowned self] in
+                                                URLBinder.shared.registerRoomID(room: $0)
+                                                for _ in 0..<$0.images.count {
+                                                    self.scrollViewWithPageControlView.appendImageView()
+                                                }
+                                                
+                                                self.detailRoomInformation = $0 })
     }
     
     @objc func urlBinded(_ notification: Notification) {
@@ -160,6 +196,32 @@ class DetailViewController: UIViewController {
         
     }
     
+    @objc func doneClicked() {
+        setDescriptionLabel()
+    }
+    
+    @objc func bookingButtonCliked() {
+        guard FilterManager.shared.dateFilter != nil else {
+            guard let calendarViewController = storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as? CalendarViewController else {return}
+            calendarViewController.modalPresentationStyle = .overFullScreen
+            present(calendarViewController, animated: true)
+            return
+        }
+        
+        guard FilterManager.shared.guestInfo != nil else {
+            guard let numberViewController = storyboard?.instantiateViewController(withIdentifier: "NumberViewController") as? NumberViewController else {return}
+            numberViewController.modalPresentationStyle = .overFullScreen
+            present(numberViewController, animated: true)
+            return
+        }
+        guard let roomId = roomId else {return}
+        
+        bookingUseCase.booking(roomId: roomId,
+                               failureHandler: {[unowned self] in AlertView.alertError(viewController: self, message: $0)},
+                               successHandler: {[unowned self] in
+                                AlertView.alert(viewController: self, message: $0)})
+    }
+    
     @objc func close() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -168,5 +230,34 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+}
+
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return detailRoomInformation?.reviews.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reviewCell", for: indexPath) as? ReviewCollectionViewCell else {return UICollectionViewCell()}
+        guard let review = detailRoomInformation?.reviews[indexPath.item] else {return UICollectionViewCell()}
+        cell.descriptionLabel.text = review.content
+        cell.emailInfo.text = review.email
+        guard let url = URL(string: review.profileURL) else {return cell}
+        let data = try! Data(contentsOf: url)
+        cell.profileImageView.image = UIImage(data: data)
+        cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.height / 2
+        return cell
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

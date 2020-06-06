@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VTI-5o-7Wc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -51,7 +51,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NU2-GJ-o2k" userLabel="Filter Stack View">
-                                <rect key="frame" x="20.5" y="163" width="258.5" height="40"/>
+                                <rect key="frame" x="20.5" y="163" width="171" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yv-Rv-eff" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="83" height="40"/>
@@ -70,6 +70,9 @@
                                                 <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="calendarButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="AUY-4e-czK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba4-98-28T" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
                                         <rect key="frame" x="88" y="0.0" width="83" height="40"/>
@@ -88,9 +91,12 @@
                                                 <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="numberButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="9uf-Fr-g1B"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA3-aa-NiH" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="176" y="0.0" width="82.5" height="40"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA3-aa-NiH" customClass="FilterButton" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="171" y="0.0" width="0.0" height="40"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                         <state key="normal" title="가격">
                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -106,6 +112,9 @@
                                                 <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="PriceButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="fBL-0a-ZXW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -139,6 +148,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYO-br-9Bq">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <state key="normal" image="location"/>
+                                        <connections>
+                                            <action selector="locationButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ICa-xD-o8R"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -183,7 +195,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="s0K-Dd-GyB"/>
                     <connections>
+                        <outlet property="priceButton" destination="EA3-aa-NiH" id="vK0-du-kgC"/>
                         <outlet property="roomListCollectionView" destination="Nk3-iJ-S5b" id="ZXV-ez-1RW"/>
+                        <outlet property="searchTextField" destination="HlN-xQ-VOY" id="emq-J4-XGI"/>
                         <outletCollection property="filterButtons" destination="3Yv-Rv-eff" collectionClass="NSMutableArray" id="NA3-2e-gxq"/>
                         <outletCollection property="filterButtons" destination="ba4-98-28T" collectionClass="NSMutableArray" id="s43-uN-FL6"/>
                         <outletCollection property="filterButtons" destination="EA3-aa-NiH" collectionClass="NSMutableArray" id="oSA-z0-mz9"/>
@@ -192,6 +206,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1851" y="-176"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="9LK-kn-5XO">
+            <objects>
+                <viewController id="EeW-1f-c99" customClass="ConfirmViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i1e-IF-mAa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5LV-2r-FuB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jun-1f-jdo">
+                                    <size key="itemSize" width="699" height="659"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bookCell" id="9UF-sx-dQN" customClass="RoomListCell" customModule="Airbnb" customModuleProvider="target">
+                                        <rect key="frame" x="-142.5" y="0.0" width="699" height="659"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tr9-xB-0pG">
+                                            <rect key="frame" x="0.0" y="0.0" width="699" height="659"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="699" height="659"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="r1k-Kz-qaH" firstAttribute="bottom" secondItem="5LV-2r-FuB" secondAttribute="bottom" id="8cL-he-TX6"/>
+                            <constraint firstItem="r1k-Kz-qaH" firstAttribute="trailing" secondItem="5LV-2r-FuB" secondAttribute="trailing" id="U84-gv-H32"/>
+                            <constraint firstItem="5LV-2r-FuB" firstAttribute="top" secondItem="r1k-Kz-qaH" secondAttribute="top" id="iUN-XQ-zn6"/>
+                            <constraint firstItem="5LV-2r-FuB" firstAttribute="leading" secondItem="r1k-Kz-qaH" secondAttribute="leading" id="j9X-1Q-SPu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="r1k-Kz-qaH"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="person" catalog="system" selectedImage="person.fill" id="I1b-K4-lry"/>
+                    <connections>
+                        <outlet property="bookCollectionView" destination="5LV-2r-FuB" id="04q-jU-lnc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qoR-Zx-1Fy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="704.34782608695662" y="645.53571428571422"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="r7G-U0-cns">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7hh-EB-Q27" customClass="MapViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vjl-WU-EGJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FCF-aR-X7F"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a55-oB-7PJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1780" y="494"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="fVF-F3-g4V">
@@ -205,7 +282,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="736"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-Dk-ZtU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="734.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="944.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-gZ-kvi" customClass="ScrollViewWithPageControlView" customModule="Airbnb" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -260,9 +337,81 @@
                                                     <action selector="detailMap:" destination="D4C-M7-bEB" eventType="touchUpInside" id="pgo-dd-xMz"/>
                                                 </connections>
                                             </button>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONm-dT-UQd">
+                                                <rect key="frame" x="20.5" y="744.5" width="373" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="7KV-kS-WyX"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KyZ-VH-uAh">
+                                                    <size key="itemSize" width="364" height="204"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reviewCell" id="Pef-M0-0h6" customClass="ReviewCollectionViewCell" customModule="Airbnb" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="-2" width="364" height="204"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ihY-VK-dg9" customClass="CornerRadiusView" customModule="Airbnb" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="364" height="204"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="codesquad" translatesAutoresizingMaskIntoConstraints="NO" id="9Yd-E1-GSC">
+                                                                    <rect key="frame" x="20" y="20" width="61" height="61"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="9Yd-E1-GSC" secondAttribute="height" multiplier="1:1" id="b6G-0m-gmR"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5E-jF-op1">
+                                                                    <rect key="frame" x="101" y="20" width="243" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W85-8a-vpF">
+                                                                    <rect key="frame" x="20" y="101" width="324" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="d5E-jF-op1" firstAttribute="leading" secondItem="9Yd-E1-GSC" secondAttribute="trailing" constant="20" id="8kU-ei-tTn"/>
+                                                                <constraint firstItem="W85-8a-vpF" firstAttribute="top" secondItem="9Yd-E1-GSC" secondAttribute="bottom" constant="20" id="CfG-n9-6jR"/>
+                                                                <constraint firstItem="9Yd-E1-GSC" firstAttribute="top" secondItem="ihY-VK-dg9" secondAttribute="top" constant="20" id="FQx-sS-IBE"/>
+                                                                <constraint firstItem="9Yd-E1-GSC" firstAttribute="leading" secondItem="ihY-VK-dg9" secondAttribute="leading" constant="20" id="SLu-1u-3Gs"/>
+                                                                <constraint firstItem="W85-8a-vpF" firstAttribute="trailing" secondItem="d5E-jF-op1" secondAttribute="trailing" id="U1m-Kc-gw1"/>
+                                                                <constraint firstItem="W85-8a-vpF" firstAttribute="leading" secondItem="9Yd-E1-GSC" secondAttribute="leading" id="ZQ4-zS-Fp0"/>
+                                                                <constraint firstItem="d5E-jF-op1" firstAttribute="top" secondItem="ihY-VK-dg9" secondAttribute="top" constant="20" id="ZeA-iU-aCR"/>
+                                                                <constraint firstAttribute="trailing" secondItem="d5E-jF-op1" secondAttribute="trailing" constant="20" id="qHC-pA-k90"/>
+                                                                <constraint firstItem="9Yd-E1-GSC" firstAttribute="height" secondItem="ihY-VK-dg9" secondAttribute="height" multiplier="0.3" id="wvy-eq-skJ"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="20"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </collectionViewCellContentView>
+                                                        <size key="customSize" width="364" height="204"/>
+                                                        <connections>
+                                                            <outlet property="descriptionLabel" destination="W85-8a-vpF" id="oFx-f4-sBZ"/>
+                                                            <outlet property="emailInfo" destination="d5E-jF-op1" id="BJa-nx-j7J"/>
+                                                            <outlet property="profileImageView" destination="9Yd-E1-GSC" id="4Gh-Ue-c0L"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="8x7-bu-lPH" firstAttribute="width" secondItem="bGr-Dk-ZtU" secondAttribute="width" multiplier="0.9" id="6P6-FF-cxn"/>
+                                            <constraint firstItem="ONm-dT-UQd" firstAttribute="width" secondItem="bGr-Dk-ZtU" secondAttribute="width" multiplier="0.9" id="aMv-3D-bYS"/>
                                             <constraint firstItem="OMx-Xl-1m0" firstAttribute="width" secondItem="8x7-bu-lPH" secondAttribute="width" id="zMf-NB-FgZ"/>
                                         </constraints>
                                     </stackView>
@@ -309,13 +458,14 @@
                         <outlet property="activityIndicator" destination="Qmo-a4-nae" id="wHh-eI-MQD"/>
                         <outlet property="bookingButtonView" destination="bJl-qL-ELi" id="0NO-Nx-EgK"/>
                         <outlet property="mapView" destination="8x7-bu-lPH" id="LPz-s1-CEY"/>
+                        <outlet property="reviewCollectionView" destination="ONm-dT-UQd" id="rca-yd-QD5"/>
                         <outlet property="scrollView" destination="ce5-l1-cMv" id="ukb-Pf-ENT"/>
                         <outlet property="scrollViewWithPageControlView" destination="Tva-gZ-kvi" id="9Nh-lX-vpw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYH-sN-V99" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2606" y="-176"/>
+            <point key="canvasLocation" x="2605.7971014492755" y="-176.11607142857142"/>
         </scene>
         <!--Detail Map View Controller-->
         <scene sceneID="OOJ-P8-WMJ">
@@ -332,10 +482,97 @@
             </objects>
             <point key="canvasLocation" x="3362" y="-176"/>
         </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="HHe-62-JUX">
+            <objects>
+                <viewController storyboardIdentifier="OAuthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qK2-7t-kcj" customClass="OAuthViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JIw-nE-S2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfj-Or-O9F">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="gfj-Or-O9F" secondAttribute="bottom" id="JEK-gM-bj8"/>
+                            <constraint firstItem="gfj-Or-O9F" firstAttribute="leading" secondItem="71p-mR-b56" secondAttribute="leading" id="Nld-oP-xqd"/>
+                            <constraint firstItem="71p-mR-b56" firstAttribute="trailing" secondItem="gfj-Or-O9F" secondAttribute="trailing" id="ce3-Un-zG9"/>
+                            <constraint firstItem="gfj-Or-O9F" firstAttribute="top" secondItem="71p-mR-b56" secondAttribute="top" id="nKY-5H-ZQY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="71p-mR-b56"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="gfj-Or-O9F" id="ahI-Ax-hwu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qdp-kH-yUj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-851" y="-696"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="tp6-FW-SbE">
+            <objects>
+                <viewController id="VTI-5o-7Wc" customClass="LoginViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pb6-Ur-h0h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-Yk-6C8" customClass="BorderButton" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="41.5" y="575" width="331" height="54"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="   Github으로 로그인" image="GitHub-Mark-Light-120px-plus">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="corderRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="asd:" destination="VTI-5o-7Wc" eventType="touchUpInside" id="Xeg-ns-d5E"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="trD-iW-YSk">
+                                <rect key="frame" x="41.5" y="194" width="331" height="331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="trD-iW-YSk" secondAttribute="height" multiplier="1:1" id="7wA-o4-Qh4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="trD-iW-YSk" firstAttribute="centerX" secondItem="pb6-Ur-h0h" secondAttribute="centerX" id="8BH-oZ-HPr"/>
+                            <constraint firstItem="trD-iW-YSk" firstAttribute="top" secondItem="6SH-5K-Lhz" secondAttribute="top" constant="150" id="GtM-RC-7Ld"/>
+                            <constraint firstItem="hT4-Yk-6C8" firstAttribute="centerX" secondItem="pb6-Ur-h0h" secondAttribute="centerX" id="MBX-a6-hF3"/>
+                            <constraint firstItem="trD-iW-YSk" firstAttribute="width" secondItem="pb6-Ur-h0h" secondAttribute="width" multiplier="0.8" id="X2C-A0-9Hm"/>
+                            <constraint firstItem="hT4-Yk-6C8" firstAttribute="width" secondItem="pb6-Ur-h0h" secondAttribute="width" multiplier="0.8" id="ejW-AZ-pqM"/>
+                            <constraint firstItem="hT4-Yk-6C8" firstAttribute="height" secondItem="pb6-Ur-h0h" secondAttribute="height" multiplier="0.06" id="hVG-ee-6rh"/>
+                            <constraint firstItem="hT4-Yk-6C8" firstAttribute="top" secondItem="trD-iW-YSk" secondAttribute="bottom" constant="50" id="hqQ-TV-3O6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6SH-5K-Lhz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xKX-NF-Q7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-873.91304347826099" y="-6.0267857142857144"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabbarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -343,11 +580,102 @@
                     </tabBar>
                     <connections>
                         <segue destination="bV6-7Q-dqX" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="EeW-1f-c99" kind="relationship" relationship="viewControllers" id="dY1-uc-fY7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="U8i-ux-U2z">
+            <objects>
+                <viewController storyboardIdentifier="CalendarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I9M-GC-dRt" customClass="CalendarViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Coq-t3-Mf9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0h-Wu-fXm" customClass="FilterContainerView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="144" width="373" height="537.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="s0h-Wu-fXm" firstAttribute="top" secondItem="YjL-Zb-1O5" secondAttribute="top" constant="100" id="4MK-2B-xAl"/>
+                            <constraint firstItem="s0h-Wu-fXm" firstAttribute="centerX" secondItem="YjL-Zb-1O5" secondAttribute="centerX" id="X8J-rb-qx1"/>
+                            <constraint firstItem="s0h-Wu-fXm" firstAttribute="width" secondItem="Coq-t3-Mf9" secondAttribute="width" multiplier="0.9" id="gpT-qj-jqI"/>
+                            <constraint firstItem="s0h-Wu-fXm" firstAttribute="height" secondItem="Coq-t3-Mf9" secondAttribute="height" multiplier="0.6" id="jnr-9X-JNe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YjL-Zb-1O5"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterContainerView" destination="s0h-Wu-fXm" id="gDz-m1-cwY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V1P-TP-02j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1321" y="-870"/>
+        </scene>
+        <!--Number View Controller-->
+        <scene sceneID="54H-lm-ao4">
+            <objects>
+                <viewController storyboardIdentifier="NumberViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fqe-il-8aN" customClass="NumberViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bQ8-LM-Wfb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tA-QW-aZ9" customClass="FilterContainerView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="144" width="373" height="448"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1tA-QW-aZ9" firstAttribute="top" secondItem="5BJ-p5-iwx" secondAttribute="top" constant="100" id="DQ8-RB-UzP"/>
+                            <constraint firstItem="1tA-QW-aZ9" firstAttribute="width" secondItem="bQ8-LM-Wfb" secondAttribute="width" multiplier="0.9" id="kGa-aL-NqB"/>
+                            <constraint firstItem="1tA-QW-aZ9" firstAttribute="height" secondItem="bQ8-LM-Wfb" secondAttribute="height" multiplier="0.5" id="n0K-cn-L3A"/>
+                            <constraint firstItem="1tA-QW-aZ9" firstAttribute="centerX" secondItem="5BJ-p5-iwx" secondAttribute="centerX" id="qcT-OZ-aPc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5BJ-p5-iwx"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterContainerView" destination="1tA-QW-aZ9" id="9af-ng-9xc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pae-Gk-TMN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2010" y="-871"/>
+        </scene>
+        <!--Price View Controller-->
+        <scene sceneID="a0S-f2-Qyd">
+            <objects>
+                <viewController storyboardIdentifier="PriceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yg8-5n-uwp" customClass="PriceViewController" customModule="Airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b9c-bu-2Su">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDo-b2-Bx8" customClass="FilterContainerView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="144" width="373" height="448"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eDo-b2-Bx8" firstAttribute="height" secondItem="b9c-bu-2Su" secondAttribute="height" multiplier="0.5" id="1CP-jF-RjL"/>
+                            <constraint firstItem="eDo-b2-Bx8" firstAttribute="width" secondItem="b9c-bu-2Su" secondAttribute="width" multiplier="0.9" id="c1c-Mb-kVv"/>
+                            <constraint firstItem="eDo-b2-Bx8" firstAttribute="centerX" secondItem="b9c-bu-2Su" secondAttribute="centerX" id="gtA-OP-o98"/>
+                            <constraint firstItem="eDo-b2-Bx8" firstAttribute="top" secondItem="TRf-VP-Wx4" secondAttribute="top" constant="100" id="zWe-TR-8w0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TRf-VP-Wx4"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterContainerView" destination="eDo-b2-Bx8" id="oCd-Qz-xpj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ug-ns-2rz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2690" y="-871"/>
         </scene>
         <!--숙소-->
         <scene sceneID="icr-v7-bDT">
@@ -370,7 +698,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="GitHub-Mark-Light-120px-plus" width="40" height="40"/>
+        <image name="codesquad" width="266.66665649414062" height="115.66666412353516"/>
         <image name="location" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="logo" width="150.33332824707031" height="164.33332824707031"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
     </resources>
 </document>

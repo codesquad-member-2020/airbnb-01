@@ -17,4 +17,13 @@ final class AlertView {
             viewController.present(alert, animated: true)
         }
     }
+    
+    static func alert(viewController: UIViewController, message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "축하해요!", message: message, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "넵!!!", style: .default)
+            alert.addAction(ok)
+            viewController.present(alert, animated: true)
+        }
+    }
 }

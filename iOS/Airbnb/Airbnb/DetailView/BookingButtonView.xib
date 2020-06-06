@@ -10,6 +10,8 @@
             <connections>
                 <outlet property="bookingButton" destination="N86-z0-Rel" id="l6O-33-ui4"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="cx1-ed-2d4"/>
+                <outlet property="descriptionView" destination="L89-d0-Spu" id="hGw-oG-ioK"/>
+                <outlet property="ratingLabel" destination="gyg-8R-fdt" id="D6g-p3-xBa"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -35,6 +37,9 @@
                                             <real key="value" value="10"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="bookingButtonClicked:" destination="-1" eventType="touchUpInside" id="7F3-hZ-emK"/>
+                                    </connections>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cvd-R2-WUv">
                                     <rect key="frame" x="0.0" y="12" width="184.33333333333334" height="48"/>

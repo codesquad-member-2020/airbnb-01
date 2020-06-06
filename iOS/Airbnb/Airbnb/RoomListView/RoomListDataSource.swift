@@ -10,12 +10,7 @@ import UIKit
 
 class RoomListDataSource: NSObject, UICollectionViewDataSource {
     
-    var viewModel: RoomListViewModel? {
-        didSet {
-            NotificationCenter.default.post(name: .ViewModelChanged,
-                                            object: nil)
-        }
-    }
+    var viewModel: RoomListViewModel?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.roomListManager.count ?? 0
