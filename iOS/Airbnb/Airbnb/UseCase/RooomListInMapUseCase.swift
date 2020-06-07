@@ -17,8 +17,8 @@ struct RooomListInMapUseCase {
         self.networkManager = networkManager
     }
     
-    func requestRoomList(queryString: String, failureHandler: @escaping (String) -> (), successHandler: @escaping ([Room]) -> ()) {
-        networkManager.loadResource(method: .get, headers: nil, bodys: nil, statusCode: 300,  requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.RoomList + queryString){
+    func requestRoomList(queryString: String, failureHandler: @escaping (String) -> (), successHandler: @escaping ([MapViewRoomList]) -> ()) {
+        networkManager.loadResource(method: .get, headers: nil, bodys: nil, statusCode: 300,  requestURL: EndPoint.defaultURL + EndPoint.accommodations + EndPoint.coordinate + queryString){
             switch $0 {
             case .success(let data):
                 guard let data = data else {
@@ -27,7 +27,7 @@ struct RooomListInMapUseCase {
                 }
                 
                 do {
-                    let model = try JSONDecoder().decode([Room].self, from: data)
+                    let model = try JSONDecoder().decode([MapViewRoomList].self, from: data)
                     successHandler(model)
                 } catch {
                     failureHandler("Json decode error")
