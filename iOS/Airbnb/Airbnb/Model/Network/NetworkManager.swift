@@ -27,20 +27,6 @@ class NetworkManager: NetworkManageable {
             return
         }
         
-        if let body = bodys {
-            var param = [
-                "accommodationId": "\(body.accommodationId)",
-                "checkIn": body.checkIn,
-                "checkOut": body.checkOut,
-                "personCount": "\(body.personCount)"
-            ]
-            
-            
-            AF.request(urlPath, method: method, parameters: BookingBody(accommodationId: body.accommodationId, checkIn: body.checkIn, checkOut: body.checkOut, personCount: body.personCount), encoder: JSONParameterEncoder.default, headers: headers).validate(statusCode: 200..<statusCode).response {
-                handler($0.result)
-            }
-        }
-        
         AF.request(urlPath, method: method, parameters: bodys, encoder: JSONParameterEncoder.default, headers: headers).validate(statusCode: 200..<statusCode).response {
             handler($0.result)
         }

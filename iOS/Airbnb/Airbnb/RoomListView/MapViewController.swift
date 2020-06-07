@@ -15,8 +15,13 @@ class MapViewController: UIViewController {
     private var longitude = 127.660205
     private let useCase = RooomListInMapUseCase(networkManager: NetworkManager())
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBAction func searchButtonClicked(_ sender: UIButton) {
+        sendCurrentLocation()
+    }
     private var roomList = [MapViewRoomList]() {
         didSet {
+            mapView.clear()
             roomList.forEach {
                 let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude))
                 marker.map = mapView
@@ -36,7 +41,7 @@ class MapViewController: UIViewController {
     }
     
     private func showMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 12)
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 11)
         mapView.camera = camera
         mapView.delegate = self
     }
@@ -65,7 +70,13 @@ extension Notification.Name {
 }
 
 extension MapViewController: GMSMapViewDelegate {
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        sendCurrentLocation()
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        if mapView.camera.zoom < 11 {
+            searchButton.alpha = 0.5
+            searchButton.isEnabled = false
+        } else {
+            searchButton.alpha = 1
+            searchButton.isEnabled = true
+        }
     }
 }

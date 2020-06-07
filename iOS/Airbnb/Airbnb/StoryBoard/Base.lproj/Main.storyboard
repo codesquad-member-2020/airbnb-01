@@ -267,18 +267,53 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fJ-So-8QY" customClass="ShadowView" customModule="Airbnb" customModuleProvider="target">
+                                <rect key="frame" x="354" y="802" width="40" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SnQ-dE-rIA">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <state key="normal" image="magnifyingGlass"/>
+                                        <connections>
+                                            <action selector="searchButtonClicked:" destination="7hh-EB-Q27" eventType="touchUpInside" id="WZW-1x-zX5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SnQ-dE-rIA" firstAttribute="top" secondItem="4fJ-So-8QY" secondAttribute="top" id="7mB-Gr-Pl9"/>
+                                    <constraint firstAttribute="bottom" secondItem="SnQ-dE-rIA" secondAttribute="bottom" id="JRl-VI-YOW"/>
+                                    <constraint firstItem="SnQ-dE-rIA" firstAttribute="leading" secondItem="4fJ-So-8QY" secondAttribute="leading" id="e4B-iD-2lH"/>
+                                    <constraint firstAttribute="height" constant="40" id="fbt-6l-EmS"/>
+                                    <constraint firstAttribute="width" secondItem="4fJ-So-8QY" secondAttribute="height" multiplier="1:1" id="k1m-4I-gHw"/>
+                                    <constraint firstAttribute="trailing" secondItem="SnQ-dE-rIA" secondAttribute="trailing" id="paU-4f-eXd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="TOm-qX-QX8" secondAttribute="trailing" id="8an-cf-uDU"/>
+                            <constraint firstItem="FCF-aR-X7F" firstAttribute="trailing" secondItem="4fJ-So-8QY" secondAttribute="trailing" constant="20" id="CgV-mL-Cbu"/>
                             <constraint firstItem="TOm-qX-QX8" firstAttribute="leading" secondItem="Vjl-WU-EGJ" secondAttribute="leading" id="ZsL-6h-a5p"/>
                             <constraint firstItem="TOm-qX-QX8" firstAttribute="top" secondItem="Vjl-WU-EGJ" secondAttribute="top" id="iSS-rX-agv"/>
                             <constraint firstAttribute="bottom" secondItem="TOm-qX-QX8" secondAttribute="bottom" id="lT5-iN-u7N"/>
+                            <constraint firstItem="FCF-aR-X7F" firstAttribute="bottom" secondItem="4fJ-So-8QY" secondAttribute="bottom" constant="20" id="mtf-Wl-4MP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FCF-aR-X7F"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="TOm-qX-QX8" id="450-Lt-vrr"/>
+                        <outlet property="searchButton" destination="SnQ-dE-rIA" id="nkG-KC-env"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a55-oB-7PJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -557,7 +592,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="asd:" destination="VTI-5o-7Wc" eventType="touchUpInside" id="Xeg-ns-d5E"/>
+                                    <action selector="modalWebView:" destination="VTI-5o-7Wc" eventType="touchUpInside" id="Xeg-ns-d5E"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="trD-iW-YSk">
@@ -717,6 +752,7 @@
         <image name="codesquad" width="266.66665649414062" height="115.66666412353516"/>
         <image name="location" width="21.333333969116211" height="21.333333969116211"/>
         <image name="logo" width="150.33332824707031" height="164.33332824707031"/>
+        <image name="magnifyingGlass" width="21.333333969116211" height="21.333333969116211"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
