@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBAction func asd(_ sender: Any) {
+    @IBAction func modalWebView(_ sender: Any) {
         guard let oauthViewController = storyboard?.instantiateViewController(withIdentifier: "OAuthViewController") as? OAuthViewController else {return}
         present(oauthViewController, animated: true)
     }
