@@ -63,6 +63,7 @@
 		A5A8E06C247FDCEA006E4A71 /* BookingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A8E06B247FDCEA006E4A71 /* BookingButtonView.swift */; };
 		A5A8E06E247FDCF0006E4A71 /* BookingButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5A8E06D247FDCF0006E4A71 /* BookingButtonView.xib */; };
 		A5CF3CEF2487004E0007EC3E /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CF3CEE2487004E0007EC3E /* CalendarHeaderView.swift */; };
+		A5D2BC51248CE3B4007BF00C /* MapViewRoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2BC50248CE3B4007BF00C /* MapViewRoomList.swift */; };
 		A5D4C9982473EF8100555311 /* CornerRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4C9972473EF8100555311 /* CornerRadiusView.swift */; };
 		A5F2F119247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */; };
 		A5F2F11B247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */; };
@@ -144,6 +145,7 @@
 		A5A8E06B247FDCEA006E4A71 /* BookingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingButtonView.swift; sourceTree = "<group>"; };
 		A5A8E06D247FDCF0006E4A71 /* BookingButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingButtonView.xib; sourceTree = "<group>"; };
 		A5CF3CEE2487004E0007EC3E /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
+		A5D2BC50248CE3B4007BF00C /* MapViewRoomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRoomList.swift; sourceTree = "<group>"; };
 		A5D4C9972473EF8100555311 /* CornerRadiusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusView.swift; sourceTree = "<group>"; };
 		A5F2F118247D3BF900DFD7AE /* ScrollViewWithPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWithPageControlView.swift; sourceTree = "<group>"; };
 		A5F2F11A247D3C0600DFD7AE /* ScrollViewWithPageControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewWithPageControlView.xib; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 		A529F72D2476AFFB00844E8E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5D2BC4F248CE39D007BF00C /* MapViewRoomList */,
 				A5FABAFC2486D84F006CB6A6 /* CalendarManager.swift */,
 				A54D5DE424878DE1008CA2E6 /* FilterManager.swift */,
 				A5FABAF72486D051006CB6A6 /* Extension */,
@@ -415,6 +418,14 @@
 				A502EE532489FD7900247AB1 /* OAuthViewController.swift */,
 			);
 			path = LoginView;
+			sourceTree = "<group>";
+		};
+		A5D2BC4F248CE39D007BF00C /* MapViewRoomList */ = {
+			isa = PBXGroup;
+			children = (
+				A5D2BC50248CE3B4007BF00C /* MapViewRoomList.swift */,
+			);
+			path = MapViewRoomList;
 			sourceTree = "<group>";
 		};
 		A5D4C9912473D22000555311 /* Resource */ = {
@@ -654,6 +665,7 @@
 				A58907182476B235008FCD18 /* EndPoint.swift in Sources */,
 				A54A17582489914100B2692C /* rangeSlider.swift in Sources */,
 				A57CF7DC2472CD24006FFE98 /* RoomListViewController.swift in Sources */,
+				A5D2BC51248CE3B4007BF00C /* MapViewRoomList.swift in Sources */,
 				A502EE542489FD7900247AB1 /* OAuthViewController.swift in Sources */,
 				A5A6AECF2489F183006A584C /* LoginViewController.swift in Sources */,
 				A59D835F247EA118007944B3 /* DetailMapViewController.swift in Sources */,
