@@ -26,4 +26,5 @@ enum EndPoint {
     static let rightBottomLatitude = "rightBottomLatitude="
     static let OAuth = "oauth/token"
     static let booking = "booking"
+    static let coordinate = "s?"
 }
